@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>模室 MODELTEA · 点单</title>
+<style>
+  :root{
+    --bg:#f4f4f4;
+    --card:#ffffff;
+    --ink:#1a1a1a;
+    --gray:#9a9a9a;
+    --gray2:#c4c4c4;
+    --line:#ececec;
+    --green:#5a9c3f;     /* 上新 / 绿灯 */
+    --black:#111111;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;}
+  body{
+    background:#dcdcdc;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;
+    color:var(--ink);
+    display:flex;justify-content:center;align-items:flex-start;
+    min-height:100vh;padding-top:60px;
+  }
+  /* ===== page frame (3:4) ===== */
+  .phone{
+    width:480px;height:640px;        /* 3:4 */
+    background:var(--bg);
+    position:relative;overflow:hidden;
+    border-radius:8px;
+    box-shadow:0 12px 48px rgba(0,0,0,.16);
+    border:1px solid #e6e6e6;
+  }
+  @media (max-width:520px){
+    body{background:var(--bg);}
+    .phone{width:100vw;height:133.33vw;max-height:100vh;border-radius:0;border:none;box-shadow:none;}
+  }
+
+  /* screens */
+  .screen{position:absolute;inset:0;display:none;flex-direction:column;background:var(--bg);}
+  .screen.active{display:flex;}
+  .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .scroll::-webkit-scrollbar{display:none;}
+
+  /* generic nav header */
+  .nav{height:46px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;}
+  .nav .title{font-size:17px;font-weight:600;}
+  .nav .back{position:absolute;left:18px;font-size:22px;line-height:1;cursor:pointer;}
+  .capsule{position:absolute;right:14px;top:50%;transform:translateY(-50%);
+    display:flex;align-items:center;gap:0;border:1px solid #e3e3e3;border-radius:18px;
+    height:32px;background:rgba(255,255,255,.6);backdrop-filter:blur(4px);}
+  .capsule span{width:44px;text-align:center;font-size:16px;}
+  .capsule .div{width:1px;height:16px;background:#e0e0e0;}
+
+  /* ============ MENU ============ */
+  #menu .menu-head{background:#3a3a3a;color:#fff;padding:8px 18px 16px;flex-shrink:0;}
+  #menu .menu-head .tabs{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+  #menu .menu-head .tabs .t1{font-size:20px;font-weight:700;}
+  #menu .menu-head .tabs .t2{font-size:16px;color:#bdbdbd;}
+  #menu .menu-head .store{font-size:21px;font-weight:600;display:flex;align-items:center;gap:6px;}
+  #menu .menu-head .sub{font-size:12px;color:#aaa;margin-top:6px;}
+  #menu .menu-head .en{font-size:13px;color:#cfcfcf;margin-top:8px;display:flex;align-items:center;gap:4px;}
+  #menu .menu-head .icons{position:absolute;right:16px;top:54px;display:flex;gap:10px;}
+  #menu .menu-head .icons div{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px;}
+
+  #menu .body{flex:1;display:flex;overflow:hidden;}
+  #menu .side{width:96px;flex-shrink:0;background:#f4f4f4;overflow-y:auto;padding-top:8px;}
+  #menu .side::-webkit-scrollbar{display:none;}
+  #menu .side .cat{padding:16px 8px 16px 16px;font-size:13px;color:#888;line-height:1.35;cursor:pointer;position:relative;}
+  #menu .side .cat.on{color:#111;font-weight:700;background:#fff;}
+  #menu .side .cat.on::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:18px;background:#111;}
+  #menu .side .cat .new{display:inline-block;background:var(--green);color:#fff;font-size:10px;padding:1px 5px;border-radius:3px;margin-bottom:4px;font-weight:600;}
+
+  #menu .list{flex:1;background:#fff;overflow-y:auto;padding:4px 16px 90px;}
+  #menu .list::-webkit-scrollbar{display:none;}
+  #menu .sect-title{font-size:16px;font-weight:700;margin:16px 0 4px;display:flex;align-items:center;gap:8px;}
+  #menu .sect-title .hint{font-size:11px;color:#999;font-weight:400;background:#f1f1f1;padding:2px 8px;border-radius:10px;}
+  .prod{display:flex;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);}
+  .prod .pic{width:96px;height:96px;border-radius:10px;background:#f5f5f5;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:42px;position:relative;}
+  .prod .pic .dot{position:absolute;left:6px;bottom:6px;font-size:9px;color:var(--green);display:flex;align-items:center;gap:3px;font-weight:600;}
+  .prod .pic .dot::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);}
+  .prod .info{flex:1;min-width:0;}
+  .prod .nm{font-size:17px;font-weight:700;}
+  .prod .tagrow{display:flex;gap:6px;margin:7px 0;flex-wrap:wrap;}
+  .tag{font-size:11px;padding:2px 7px;border:1px solid #d0d0d0;border-radius:4px;color:#777;}
+  .tag.new{background:var(--green);border-color:var(--green);color:#fff;font-weight:600;}
+  .prod .desc{font-size:12px;color:#9a9a9a;line-height:1.5;margin-bottom:10px;}
+  .prod .pricerow{display:flex;align-items:center;justify-content:space-between;}
+  .prod .price{font-size:19px;font-weight:700;}
+  .prod .price small{font-size:11px;color:#999;font-weight:400;}
+  .prod .spec-btn{background:#111;color:#fff;border:none;font-size:13px;font-weight:600;padding:8px 16px;border-radius:6px;cursor:pointer;}
+
+  /* UI 线性图标 (单色，跟随 currentColor) */
+  .uic{display:inline-block;vertical-align:-3px;width:18px;height:18px;}
+  .uic.sm{width:14px;height:14px;vertical-align:-2px;}
+  .capsule .uic{width:17px;height:17px;vertical-align:middle;}
+  .cartbar .bag .uic{width:28px;height:28px;}
+  .fav .uic{width:16px;height:16px;}
+  .receipt .check .uic{width:26px;height:26px;}
+  .co-card.promo .price .uic{width:20px;height:20px;vertical-align:middle;}
+
+  /* brand logos (单色，跟随 currentColor) */
+  .blogo{display:block;color:#1a1a1a;}
+  .prod .pic .blogo{width:50px;height:50px;}
+  #detail .dpic .blogo{width:128px;height:128px;}
+  #detail .thumbs .th .blogo{width:26px;height:26px;}
+  .co-item .pic .blogo{width:38px;height:38px;}
+
+  /* cart bar */
+  .cartbar{position:absolute;left:0;right:0;bottom:0;height:60px;background:#fbfbfb;
+    display:flex;align-items:center;padding-left:18px;box-shadow:0 -4px 16px rgba(0,0,0,.05);z-index:20;}
+  .cartbar.hide{display:none;}
+  .cartbar .bag{position:relative;font-size:30px;}
+  .cartbar .bag .badge{position:absolute;right:-6px;top:-4px;background:#111;color:#fff;font-size:11px;
+    min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px;}
+  .cartbar .cprice{font-size:24px;font-weight:700;margin-left:14px;}
+  .cartbar .cprice small{font-size:13px;font-weight:400;color:#999;}
+  .cartbar .checkout{margin-left:auto;width:140px;align-self:stretch;background:#111;color:#fff;border:none;
+    font-size:17px;font-weight:600;cursor:pointer;}
+  .cartbar.empty .checkout{background:#bdbdbd;}
+
+  /* bottom nav */
+  .tabbar{height:50px;display:flex;background:#fff;border-top:1px solid #eee;flex-shrink:0;z-index:10;}
+  .tabbar .tab{flex:1;display:flex;align-items:center;justify-content:center;font-size:15px;color:#999;cursor:pointer;}
+  .tabbar .tab.on{color:#111;font-weight:700;}
+
+  /* ============ DETAIL (sheet) ============ */
+  #detail{z-index:40;}
+  #detail .scroll{padding-bottom:96px;}
+  #detail .dpic{height:300px;background:#f3f3f3;display:flex;align-items:center;justify-content:center;font-size:120px;position:relative;}
+  #detail .dpic .green{position:absolute;left:18px;bottom:16px;font-size:12px;color:var(--green);font-weight:600;}
+  #detail .dpic .green b{font-size:22px;}
+  #detail .dpic .ctx{position:absolute;right:16px;bottom:16px;font-size:10px;color:#bbb;text-align:right;line-height:1.6;}
+  #detail .dtopbar{position:absolute;top:0;left:0;right:0;height:46px;display:flex;align-items:center;padding:0 16px;z-index:5;}
+  #detail .dtopbar .back{font-size:24px;cursor:pointer;}
+  #detail .dbody{background:#fff;border-radius:0;padding:20px 18px 0;}
+  #detail .dname{font-size:26px;font-weight:800;}
+  #detail .dtags{display:flex;gap:6px;margin:12px 0 16px;flex-wrap:wrap;}
+  #detail .thumbs{display:flex;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--line);overflow-x:auto;}
+  #detail .thumbs::-webkit-scrollbar{display:none;}
+  #detail .thumbs .th{width:54px;height:54px;border-radius:50%;background:#f3f3f3;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;border:2px solid transparent;}
+  #detail .thumbs .th.on{border-color:#111;}
+  #detail .reveal{display:flex;align-items:center;gap:8px;color:#8a6d4b;font-size:15px;font-weight:600;padding:18px 0 6px;}
+  #detail .ddesc{font-size:14px;color:#444;line-height:1.7;}
+  #detail .ddesc .more{color:#aaa;font-size:13px;margin-top:6px;}
+
+  .specgroup{padding:22px 0 6px;border-bottom:1px solid var(--line);}
+  .specgroup .glabel{font-size:13px;color:#a98;font-weight:600;margin-bottom:2px;}
+  .specgroup .gname{font-size:15px;font-weight:700;margin-bottom:14px;}
+  .specgroup .gname small{font-size:12px;color:#aaa;font-weight:400;margin-left:6px;}
+  .opts{display:flex;gap:12px;flex-wrap:wrap;}
+  .opt{padding:11px 16px;background:#f3f3f3;border-radius:6px;font-size:14px;color:#333;cursor:pointer;border:1px solid transparent;position:relative;}
+  .opt.on{background:#111;color:#fff;}
+  .opt .add{font-size:11px;color:#999;margin-left:4px;}
+  .opt.on .add{color:#ccc;}
+  .opt .free{font-size:11px;color:var(--green);margin-left:4px;}
+  .opt.on .free{color:#9fd98a;}
+
+  /* detail bottom bar */
+  #detail .dbottom{position:absolute;left:0;right:0;bottom:0;background:#fff;padding:10px 16px 14px;box-shadow:0 -4px 16px rgba(0,0,0,.06);}
+  #detail .qrow{display:flex;align-items:center;margin-bottom:10px;}
+  #detail .fav{display:flex;align-items:center;gap:6px;font-size:14px;color:#666;}
+  #detail .stepper{margin-left:auto;display:flex;align-items:center;gap:16px;}
+  #detail .stepper .b{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;border:1.5px solid #ddd;color:#666;}
+  #detail .stepper .b.plus{background:#111;color:#fff;border-color:#111;}
+  #detail .stepper .q{font-size:17px;font-weight:600;min-width:18px;text-align:center;}
+  #detail .addcart{width:100%;height:54px;background:#111;color:#fff;border:none;border-radius:12px;
+    font-size:17px;font-weight:700;cursor:pointer;}
+
+  /* ============ CHECKOUT ============ */
+  #checkout .scroll{padding:0 14px 100px;}
+  .co-card{background:#fff;border-radius:var(--radius);padding:18px;margin-top:12px;}
+  .co-pickup{display:flex;align-items:flex-start;gap:12px;}
+  .co-pickup .badge{background:#111;color:#fff;font-size:13px;font-weight:600;padding:3px 8px;border-radius:5px;white-space:nowrap;}
+  .co-pickup .store{font-size:20px;font-weight:700;}
+  .co-pickup .eta{font-size:13px;color:#888;margin-top:8px;}
+  .co-pickup .km{margin-left:auto;font-size:12px;color:#aaa;background:#f4f4f4;padding:4px 10px;border-radius:12px;}
+  .co-diy{display:flex;align-items:center;font-size:16px;font-weight:600;}
+  .co-diy .sub{color:#999;font-weight:400;font-size:14px;margin-left:4px;}
+  .co-diy .go{margin-left:auto;color:#bbb;font-size:14px;font-weight:400;}
+  .co-sect{font-size:20px;font-weight:800;margin-bottom:6px;}
+  .co-item{display:flex;gap:12px;padding:6px 0;}
+  .co-item .pic{width:70px;height:80px;border-radius:8px;background:#f4f4f4;display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0;}
+  .co-item .nm{font-size:17px;font-weight:700;display:flex;justify-content:space-between;}
+  .co-item .cfg{font-size:13px;color:#9a9a9a;line-height:1.6;margin-top:6px;}
+  .co-item .qx{font-size:13px;color:#999;text-align:right;margin-top:4px;}
+  .co-row{display:flex;align-items:center;padding:16px 0;border-top:1px solid var(--line);font-size:16px;}
+  .co-row .r{margin-left:auto;color:#bbb;font-size:14px;}
+  .co-row.first{border-top:none;}
+  .co-card.promo{background:#f1f0e6;}
+  .co-card.promo .t{font-size:16px;font-weight:700;}
+  .co-card.promo .s{font-size:12px;color:#999;margin-top:4px;}
+  .co-card.promo .price{margin-left:auto;font-size:17px;font-weight:700;}
+  .co-card.promo .price small{font-size:12px;color:#999;font-weight:400;}
+  .co-total{text-align:right;padding-top:14px;}
+  .co-total .sum{font-size:15px;}
+  .co-total .sum b{font-size:26px;}
+  .co-total .pts{font-size:13px;color:#999;margin-top:8px;}
+
+  /* checkout pay bar */
+  #checkout .paybar{position:absolute;left:0;right:0;bottom:0;height:84px;background:#fff;display:flex;align-items:center;padding:0 0 0 24px;box-shadow:0 -4px 16px rgba(0,0,0,.06);}
+  #checkout .paybar .due{font-size:16px;}
+  #checkout .paybar .due b{font-size:30px;font-weight:800;}
+  #checkout .paybar .pay{margin-left:auto;width:150px;height:84px;background:#111;color:#fff;border:none;font-size:20px;font-weight:700;cursor:pointer;}
+
+  /* ============ SUCCESS ============ */
+  #success{z-index:50;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;}
+  #success.active{display:flex;}
+  .receipt{width:300px;background:#fff;border-radius:8px;padding:0;position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    -webkit-mask:radial-gradient(circle at 0 70%,transparent 8px,#000 9px) left/51% 100% no-repeat,
+                 radial-gradient(circle at 100% 70%,transparent 8px,#000 9px) right/51% 100% no-repeat;}
+  .receipt .rhead{text-align:center;padding:26px 20px 14px;border-bottom:2px dashed #e0e0e0;}
+  .receipt .check{display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+  .receipt .check .clawd{width:96px;height:auto;display:block;image-rendering:pixelated;}
+  .receipt .rhead h3{font-size:19px;font-weight:800;}
+  .receipt .rhead p{font-size:12px;color:#999;margin-top:4px;}
+  .receipt .rbody{padding:16px 22px;}
+  .receipt .rl{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;color:#444;}
+  .receipt .rl .k{color:#999;}
+  .receipt .rl.tot{border-top:2px dashed #e0e0e0;margin-top:8px;padding-top:12px;font-size:15px;font-weight:800;color:#111;}
+  .receipt .rfoot{text-align:center;font-size:11px;color:#bbb;padding:0 20px 22px;line-height:1.6;}
+  .receipt .close{display:block;width:calc(100% - 44px);margin:0 22px 22px;height:46px;background:#111;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- ===================== MENU ===================== -->
+  <div class="screen active" id="menu">
+    <div class="menu-head">
+      <div class="tabs"><span class="t1">到店取</span><span style="color:#777">|</span><span class="t2">模搭外送</span></div>
+      <div class="store">模室 · 算力中央厨房店 ›</div>
+      <div class="sub">距离您 28ms · 纽约节点直供</div>
+      <div class="en">smarter models, by token ›</div>
+      <div class="icons"><div><svg class="uic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><div>···</div></div>
+    </div>
+    <div class="body">
+      <div class="side" id="side"></div>
+      <div class="list" id="list"></div>
+    </div>
+    <div class="cartbar empty" id="cartbar" onclick="goCheckout()">
+      <div class="bag"><svg class="uic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 8h12l1 12H5z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="badge" id="cartCount" style="display:none">0</span></div>
+      <div class="cprice" id="cartPrice"><small>未点单</small></div>
+      <button class="checkout">结算</button>
+    </div>
+  </div>
+
+  <!-- ===================== DETAIL ===================== -->
+  <div class="screen" id="detail">
+    <div class="scroll">
+      <div class="dpic">
+        <div class="dtopbar"><div class="back" onclick="show('menu')">‹</div></div>
+        <span id="dEmoji"></span>
+        <div class="green"><b id="dCtx">200K</b> 上下文/次</div>
+        <div class="ctx">参数估算 · 推荐状态<br>不另加费用项下标准出品</div>
+      </div>
+      <div class="dbody">
+        <div class="dname" id="dName">模型名</div>
+        <div class="dtags" id="dTags"></div>
+        <div class="reveal"><svg class="uic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4" stroke-linecap="round"/><circle cx="12" cy="8.2" r="1.1" fill="currentColor" stroke="none"/></svg> 参数 / 训练 / 能力揭秘 &nbsp;⟶</div>
+        <div class="ddesc"><span id="dDesc"></span><div class="more">展开更多 <svg class="uic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div id="specArea"></div>
+        <div style="height:20px"></div>
+      </div>
+    </div>
+    <div class="dbottom">
+      <div class="qrow">
+        <div class="fav"><svg class="uic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.6-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.4 12 20 12 20Z"/></svg> 保存口味</div>
+        <div class="stepper">
+          <div class="b" onclick="step(-1)">−</div>
+          <div class="q" id="dQty">1</div>
+          <div class="b plus" onclick="step(1)">＋</div>
+        </div>
+      </div>
+      <button class="addcart" onclick="addToCart()"><span id="addLabel">$0.00 /1M · 加入购物袋</span></button>
+    </div>
+  </div>
+
+  <!-- ===================== CHECKOUT ===================== -->
+  <div class="screen" id="checkout">
+    <div class="nav">
+      <div class="back" onclick="show('menu')">‹</div>
+      <div class="title">订单结算</div>
+    </div>
+    <div class="scroll">
+      <div class="co-card">
+        <div class="co-pickup">
+          <span class="badge">到店取</span>
+          <div>
+            <div class="store">算力中央厨房店 ›</div>
+            <div class="eta">立刻为您推理，预计 0.8 秒后出杯</div>
+          </div>
+          <div class="km">0.0ms</div>
+        </div>
+      </div>
+      <div class="co-card co-diy">
+        <span><svg class="uic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M16 4l4 4L8 20H4v-4z"/><path d="M14 6l4 4"/></svg> DIY 人设</span><span class="sub">| 邀你灵感一现</span>
+        <span class="go">去定制 ›</span>
+      </div>
+      <div class="co-card">
+        <div class="co-sect">商品明细</div>
+        <div id="coItems"></div>
+        <div class="co-row"><span>打包方式</span><span class="r"><svg class="uic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a8 8 0 0 1 14-3l2 2"/><path d="M20 5v4h-4"/><path d="M20 16a8 8 0 0 1-14 3l-2-2"/><path d="M4 19v-4h4"/></svg> 流式输出 ›</span></div>
+      </div>
+      <div class="co-card promo" style="display:flex;align-items:center">
+        <div>
+          <div class="t">开「金算卡」本单可减 ¥2 ›</div>
+          <div class="s">享 90 天最高可省 ¥98</div>
+        </div>
+        <div class="price">¥8.8<small>/90天</small> <svg class="uic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg></div>
+      </div>
+      <div class="co-card">
+        <div class="co-row first"><span>模室券</span><span class="r">暂无可用 ›</span></div>
+        <div class="co-row"><span>开发者特权</span><span class="r">暂无可用 ›</span></div>
+        <div class="co-total">
+          <div class="sum">小计 <b id="coSum">$0.00</b></div>
+          <div class="pts">可得 <svg class="uic sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="12" rx="9" ry="6"/><path d="M3 12v3c0 3.3 4 6 9 6s9-2.7 9-6v-3"/></svg> 积分 <span id="coPts">0</span> &nbsp;|&nbsp; <svg class="uic sm" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg> 成长值 <span id="coGrow">0</span></div>
+        </div>
+      </div>
+      <div class="co-card">
+        <div class="co-row first" style="color:#999">支付方式</div>
+      </div>
+    </div>
+    <div class="paybar">
+      <div class="due">待支付 <b id="payDue">$0.00</b></div>
+      <button class="pay" onclick="pay()">支付</button>
+    </div>
+  </div>
+
+  <!-- ===================== SUCCESS ===================== -->
+  <div class="screen" id="success">
+    <div class="receipt">
+      <div class="rhead">
+        <div class="check"><img class="clawd" alt="Clawd" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAGQCAYAAAA+89ElAAAHDElEQVR4nO3YwW2EQBAAQbAuI5IhCoIhCpIhJvy135Zu99xVP16MFqFtzbIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw0/rrCd7sPvbHoQNF23m5gxnma9yrAQAYQQACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIh5jR4AZrad1zKz+9hHj0CY/wM+lw0gAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAELOOHuDT3cf+jJ4BAGq289Iwf2ADCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxKyjB6DtPvZn9AwAI2zn5Q5mGBtAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAg5jV6AJjZdl7rMrH72J9lYrOf3+x83/99fjCSDSAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIABAjAAEAYgQgAECMAAQAiBGAAAAxAhAAIEYAAgDECEAAgBgBCAAQIwABAGIEIABAjAAEAIgRgAAAMQIQACBGAAIAxAhAAIAYAQgAECMAAQBiBCAAQIwABACIEYAAADECEAAgRgACAMQIQACAGAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMBS9g2XtCCClpAT5AAAAABJRU5ErkJggg=="></div>
+        <h3>出杯成功</h3>
+        <p>MODELTEA · 算力中央厨房店</p>
+      </div>
+      <div class="rbody" id="receiptBody"></div>
+      <div class="rfoot">本小票为体验演示 · 不产生真实调用与扣费<br>感谢品尝今日模型</div>
+      <button class="close" onclick="resetAll()">再来一单</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ===================== 品牌 LOGO (Simple Icons / svgl，单色) ===================== */
+const LOGOS = {
+  claude:`<svg class="blogo" viewBox="0 0 24 24" fill="currentColor"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>`,
+  openai:`<svg class="blogo" viewBox="0 0 256 260" fill="currentColor"><path d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"/></svg>`,
+  gemini:`<svg class="blogo" viewBox="0 0 24 24" fill="currentColor"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></svg>`,
+  meta:`<svg class="blogo" viewBox="0 0 24 24" fill="currentColor"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></svg>`,
+  qwen:`<svg class="blogo" viewBox="0 0 24 24" fill="currentColor"><path d="M23.919 14.545 20.817 9.17l1.47-2.544a.56.56 0 0 0 0-.566l-1.633-2.83a.57.57 0 0 0-.49-.283h-6.207L12.487.402a.57.57 0 0 0-.49-.284H8.732a.56.56 0 0 0-.49.284L5.139 5.775h-2.94a.56.56 0 0 0-.49.284L.077 8.887a.56.56 0 0 0 0 .567L3.18 14.83l-1.47 2.545a.56.56 0 0 0 0 .566l1.634 2.83a.57.57 0 0 0 .49.283h6.205l1.47 2.545a.57.57 0 0 0 .49.284h3.266a.57.57 0 0 0 .49-.284l3.104-5.375h2.94a.57.57 0 0 0 .49-.283l1.634-2.828a.55.55 0 0 0-.004-.568M8.733.686l1.634 2.828-1.634 2.828H21.8L20.164 9.17H7.425L5.63 6.06Zm1.306 19.801-6.205-.002 1.634-2.83h3.265L2.201 6.344h3.267q3.182 5.517 6.367 11.032zm10.124-5.66L18.53 12l-6.532 11.315-1.634-2.83c2.129-3.673 4.25-7.351 6.373-11.028h3.592l3.102 5.374z"/></svg>`,
+  deepseek:`<svg class="blogo" viewBox="0 0 24 24" fill="currentColor"><path d="M23.748 4.651c-.254-.124-.364.113-.512.233-.051.04-.094.09-.137.137-.372.397-.806.657-1.373.626-.829-.046-1.537.214-2.163.848-.133-.782-.575-1.248-1.247-1.548-.352-.155-.708-.311-.955-.65-.172-.24-.219-.509-.305-.774-.055-.16-.11-.323-.293-.35-.2-.031-.278.136-.356.276-.313.572-.434 1.202-.422 1.84.027 1.436.633 2.58 1.838 3.393.137.094.172.187.129.323-.082.28-.18.553-.266.833-.055.179-.137.218-.328.14a5.5 5.5 0 0 1-1.737-1.179c-.857-.828-1.631-1.743-2.597-2.46a12 12 0 0 0-.689-.47c-.985-.957.13-1.743.387-1.836.27-.098.094-.433-.778-.428-.872.003-1.67.295-2.687.685a3 3 0 0 1-.465.136 9.6 9.6 0 0 0-2.883-.101c-1.885.21-3.39 1.1-4.497 2.622C.082 8.776-.231 10.854.152 13.02c.403 2.284 1.568 4.175 3.36 5.653 1.857 1.533 3.997 2.284 6.438 2.14 1.482-.085 3.132-.284 4.994-1.86.47.234.962.328 1.78.398.629.058 1.235-.031 1.705-.129.735-.155.684-.836.418-.961-2.155-1.004-1.682-.595-2.112-.926 1.095-1.295 2.768-3.598 3.284-6.733.05-.346.115-.834.108-1.114-.004-.171.035-.238.23-.257a4.2 4.2 0 0 0 1.545-.475c1.397-.763 1.96-2.016 2.093-3.517.02-.23-.004-.467-.247-.588M11.58 18.168c-2.088-1.642-3.101-2.183-3.52-2.16-.39.024-.32.472-.234.763.09.288.207.487.371.74.114.167.192.416-.113.603-.673.416-1.842-.14-1.897-.168-1.361-.801-2.5-1.86-3.301-3.306-.775-1.393-1.225-2.888-1.299-4.482-.02-.385.094-.522.477-.592a4.7 4.7 0 0 1 1.53-.038c2.131.311 3.946 1.264 5.467 2.774.868.86 1.525 1.887 2.202 2.89.72 1.066 1.494 2.082 2.48 2.915.348.291.626.513.892.677-.802.09-2.14.109-3.055-.615zm1.001-6.44a.306.306 0 0 1 .415-.287.3.3 0 0 1 .113.074.3.3 0 0 1 .086.214c0 .17-.136.307-.308.307a.303.303 0 0 1-.306-.307m3.11 1.596c-.2.081-.4.151-.591.16a1.25 1.25 0 0 1-.798-.254c-.274-.23-.47-.358-.551-.758a1.7 1.7 0 0 1 .015-.588c.07-.327-.007-.537-.238-.727-.188-.156-.426-.199-.689-.199a.6.6 0 0 1-.254-.078.253.253 0 0 1-.114-.358 1 1 0 0 1 .192-.21c.356-.202.767-.136 1.146.016.352.144.618.408 1.001.782.392.451.462.576.685.915.176.264.336.536.446.848.066.194-.02.353-.25.45"/></svg>`,
+};
+const BRAND = {opus48:'claude',sonnet:'claude',haiku:'claude',fable:'claude',gpt:'openai',gptmini:'openai',gemini:'gemini',llama:'meta',qwen:'qwen',deepseek:'deepseek'};
+function logoOf(m){ return LOGOS[BRAND[m.id]] || ''; }
+
+/* ===================== 数据 ===================== */
+const CATS = [
+  {id:'new',  label:'时令上新', new:true},
+  {id:'flag', label:'人气\n旗舰榜'},
+  {id:'reason',label:'推理特调\n/思考'},
+  {id:'multi', label:'多模态\n/鲜视觉'},
+  {id:'lite',  label:'轻量快饮\n/低延迟'},
+  {id:'open',  label:'经典\n/开源'},
+];
+
+/* 价格为官方公开定价，单位：美元 / 百万 token；in=输入，out=输出 */
+const MODELS = [
+  {id:'opus48', cat:'new', name:'Claude Opus 4.8',
+   tags:['上新','算力绿灯','含推理'], ctx:'1M', price:5, out:25,
+   desc:'Anthropic 最强 Opus 级模型，高度自主，在长程智能体、复杂编码与知识工作上业界领先。',
+   long:'Anthropic 当前最强的 Opus 级模型：高度自主，在长程智能体任务、知识工作与记忆能力上达到业界领先水平，写作更清晰流畅。1M 上下文，标准定价无长上下文溢价。'},
+  {id:'gpt', cat:'new', name:'GPT-5.5',
+   tags:['上新','算力绿灯','多模态'], ctx:'400K', price:5, out:30,
+   desc:'OpenAI 当前旗舰，通用推理、写作与代码全面，工具与生态最成熟。',
+   long:'OpenAI 当前旗舰模型，通用推理、写作、代码与多模态能力全面，插件与开发生态最成熟，是覆盖面最广的通用选择。'},
+  {id:'sonnet', cat:'flag', name:'Claude Sonnet 4.6',
+   tags:['算力绿灯','含推理'], ctx:'1M', price:3, out:15,
+   desc:'速度与智能的最佳平衡，日常编码与对话的高性价比之选。',
+   long:'Anthropic 在速度与智能之间的最佳平衡之作：响应快、质量高、价格友好，绝大多数日常编码与对话任务的首选。1M 上下文。'},
+  {id:'gemini', cat:'multi', name:'Gemini 3 Pro',
+   tags:['算力绿灯','多模态','长上下文'], ctx:'1M', price:2, out:12,
+   desc:'Google 旗舰多模态模型，超长上下文，原生支持文本 / 图像 / 音视频。',
+   long:'Google 旗舰多模态模型，原生支持文本、图像、音频与视频，超长上下文擅长处理整本书与长视频；分层定价，200K 以内 $2/$12。'},
+  {id:'haiku', cat:'lite', name:'Claude Haiku 4.5',
+   tags:['算力绿灯','低延迟'], ctx:'200K', price:1, out:5,
+   desc:'最快、最具性价比的模型，适合简单与高频任务。',
+   long:'Anthropic 最快、最具性价比的模型，适合分类、抽取、批量处理与实时交互等高频轻量场景。'},
+  {id:'fable', cat:'reason', name:'Claude Fable 5',
+   tags:['上新','算力绿灯','含推理'], ctx:'1M', price:10, out:50,
+   desc:'Anthropic 迄今最强模型，专为最艰深的推理与长程智能体任务打造。',
+   long:'Anthropic 迄今最强的广泛发布模型，面向最艰深的推理与长程智能体工作；思考始终开启，1M 上下文、最高 128K 输出，定价高于 Opus 级。'},
+  {id:'gptmini', cat:'lite', name:'GPT-5 mini',
+   tags:['低延迟'], ctx:'400K', price:0.25, out:2,
+   desc:'GPT-5 轻量版，低成本高速度，适合简单任务与大规模并发。',
+   long:'GPT-5 系列的轻量版本，成本低、速度快，适合简单问答、原型验证与大规模并发调用的经济之选。'},
+  {id:'qwen', cat:'open', name:'Qwen3 Max',
+   tags:['开源','长上下文'], ctx:'256K', price:1.2, out:6,
+   desc:'阿里通义千问旗舰，超大参数与长上下文，中文与代码能力突出。',
+   long:'阿里巴巴通义千问旗舰，约万亿参数、超长上下文，中文理解与代码能力突出，可经百炼平台调用。'},
+  {id:'deepseek', cat:'reason', name:'DeepSeek V3',
+   tags:['开源','含推理'], ctx:'128K', price:0.28, out:0.42,
+   desc:'极致性价比的推理模型，数学、代码与逻辑见长，开源可部署。',
+   long:'DeepSeek 推理性价比标杆，数学、代码与逻辑能力突出，开源可私有化部署，是成本敏感场景的热门选择。'},
+  {id:'llama', cat:'open', name:'Llama 4 Maverick',
+   tags:['开源','多模态'], ctx:'1M', price:0.15, out:0.6,
+   desc:'Meta 开源旗舰，可自由商用与私有化部署，社区生态最丰富。',
+   long:'Meta 开源旗舰，原生多模态、可商用、可深度改造；Meta 不自营推理 API，由 Together、Fireworks、Groq 等第三方托管，价格随服务商浮动。'},
+];
+
+/* 规格定义 */
+const SPECS = [
+  {key:'attach', glabel:'原创 · 模室加料·新方式', gname:'是否增加附件', note:'（图片 / 文档）', type:'single',
+   opts:[
+     {v:'不增加', add:0, def:true},
+     {v:'增加附件', add:0},
+   ]},
+  {key:'size', glabel:'出杯规格', gname:'上下文窗口', note:'（context window）', type:'single',
+   opts:[
+     {v:'中杯', sub:'256K', add:0, def:true},
+     {v:'大杯', sub:'1M', add:0},
+   ]},
+  {key:'addons', glabel:'灵感小料', gname:'能力加料', note:'（可多选）', type:'multi',
+   opts:[
+     {v:'联网搜索', add:0},
+     {v:'视觉识别', add:0},
+     {v:'深度思考', add:0},
+   ]},
+];
+
+/* ===================== 状态 ===================== */
+let curCat='new';
+let curModel=null;
+let curSel={};      // {temp:idx, size:idx, addons:[idx,...]}
+let qty=1;
+let cart=[];        // {model, sel, qty, unit}
+
+/* ===================== 渲染：菜单 ===================== */
+function renderSide(){
+  document.getElementById('side').innerHTML = CATS.map(c=>
+    `<div class="cat ${c.id===curCat?'on':''}" onclick="selCat('${c.id}')">
+       ${c.new?'<span class="new">上新</span><br>':''}${c.label.replace(/\n/g,'<br>')}
+     </div>`).join('');
+}
+function selCat(id){curCat=id;renderSide();renderList();document.querySelector('#menu .list').scrollTop=0;}
+
+function renderList(){
+  const cat = CATS.find(c=>c.id===curCat);
+  const items = MODELS.filter(m=>m.cat===curCat);
+  let html = `<div class="sect-title">${cat.label.replace(/\n/g,'')}
+     ${curCat==='new'?'<span class="hint">看看今日鲜煮</span>':''}</div>`;
+  html += items.map(m=>prodCard(m)).join('');
+  if(items.length===0) html+=`<div style="padding:40px;text-align:center;color:#bbb">该系列暂未上架</div>`;
+  // 推荐
+  const recs = MODELS.filter(m=>m.cat!==curCat).slice(0,2);
+  html += `<div class="sect-title" style="margin-top:24px">你可能喜欢 <span class="hint">看看你的专属推荐</span></div>`;
+  html += recs.map(m=>prodCard(m)).join('');
+  document.getElementById('list').innerHTML = html;
+}
+function prodCard(m){
+  return `<div class="prod" onclick="openDetail('${m.id}')">
+    <div class="pic">${logoOf(m)}<div class="dot">算力绿灯</div></div>
+    <div class="info">
+      <div class="nm">${m.name}</div>
+      <div class="tagrow">${m.tags.map(t=>`<span class="tag ${t==='上新'?'new':''}">${t}</span>`).join('')}</div>
+      <div class="desc">${m.desc}</div>
+      <div class="pricerow">
+        <div class="price">${money(m.price)}<small> /1M 输入 · 输出${money(m.out)}</small></div>
+        <button class="spec-btn" onclick="event.stopPropagation();openDetail('${m.id}')">选规格</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ===================== 渲染：详情 ===================== */
+function openDetail(id){
+  curModel = MODELS.find(m=>m.id===id);
+  qty=1;
+  curSel={addons:[]};
+  // 默认值
+  SPECS.forEach(s=>{ if(s.type==='single'){ const di=s.opts.findIndex(o=>o.def); curSel[s.key]= di<0?0:di; }});
+  renderDetail();
+  show('detail');
+  document.querySelector('#detail .scroll').scrollTop=0;
+}
+function renderDetail(){
+  const m=curModel;
+  document.getElementById('dEmoji').innerHTML=logoOf(m);
+  document.getElementById('dCtx').textContent=m.ctx;
+  document.getElementById('dName').textContent=m.name;
+  document.getElementById('dTags').innerHTML=m.tags.map(t=>`<span class="tag ${t==='上新'?'new':''}">${t}</span>`).join('');
+  document.getElementById('dDesc').textContent=m.long;
+  // specs
+  document.getElementById('specArea').innerHTML = SPECS.map(s=>specGroup(s)).join('');
+  document.getElementById('dQty').textContent=qty;
+  updateAddLabel();
+}
+function specGroup(s){
+  const opts = s.opts.map((o,i)=>{
+    let on=false;
+    if(s.type==='single') on = curSel[s.key]===i;
+    else on = curSel.addons.includes(i);
+    const addtxt = o.sub?`<span class="add">${o.sub}</span>`:'';
+    return `<div class="opt ${on?'on':''}" onclick="pickOpt('${s.key}','${s.type}',${i})">${o.v}${addtxt}</div>`;
+  }).join('');
+  return `<div class="specgroup">
+    <div class="glabel">${s.glabel}</div>
+    <div class="gname">${s.gname}<small>${s.note}</small></div>
+    <div class="opts">${opts}</div>
+  </div>`;
+}
+function pickOpt(key,type,i){
+  if(type==='single') curSel[key]=i;
+  else{
+    const arr=curSel.addons; const p=arr.indexOf(i);
+    if(p>=0) arr.splice(p,1); else arr.push(i);
+  }
+  document.getElementById('specArea').innerHTML = SPECS.map(s=>specGroup(s)).join('');
+  updateAddLabel();
+}
+function step(d){ qty=Math.max(1,qty+d); document.getElementById('dQty').textContent=qty; updateAddLabel(); }
+
+function unitPrice(){
+  let p=curModel.price;
+  SPECS.forEach(s=>{
+    if(s.type==='single'){ p += s.opts[curSel[s.key]].add; }
+    else { curSel.addons.forEach(i=> p+=s.opts[i].add); }
+  });
+  return p;
+}
+function money(n){ return '$'+(Math.round(n*100)/100).toFixed(2); }
+function updateAddLabel(){
+  document.getElementById('addLabel').textContent=`${money(unitPrice()*qty)} /1M · 加入购物袋`;
+}
+
+/* ===================== 购物车 ===================== */
+function addToCart(){
+  cart.push({model:curModel, sel:JSON.parse(JSON.stringify(curSel)), qty:qty, unit:unitPrice()});
+  show('menu');
+  renderCart();
+  flashCart();
+}
+function cartTotal(){return cart.reduce((s,c)=>s+c.unit*c.qty,0);}
+function cartQty(){return cart.reduce((s,c)=>s+c.qty,0);}
+function renderCart(){
+  const bar=document.getElementById('cartbar');
+  const n=cartQty();
+  if(n===0){ bar.classList.add('empty');
+    document.getElementById('cartCount').style.display='none';
+    document.getElementById('cartPrice').innerHTML='<small>未点单</small>'; return;}
+  bar.classList.remove('empty');
+  const b=document.getElementById('cartCount'); b.style.display='flex'; b.textContent=n;
+  document.getElementById('cartPrice').innerHTML=`${money(cartTotal())}<small> /1M 预估</small>`;
+}
+function flashCart(){
+  const bag=document.querySelector('#cartbar .bag');
+  bag.animate([{transform:'scale(1)'},{transform:'scale(1.3)'},{transform:'scale(1)'}],{duration:300});
+}
+
+/* 规格文字 */
+function selText(c){
+  let parts=[];
+  SPECS.forEach(s=>{
+    if(s.type==='single') parts.push(s.opts[c.sel[s.key]].v);
+    else c.sel.addons.forEach(i=>parts.push(s.opts[i].v));
+  });
+  return parts.join('，');
+}
+
+/* ===================== 结算 ===================== */
+function goCheckout(){
+  if(cartQty()===0){flashCart();return;}
+  renderCheckout(); show('checkout');
+}
+function renderCheckout(){
+  document.getElementById('coItems').innerHTML = cart.map(c=>`
+    <div class="co-item">
+      <div class="pic">${logoOf(c.model)}</div>
+      <div style="flex:1">
+        <div class="nm"><span>${c.model.name}</span><span>${money(c.unit*c.qty)}</span></div>
+        <div class="cfg">${selText(c)}</div>
+        <div class="qx">x${c.qty}</div>
+      </div>
+    </div>`).join('');
+  const t=cartTotal();
+  document.getElementById('coSum').textContent=money(t);
+  document.getElementById('coPts').textContent=Math.round(t*0.5);
+  document.getElementById('coGrow').textContent=t;
+  document.getElementById('payDue').textContent=money(t);
+}
+
+/* ===================== 支付 / 小票 ===================== */
+function pay(){
+  const t=cartTotal();
+  let rows = cart.map(c=>`<div class="rl"><span class="k">${c.model.name} x${c.qty}</span><span>${money(c.unit*c.qty)}</span></div>
+    <div class="rl"><span class="k" style="font-size:11px">${selText(c)}</span><span></span></div>`).join('');
+  const key='sk-mt-zhegeshijiade';
+  document.getElementById('receiptBody').innerHTML = rows +
+    `<div class="rl"><span class="k">取杯密钥</span><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;word-break:break-all;text-align:right;max-width:62%">${key}</span></div>
+     <div class="rl"><span class="k">出品门店</span><span>纽约节点</span></div>
+     <div class="rl tot"><span>合计预估 /1M</span><span>${money(t)}</span></div>`;
+  show('success');
+}
+function resetAll(){ cart=[]; renderCart(); show('menu'); }
+
+/* ===================== 导航 ===================== */
+function show(id){
+  // success 是覆盖层，单独处理
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function goMenu(){ renderSide(); renderList(); renderCart(); show('menu'); }
+
+/* init */
+renderSide(); renderList();
+</script>
+</body>
+</html>
