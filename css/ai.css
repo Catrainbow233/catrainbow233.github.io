@@ -350,8 +350,9 @@ body {
 }
 #puzzle-caption.show { opacity: 1; }
 
-/* 内容层高于画布 */
-body > nav, body > section, body > div, body > footer { position: relative; z-index: 1; }
+/* 内容层高于画布（nav 单独保持 sticky + 高 z-index，避免遮挡其下拉菜单） */
+body > section, body > div, body > footer { position: relative; z-index: 1; }
+body > nav { position: sticky; z-index: 1000; }
 
 /* --- 导航栏（拟物半透明玻璃条） --- */
 nav {
