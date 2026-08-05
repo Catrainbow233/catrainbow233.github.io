@@ -139,16 +139,34 @@ textarea.form-input { resize: vertical; min-height: 90px; line-height: 1.6; }
   padding: 16px 22px;
 }
 .his-item:last-child { border-bottom: none; }
-.his-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.his-top { display: flex; justify-content: flex-start; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.his-toggle { cursor: pointer; user-select: none; }
+.his-toggle:hover .his-time { color: var(--md-primary); }
+.his-time { font-size: 0.75em; color: var(--md-on-surface-variant); margin-left: auto; }
+.his-caret { font-size: 0.75em; color: var(--md-on-surface-variant); transition: transform .25s ease; }
+.his-item.open .his-caret { transform: rotate(180deg); }
+.his-body { display: none; }
+.his-item.open .his-body { display: block; }
 .his-status { font-size: 0.78em; font-weight: 700; padding: 3px 12px; border-radius: 999px; }
 .his-status.pending { background: var(--md-primary-container); color: var(--md-on-primary-container); }
 .his-status.approved { background: rgba(46,204,113,0.18); color: #1e8449; }
 .his-status.rejected { background: rgba(232,93,111,0.16); color: var(--md-error); }
-.his-time { font-size: 0.75em; color: var(--md-on-surface-variant); }
 .his-summary { font-size: 0.82em; color: var(--md-on-surface-variant); line-height: 1.7; }
 .his-explanation { font-size: 0.82em; color: var(--md-on-surface); line-height: 1.8; margin-top: 8px; background: var(--md-surface-container-low); border-radius: var(--md-radius-sm); padding: 10px 12px; white-space: pre-line; }
 .his-cdk { margin-top: 8px; font-size: 0.85em; font-weight: 700; color: var(--md-primary); }
 .mono { font-family: 'Consolas','Menlo',monospace; letter-spacing: 0.5px; background: var(--md-primary-container); color: var(--md-on-primary-container); padding: 1px 6px; border-radius: 6px; }
+
+/* ===== 无法申请提示条 ===== */
+.lock-notice {
+  margin: 14px 22px 0;
+  padding: 12px 14px;
+  border-radius: var(--md-radius-sm);
+  background: var(--md-error-container, rgba(232,93,111,0.14));
+  color: var(--md-error);
+  font-size: 0.88em;
+  font-weight: 600;
+  line-height: 1.6;
+}
 
 /* ===== 登录提示 ===== */
 .login-prompt { text-align: center; padding: 30px 0; }

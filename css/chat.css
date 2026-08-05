@@ -45,6 +45,10 @@ body {
     box-shadow: var(--md-shadow-1);
     border-bottom: 1px solid var(--md-outline-variant);
     flex-shrink: 0;
+    /* 修复：backdrop-filter 使 header 形成独立层叠上下文，
+       导致紧随其后的工具栏覆盖下拉菜单；提升 header 的 z-index 让个人卡片位于工具栏之上 */
+    position: relative;
+    z-index: 190;
 }
 
 .header-left {
@@ -102,7 +106,9 @@ body {
     background: var(--md-surface-container);
     border-radius: var(--md-radius-lg);
     box-shadow: var(--shadow);
-    min-width: 280px;
+    min-width: 300px;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
     z-index: 1200;
     padding: 1.2rem;
     border: 1px solid var(--md-outline-variant);
@@ -201,6 +207,70 @@ body {
 .menu-logout:hover {
     background: var(--md-error);
     color: var(--md-on-error);
+}
+
+/* 个人卡片：额度窗口（5小时 / 24小时） */
+.win-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.4rem;
+}
+
+.win-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--dark);
+    white-space: nowrap;
+}
+
+.win-value {
+    font-size: 0.8rem;
+    font-family: monospace;
+    color: var(--md-on-surface-variant);
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.win-bar {
+    height: 10px;
+}
+
+.quota-legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 0.72em;
+    opacity: 0.75;
+    margin-top: 10px;
+    color: var(--md-on-surface-variant);
+}
+
+/* 个人卡片：功能按钮（API 文档 / 控制台） */
+.menu-action {
+    background: none;
+    border: 1px solid var(--md-outline-variant);
+    padding: 0.6rem 1rem;
+    border-radius: var(--md-radius-full);
+    width: 100%;
+    color: var(--dark);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.menu-action:hover {
+    background: var(--light);
+    color: var(--primary);
+    border-color: var(--primary);
 }
 
 /* 资源面板按钮 & 记忆面板按钮 */
