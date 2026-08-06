@@ -384,3 +384,31 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
+
+/* ===== 模型可用性竖线表（newapi 风格）===== */
+.mc-meter {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+  vertical-align: middle;
+}
+.mm-bar { display: inline-block; width: 3px; border-radius: 1px; height: 100%; }
+.mm-green { background: #2e7d32; }
+.mm-red { background: #e53935; opacity: .88; }
+.mm-empty { background: var(--md-outline-variant); opacity: .4; }
+/* 整体随状态变色：可用性高→绿色系，中→黄色系，低→红色系 */
+.mc-meter.st-yellow .mm-green { background: #e6a23c; }
+.mc-meter.st-yellow .mm-red { background: #f4c97a; }
+.mc-meter.st-red .mm-green { background: #e53935; }
+.mc-meter.st-red .mm-red { background: #b71c1c; }
+.mc-meter-pct { font-size: .72em; font-weight: 700; margin-left: 6px; vertical-align: middle; }
+.mc-meter-lat { font-size: .7em; margin-left: 6px; vertical-align: middle; white-space: nowrap; }
+.mc-meter.st-green, .mc-meter-pct.st-green, .mc-meter-lat.st-green { color: #2e7d32; }
+.mc-meter.st-yellow, .mc-meter-pct.st-yellow, .mc-meter-lat.st-yellow { color: #b76e00; }
+.mc-meter.st-red, .mc-meter-pct.st-red, .mc-meter-lat.st-red { color: #d32f2f; }
+.mc-meter.st-none, .mc-meter-pct.st-none, .mc-meter-lat.st-none { color: var(--md-on-surface-variant); opacity: .7; }
+
+/* 表格中可用性列 */
+.t-avail { white-space: nowrap; }
+.t-avail .mc-meter { align-items: center; }

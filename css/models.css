@@ -198,14 +198,6 @@ nav .links a.active { color: var(--md-primary); opacity: 1; font-weight: 600; }
 .chip { font-size: .72em; padding: 3px 9px; border-radius: var(--md-radius-full); background: var(--md-primary-container); color: var(--md-on-primary-container); }
 .mc-unit { margin-left: auto; font-size: .72em; color: var(--md-on-surface-variant); opacity: .55; font-weight: 600; }
 
-/* ===== 模型可用性状态 ===== */
-.mc-status { display: inline-flex; align-items: center; gap: 5px; font-size: .72em; font-weight: 700; padding: 3px 9px; border-radius: var(--md-radius-full); white-space: nowrap; }
-.mc-status i { font-size: .55em; }
-.mc-status.st-green { background: rgba(46, 125, 50, .12); color: #2e7d32; }
-.mc-status.st-yellow { background: rgba(240, 150, 25, .14); color: #b76e00; }
-.mc-status.st-red { background: rgba(211, 47, 47, .12); color: #d32f2f; }
-.mc-status.st-none { background: var(--md-surface-container-high); color: var(--md-on-surface-variant); opacity: .7; }
-
 /* ===== 表格视图 ===== */
 .table-wrap { overflow-x: auto; background: var(--md-surface-container); border: 1px solid var(--md-outline-variant); border-radius: var(--md-radius-lg); box-shadow: var(--md-shadow-1); }
 .model-table { width: 100%; border-collapse: collapse; min-width: 900px; }

@@ -193,15 +193,3 @@
   border-top: 1px solid var(--md-outline-variant);
   padding-top: 10px;
 }
-.ms-status {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-size: .76em; font-weight: 700; padding: 3px 10px; border-radius: var(--md-radius-full);
-}
-.ms-status i { font-size: .55em; }
-.ms-status.st-green { background: rgba(46, 125, 50, .12); color: #2e7d32; }
-.ms-status.st-yellow { background: rgba(240, 150, 25, .14); color: #b76e00; }
-.ms-status.st-red { background: rgba(211, 47, 47, .12); color: #d32f2f; }
-.ms-latency {
-  font-size: .76em; font-weight: 600; color: var(--md-on-surface-variant);
-  display: inline-flex; align-items: center; gap: 5px;
-}
