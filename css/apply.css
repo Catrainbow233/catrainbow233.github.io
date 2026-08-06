@@ -168,6 +168,19 @@ textarea.form-input { resize: vertical; min-height: 90px; line-height: 1.6; }
   line-height: 1.6;
 }
 
+/* ===== 额度申请已关闭横幅 ===== */
+.closed-banner {
+  padding: 18px 16px;
+  border-radius: var(--md-radius-md);
+  background: var(--md-error-container, rgba(232,93,111,0.14));
+  color: var(--md-error);
+  font-size: 1.05em;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.closed-banner i { margin-right: 6px; }
+
 /* ===== 登录提示 ===== */
 .login-prompt { text-align: center; padding: 30px 0; }
 .login-prompt .btn { margin-top: 12px; }
