@@ -157,3 +157,51 @@
 }
 .switch input:checked + .slider { background: var(--md-primary); border-color: transparent; }
 .switch input:checked + .slider:before { transform: translateX(20px); background: var(--md-on-primary); }
+
+/* ===== 模型使用数据卡片 ===== */
+.model-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 6px;
+}
+.ms-card {
+  background: var(--md-surface-container);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-lg);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: .2s;
+}
+.ms-card:hover { border-color: var(--md-primary); box-shadow: var(--md-shadow-1); }
+.ms-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.ms-id-box { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.ms-name { font-weight: 700; color: var(--md-on-surface); font-size: .95em; word-break: break-all; }
+.ms-model-id { font-size: .72em; color: var(--md-on-surface-variant); opacity: .75; word-break: break-all; }
+.ms-body { display: flex; gap: 14px; }
+.ms-stat { display: flex; flex-direction: column; gap: 2px; }
+.ms-stat-label { font-size: .7em; color: var(--md-on-surface-variant); opacity: .75; }
+.ms-stat-val { font-size: 1.05em; font-weight: 700; color: var(--md-on-surface); }
+.ms-foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: auto;
+  border-top: 1px solid var(--md-outline-variant);
+  padding-top: 10px;
+}
+.ms-status {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .76em; font-weight: 700; padding: 3px 10px; border-radius: var(--md-radius-full);
+}
+.ms-status i { font-size: .55em; }
+.ms-status.st-green { background: rgba(46, 125, 50, .12); color: #2e7d32; }
+.ms-status.st-yellow { background: rgba(240, 150, 25, .14); color: #b76e00; }
+.ms-status.st-red { background: rgba(211, 47, 47, .12); color: #d32f2f; }
+.ms-latency {
+  font-size: .76em; font-weight: 600; color: var(--md-on-surface-variant);
+  display: inline-flex; align-items: center; gap: 5px;
+}
