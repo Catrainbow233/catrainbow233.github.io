@@ -412,3 +412,26 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
 /* 表格中可用性列 */
 .t-avail { white-space: nowrap; }
 .t-avail .mc-meter { align-items: center; }
+
+/* ===== 模型负载指数（0~100 百分比）===== */
+.mc-load {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: .72em;
+  font-weight: 700;
+  margin-left: 8px;
+  padding: 2px 9px;
+  border-radius: var(--md-radius-full);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.mc-load i { font-size: .8em; }
+.mc-load b { font-size: 1em; }
+.mc-load.ld-green { color: #2e7d32; background: rgba(46, 125, 50, .12); }
+.mc-load.ld-yellow { color: #b76e00; background: rgba(230, 162, 60, .15); }
+.mc-load.ld-red { color: #d32f2f; background: rgba(211, 47, 47, .12); }
+.mc-load.ld-none { color: var(--md-on-surface-variant); background: var(--md-surface-container-high); opacity: .7; }
+/* 表格中负载列 */
+.t-load { white-space: nowrap; }
+.t-load .mc-load { margin-left: 0; }
