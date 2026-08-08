@@ -286,6 +286,24 @@ body {
 .item-status.st-ok { color: #1e9e4d; }
 .item-status.st-no { color: #d63a30; }
 
+/* ===== Case 反馈列表 ===== */
+.cs-item { border: 1px solid var(--md-outline-variant); border-radius: var(--md-radius-lg); margin-bottom: 10px; background: var(--md-surface-container); box-shadow: var(--md-shadow-1); overflow: hidden; transition: .18s; }
+.cs-item:hover { border-color: var(--md-primary); }
+.cs-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; cursor: pointer; flex-wrap: wrap; }
+.cs-head:hover { background: var(--md-surface-container-high); }
+.cs-arrow { color: var(--md-primary); display: flex; align-items: center; width: 14px; justify-content: center; }
+.cs-arrow i { transition: transform .2s; }
+.cs-item.open .cs-arrow i { transform: rotate(90deg); }
+.cs-title { font-weight: 700; color: var(--md-on-surface); font-size: .92em; flex: 1; min-width: 140px; }
+.cs-time { font-size: .74em; color: var(--md-on-surface-variant); opacity: .75; margin-left: auto; }
+.cs-body { display: none; padding: 0 16px 16px; border-top: 1px dashed var(--md-outline-variant); }
+.cs-item.open .cs-body { display: block; }
+.cs-content { padding: 14px 2px 4px; font-size: .86em; line-height: 1.7; color: var(--md-on-surface); white-space: pre-wrap; word-break: break-word; }
+.cs-reply { margin-top: 14px; background: color-mix(in srgb, var(--md-primary) 8%, var(--md-surface-container-high)); border: 1px solid color-mix(in srgb, var(--md-primary) 25%, transparent); border-radius: 12px; padding: 12px 14px; }
+.cs-reply-head { display: flex; align-items: center; gap: 8px; font-size: .8em; font-weight: 700; color: var(--md-primary); margin-bottom: 6px; }
+.cs-reply-head span { margin-left: auto; font-weight: 500; font-size: .74em; color: var(--md-on-surface-variant); opacity: .75; }
+.cs-reply-body { font-size: .85em; line-height: 1.7; color: var(--md-on-surface); white-space: pre-wrap; word-break: break-word; }
+
 /* ===== 响应式 ===== */
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
