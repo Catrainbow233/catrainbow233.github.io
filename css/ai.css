@@ -310,46 +310,6 @@ body {
   background-attachment: fixed;
 }
 
-/* --- 3D 星云画布层（固定全屏，垫底） --- */
-#bg-3d {
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  pointer-events: none;
-  opacity: .9;
-}
-#bg-3d canvas { display: block; }
-
-/* --- p5 粒子层（全屏，鼠标交互） --- */
-#bg-p5 {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-}
-#bg-p5 canvas { display: block; }
-
-/* 拼图完成时的下方标语（背景图层内，位于拼图下方） */
-#puzzle-caption {
-  position: absolute;
-  left: 50%;
-  width: 100%;
-  text-align: center;
-  transform: translateX(-50%);
-  font-family: var(--md-font);
-  font-size: clamp(14px, 1.6vw, 22px);
-  font-weight: 600;
-  letter-spacing: 3px;
-  color: var(--md-on-surface-variant);
-  opacity: 0;
-  transition: opacity 1.4s ease;
-  pointer-events: none;
-  user-select: none;
-  text-shadow: 0 2px 12px rgba(138, 99, 184, 0.25);
-  white-space: nowrap;
-}
-#puzzle-caption.show { opacity: 1; }
-
 /* 内容层高于画布（nav 单独保持 sticky + 高 z-index，避免遮挡其下拉菜单） */
 body > section, body > div, body > footer { position: relative; z-index: 1; }
 body > nav { position: sticky; z-index: 1000; }
@@ -518,6 +478,3 @@ nav .links a { transition: all .2s ease; }
 
 /* --- 拟物滚动条在暗色下的轨道微调 --- */
 [data-theme="dark"] ::-webkit-scrollbar-thumb { border-color: var(--md-surface-container-low); }
-
-/* --- 3D 星云 Canvas 暗色适配（保持主题化） --- */
-[data-theme="dark"] #bg-3d { opacity: .75; }
