@@ -158,8 +158,8 @@ body {
 * { scrollbar-width: thin; scrollbar-color: var(--md-outline-variant) transparent; }
 
 /* ===== 暗色微调 ===== */
-[data-theme="dark"] .api-tester-header button { background: rgba(63,40,88,0.25); }
-[data-theme="dark"] .api-tester-header button:hover { background: rgba(63,40,88,0.4); }
+[data-theme="dark"] .api-tester-header button { background: rgba(107,73,50,0.25); }
+[data-theme="dark"] .api-tester-header button:hover { background: rgba(107,73,50,0.4); }
 
 /* ==========================================================================
    Skeuomorphism 增强层（仅追加，不改动上方原有规则）
@@ -278,7 +278,7 @@ body {
   font-family: monospace;
 }
 .method-badge.get    { background: #2e9e6b; }
-.method-badge.post   { background: #6b5ce0; }
+.method-badge.post   { background: #a9704f; }
 .method-badge.put    { background: #d99a22; }
 .method-badge.delete { background: #e0524f; }
 .ep-path {

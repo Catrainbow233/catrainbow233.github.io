@@ -15,7 +15,7 @@
 /* 主页为全屏游戏场景，隐藏全局主题切换按钮（在 theme.js 注入，主页无用） */
 #md-theme-toggle { display: none !important; }
 body {
-  background: #1b1b2f;
+  background: #241c14;
   color: var(--md-on-surface);
   overflow: hidden; height: 100vh;
 }
@@ -132,7 +132,7 @@ body {
   background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.18);
   outline: none; max-width: 130px;
 }
-#chatModel option { background: #1c1c30; color: #fff; }
+#chatModel option { background: #241c14; color: #fff; }
 #chatMin {
   border: none; background: rgba(255,255,255,.1); color: #fff;
   width: 28px; height: 28px; border-radius: 8px; cursor: pointer; font-size: .8em;
@@ -253,7 +253,7 @@ body {
 .snackbar.success { background: linear-gradient(135deg,#43a047,#66bb6a); }
 .snackbar.error { background: linear-gradient(135deg,#e53935,#ef5350); }
 .snackbar.warning { background: linear-gradient(135deg,#f57c00,#ffb74d); }
-.snackbar.info { background: linear-gradient(135deg,#5a4b81,#7e6bb5); }
+.snackbar.info { background: linear-gradient(135deg,#a9704f,#c99a3e); }
 
 /* ===== 响应式 ===== */
 @media (max-width: 640px) {

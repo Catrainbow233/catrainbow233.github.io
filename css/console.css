@@ -239,7 +239,7 @@ body {
 }
 .toast-success { background: #2ecc71; }
 .toast-error { background: #f44336; }
-.toast-info { background: #5a4b81; }
+.toast-info { background: var(--md-primary); }
 
 /* ===== 公告 / 内容模块 ===== */
 .console-posts { display: flex; flex-direction: column; gap: 6px; max-height: 260px; overflow-y: auto; }

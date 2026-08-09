@@ -15,7 +15,7 @@
 @keyframes orbFloat2 { 0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(-10px,8px) scale(1.02);}50%{transform:translate(6px,18px) scale(1.04);}75%{transform:translate(12px,-4px) scale(1.01);} }
 @keyframes orbFloat3 { 0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(6px,14px) scale(1.03);}50%{transform:translate(-8px,-8px) scale(1.01);}75%{transform:translate(-4px,16px) scale(1.04);} }
 @keyframes orbFloat4 { 0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(-6px,-14px) scale(1.02);}50%{transform:translate(10px,6px) scale(1.04);}75%{transform:translate(4px,18px) scale(1.01);} }
-@keyframes chargePulse { 0%{box-shadow:0 0 0 0 rgba(178,143,206,0.6);}50%{box-shadow:0 0 24px 8px rgba(178,143,206,0.4),0 0 48px 16px rgba(255,158,203,0.2);}100%{box-shadow:0 0 0 0 rgba(178,143,206,0);} }
+@keyframes chargePulse { 0%{box-shadow:0 0 0 0 rgba(169,112,79,0.6);}50%{box-shadow:0 0 24px 8px rgba(169,112,79,0.4),0 0 48px 16px rgba(217,137,154,0.2);}100%{box-shadow:0 0 0 0 rgba(169,112,79,0);} }
 @keyframes chargeBorder { 0%,100%{border-color:var(--primary);}50%{border-color:var(--secondary);box-shadow:0 0 20px rgba(255,107,157,0.4);} }
 @keyframes sparkle { 0%,100%{opacity:0;transform:scale(0) rotate(0deg);}50%{opacity:1;transform:scale(1) rotate(180deg);} }
 @keyframes typewriter { from{width:0;} to{width:100%;} }
@@ -48,8 +48,8 @@ nav .links a:hover{color:var(--md-primary);opacity:1}
 .hero{display:flex;align-items:center;justify-content:center;gap:40px;padding:60px 40px 50px;position:relative;overflow:hidden;background:radial-gradient(ellipse at center,var(--md-primary-container) 0%,transparent 70%)}
 .hero-left,.hero-right{flex:0 0 auto}
 .hero-center{flex:0 1 auto;text-align:center;max-width:560px}
-.hero-logo{max-width:180px;height:auto;animation:heroFloat 3s ease-in-out infinite;filter:drop-shadow(0 4px 20px rgba(178,143,206,0.5))}
-.hero-mascot{max-height:280px;height:auto;animation:heroSway 3.5s ease-in-out infinite;filter:drop-shadow(0 6px 24px rgba(90,75,129,0.35))}
+.hero-logo{max-width:180px;height:auto;animation:heroFloat 3s ease-in-out infinite;filter:drop-shadow(0 4px 20px rgba(169,112,79,0.5))}
+.hero-mascot{max-height:280px;height:auto;animation:heroSway 3.5s ease-in-out infinite;filter:drop-shadow(0 6px 24px rgba(122,74,47,0.35))}
 .hero .badge{display:inline-block;padding:6px 18px;border-radius:20px;background:var(--md-primary-container);color:var(--md-on-primary-container);font-size:0.82em;margin-bottom:14px;font-weight:600;letter-spacing:0.3px}
 .hero h1{font-size:2.8em;font-weight:800;margin-bottom:10px;color:var(--md-on-surface);line-height:1.2}
 .hero h1 .grad{background:linear-gradient(135deg,var(--md-on-surface),var(--md-primary),var(--md-secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -102,7 +102,7 @@ section{padding:70px 0}
 
 /* SVG Lines */
 .showcase-svg{position:absolute;inset:0;pointer-events:none;z-index:1;width:100%;height:100%}
-.showcase-svg line,.showcase-svg path{stroke:rgba(178,143,206,0.3);stroke-width:1.5;stroke-dasharray:6 3}
+.showcase-svg line,.showcase-svg path{stroke:rgba(169,112,79,0.3);stroke-width:1.5;stroke-dasharray:6 3}
 
 /* Deep Thinking Slider */
 .thinking-slider-wrap{position:relative;margin-top:10px}
@@ -144,11 +144,11 @@ section{padding:70px 0}
 .feat-card p{color:var(--md-on-surface-variant);opacity:0.75;font-size:0.88em;line-height:1.6}
 
 /* ===== Agent Mockup（手机 UI 保持深色机内设计） ===== */
-#aeon-agent{background:linear-gradient(180deg,transparent,rgba(178,143,206,0.06),transparent)}
+#aeon-agent{background:linear-gradient(180deg,transparent,rgba(169,112,79,0.06),transparent)}
 .agent-wrap{display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap}
-.phone-frame{width:320px;height:620px;background:#1a1a2e;border-radius:36px;padding:12px;box-shadow:0 20px 60px rgba(0,0,0,0.3),0 0 0 3px #2d2d44,0 0 0 6px #1a1a2e;position:relative;flex-shrink:0}
-.phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:100px;height:24px;background:#1a1a2e;border-radius:0 0 16px 16px;z-index:5}
-.phone-screen{width:100%;height:100%;background:#0f0f1a;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.phone-frame{width:320px;height:620px;background:#2a2118;border-radius:36px;padding:12px;box-shadow:0 20px 60px rgba(0,0,0,0.3),0 0 0 3px #3a2c1f,0 0 0 6px #2a2118;position:relative;flex-shrink:0}
+.phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:100px;height:24px;background:#2a2118;border-radius:0 0 16px 16px;z-index:5}
+.phone-screen{width:100%;height:100%;background:#1c1610;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;position:relative}
 .phone-status{display:flex;justify-content:space-between;align-items:center;padding:8px 16px 4px;color:#fff;font-size:0.68em;font-weight:600;opacity:0.8}
 .phone-header{display:flex;align-items:center;gap:10px;padding:8px 16px 12px;border-bottom:1px solid rgba(255,255,255,0.06)}
 .phone-header .ph-avatar{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--md-primary),var(--md-secondary));display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.8em}
@@ -156,7 +156,7 @@ section{padding:70px 0}
 .phone-header .ph-tag{font-size:0.65em;color:var(--md-tertiary);opacity:0.7;margin-left:auto}
 .phone-tabs{display:flex;padding:6px 12px;gap:6px}
 .phone-tab{padding:5px 14px;border-radius:14px;font-size:0.72em;font-weight:600;cursor:pointer;transition:.2s;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);background:transparent}
-.phone-tab.active{background:rgba(178,143,206,0.25);color:var(--md-primary);border-color:rgba(178,143,206,0.3)}
+.phone-tab.active{background:rgba(169,112,79,0.25);color:var(--md-primary);border-color:rgba(169,112,79,0.3)}
 .phone-chat{flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
 .chat-msg{max-width:82%;padding:10px 14px;border-radius:16px;font-size:0.78em;line-height:1.5;animation:msgSlideIn 0.35s ease-out;opacity:0;animation-fill-mode:forwards}
 .chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,var(--md-primary),var(--md-primary-dark));color:#fff;border-bottom-right-radius:4px}
@@ -179,7 +179,7 @@ section{padding:70px 0}
 .agent-features{list-style:none;margin-bottom:24px}
 .agent-features li{padding:8px 0;color:var(--md-on-surface);font-size:0.9em;display:flex;align-items:center;gap:10px}
 .agent-features li i{color:var(--md-primary);font-size:0.9em;width:20px;text-align:center}
-.btn-download{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,#2d2d44,#1a1a2e);color:#fff;border-radius:var(--md-radius-sm);font-weight:700;font-size:0.95em;transition:var(--transition);box-shadow:var(--md-shadow-2)}
+.btn-download{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,#6b4932,#372b20);color:#fff;border-radius:var(--md-radius-sm);font-weight:700;font-size:0.95em;transition:var(--transition);box-shadow:var(--md-shadow-2)}
 .btn-download:hover{transform:translateY(-3px);box-shadow:var(--md-shadow-3)}
 .btn-download i{font-size:1.1em}
 
@@ -294,7 +294,7 @@ footer{text-align:center;padding:36px;color:var(--md-on-surface-variant);font-si
 }
 
 /* ===== 暗色微调 ===== */
-[data-theme="dark"] .phone-frame,[data-theme="dark"] .btn-download{box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 0 3px #2d2d44,0 0 0 6px #1a1a2e}
+[data-theme="dark"] .phone-frame,[data-theme="dark"] .btn-download{box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 0 3px #3a2c1f,0 0 0 6px #2a2118}
 
 /* ==========================================================================
    Skeuomorphism 拟物增强层 · ai.html
@@ -346,7 +346,7 @@ nav .links a { transition: all .2s ease; }
 .hero-logo-plate { animation: heroFloat 3s ease-in-out infinite; }
 .plate-glow {
   position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse at 30% 20%, rgba(178,143,206,0.25), transparent 60%);
+  background: radial-gradient(ellipse at 30% 20%, rgba(169,112,79,0.25), transparent 60%);
 }
 
 /* --- 拟物 3D 按钮（厚底立体 + 按下下沉） --- */
@@ -471,10 +471,10 @@ nav .links a { transition: all .2s ease; }
 
 /* --- Agent 下载按钮 3D --- */
 .btn-download {
-  box-shadow: 0 4px 0 #151522, 0 8px 18px rgba(0,0,0,0.3), var(--sk-highlight);
+  box-shadow: 0 4px 0 #241c14, 0 8px 18px rgba(0,0,0,0.3), var(--sk-highlight);
 }
-.btn-download:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #151522, 0 12px 26px rgba(0,0,0,0.35); }
-.btn-download:active { transform: translateY(2px); box-shadow: 0 1px 0 #151522; }
+.btn-download:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #241c14, 0 12px 26px rgba(0,0,0,0.35); }
+.btn-download:active { transform: translateY(2px); box-shadow: 0 1px 0 #241c14; }
 
 /* --- 拟物滚动条在暗色下的轨道微调 --- */
 [data-theme="dark"] ::-webkit-scrollbar-thumb { border-color: var(--md-surface-container-low); }

@@ -1,82 +1,85 @@
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css');
 /* ==========================================================================
-   Skeuomorphism 拟物主题系统 · 明/暗双模式
+   奶油文学萌系主题系统 · 明/暗双模式
    web/new/css/theme.css
-   保留全部 --md-* / 兼容变量名结构，视觉重写为拟物化（材质、渐变、高光、立体阴影）
+   灵感：云酒馆「纸墨烛光」——奶油纸底 · 墨棕文字 · 焦糖/玫瑰金点缀 · 楷书文学字体
+   保留全部 --md-* / --sk-* / 兼容变量名结构，视觉重写为文学复古 + 萌系圆润
    ========================================================================== */
 
 /* ---------------------------------------------------------------------------
-   1. 拟物调色板（品牌紫 #B28FCE 系，带渐变层级与高光）
+   1. 文学调色板（奶油 + 焦糖 + 玫瑰粉 + 蜂蜜金）
    亮色 :root / 暗色 [data-theme="dark"]
    --------------------------------------------------------------------------- */
 :root {
   color-scheme: light;
 
-  /* --- 语义色（拟物质感，避免纯扁平色） --- */
-  --md-primary: #8a63b8;
-  --md-on-primary: #ffffff;
-  --md-primary-container: #e9d6ff;
-  --md-on-primary-container: #4f2f73;
-  --md-primary-dark: #6f4a9e;
+  /* --- 语义色（暖棕系，软糯萌感） --- */
+  --md-primary: #a9704f;            /* 焦糖奶茶棕 */
+  --md-on-primary: #fffdf8;
+  --md-primary-container: #f5e7d8;  /* 浅奶茶 */
+  --md-on-primary-container: #4a2f1c;
+  --md-primary-dark: #8a5738;       /* 深可可 */
 
-  --md-secondary: #b35f8e;
+  --md-secondary: #d9899a;          /* 柔和玫瑰粉（萌） */
   --md-on-secondary: #ffffff;
-  --md-secondary-container: #ffd9e8;
-  --md-on-secondary-container: #5c1f3d;
+  --md-secondary-container: #fde7ee;
+  --md-on-secondary-container: #5c2334;
 
-  --md-tertiary: #2e7d8a;
-  --md-on-tertiary: #ffffff;
-  --md-tertiary-container: #c6edf4;
-  --md-on-tertiary-container: #0a3c45;
+  --md-tertiary: #c99a3e;           /* 蜂蜜金 */
+  --md-on-tertiary: #fffdf6;
+  --md-tertiary-container: #f8ecd0;
+  --md-on-tertiary-container: #463207;
 
-  --md-error: #c0392b;
+  --md-error: #d1584f;              /* 柔和暖红 */
   --md-on-error: #ffffff;
-  --md-error-container: #ffdad6;
-  --md-on-error-container: #410002;
+  --md-error-container: #fbe0dd;
+  --md-on-error-container: #4c0f0c;
 
-  /* --- 表面层级（渐变纸感，从亮到微暗） --- */
-  --md-surface-dim: #d8c9ec;
-  --md-surface: #fbf5ff;
-  --md-on-surface: #2b2135;
-  --md-surface-variant: #e9ddf6;
-  --md-on-surface-variant: #5b5170;
-  --md-surface-container-lowest: #ffffff;
-  --md-surface-container-low: #f4ebfd;
-  --md-surface-container: #eee2fa;
-  --md-surface-container-high: #e7d8f4;
-  --md-surface-container-highest: #e0cdec;
+  /* --- 表面层级（奶油纸感，从亮到微深） --- */
+  --md-surface-dim: #e8dcc9;
+  --md-surface: #fdf9f1;
+  --md-on-surface: #3a2c1f;         /* 墨棕正文 */
+  --md-surface-variant: #efe2d0;
+  --md-on-surface-variant: #6f5d4a;
+  --md-surface-container-lowest: #fffdf8;
+  --md-surface-container-low: #f8f0e2;
+  --md-surface-container: #f3e8d8;
+  --md-surface-container-high: #ecdfc9;
+  --md-surface-container-highest: #e4d4ba;
 
-  /* --- 轮廓 / 描边（拟物浮雕线） --- */
-  --md-outline: #8a7f9e;
-  --md-outline-variant: #cfc4de;
+  /* --- 轮廓 / 描边（暖米色细线） --- */
+  --md-outline: #b39b83;
+  --md-outline-variant: #e0d0ba;
 
-  /* --- 立体阴影：底部厚度阴影 + 柔光 --- */
+  /* --- 立体阴影：暖调柔光，软糯 --- */
   --md-shadow-0: 0 0 0 0 rgba(0,0,0,0);
-  --md-shadow-1: 0 1px 2px rgba(80,50,120,0.22), 0 3px 8px rgba(80,50,120,0.10), inset 0 1px 0 rgba(255,255,255,0.7);
-  --md-shadow-2: 0 2px 4px rgba(80,50,120,0.25), 0 6px 16px rgba(80,50,120,0.14), inset 0 1px 0 rgba(255,255,255,0.75);
-  --md-shadow-3: 0 4px 8px rgba(80,50,120,0.28), 0 14px 32px rgba(80,50,120,0.18), inset 0 1px 0 rgba(255,255,255,0.8);
-  --md-scrim: rgba(30,15,50,0.5);
+  --md-shadow-1: 0 1px 3px rgba(122,74,47,0.10), 0 4px 14px rgba(122,74,47,0.08), inset 0 1px 0 rgba(255,255,255,0.75);
+  --md-shadow-2: 0 2px 6px rgba(122,74,47,0.12), 0 10px 26px rgba(122,74,47,0.10), inset 0 1px 0 rgba(255,255,255,0.8);
+  --md-shadow-3: 0 4px 10px rgba(122,74,47,0.14), 0 20px 46px rgba(122,74,47,0.12), inset 0 1px 0 rgba(255,255,255,0.85);
+  --md-scrim: rgba(52,32,18,0.5);
 
-  /* --- 拟物渐变（材质填充） --- */
-  --sk-primary-grad: linear-gradient(180deg, #a87fd6 0%, #8a63b8 45%, #6f4a9e 100%);
-  --sk-primary-grad-hover: linear-gradient(180deg, #b58ee2 0%, #9770c6 45%, #7b54ac 100%);
-  --sk-secondary-grad: linear-gradient(180deg, #d68ab5 0%, #b35f8e 45%, #944a76 100%);
-  --sk-tertiary-grad: linear-gradient(180deg, #5fa4b0 0%, #2e7d8a 45%, #1f6a78 100%);
-  --sk-surface-grad: linear-gradient(180deg, #fdfaff 0%, #f4e9fd 100%);
-  --sk-card-grad: linear-gradient(180deg, #ffffff 0%, #f7effd 100%);
-  --sk-inset-shadow: inset 0 2px 6px rgba(80,40,130,0.18), inset 0 0 0 1px rgba(255,255,255,0.35);
-  --sk-highlight: inset 0 1px 0 rgba(255,255,255,0.85);
-  --sk-emboss-line: inset 0 -1px 0 rgba(120,80,170,0.18);
-  --sk-focus-ring: 0 0 0 3px rgba(138,99,184,0.25);
+  /* --- 萌系渐变（柔光材质填充） --- */
+  --sk-primary-grad: linear-gradient(180deg, #c38a5f 0%, #a9704f 45%, #8a5738 100%);
+  --sk-primary-grad-hover: linear-gradient(180deg, #d29a70 0%, #b57b55 45%, #96644a 100%);
+  --sk-secondary-grad: linear-gradient(180deg, #eeaab8 0%, #d9899a 45%, #bf6c7f 100%);
+  --sk-tertiary-grad: linear-gradient(180deg, #deb45e 0%, #c99a3e 45%, #a97d24 100%);
+  --sk-surface-grad: linear-gradient(180deg, #fffdf7 0%, #f7ecd9 100%);
+  --sk-card-grad: linear-gradient(180deg, #ffffff 0%, #fbf2e3 100%);
+  --sk-inset-shadow: inset 0 2px 6px rgba(122,74,47,0.09), inset 0 0 0 1px rgba(255,255,255,0.45);
+  --sk-highlight: inset 0 1px 0 rgba(255,255,255,0.9);
+  --sk-emboss-line: inset 0 -1px 0 rgba(122,74,47,0.12);
+  --sk-focus-ring: 0 0 0 3px rgba(169,112,79,0.22);
 
-  /* --- 形状（更圆润，拟物圆角） --- */
-  --md-radius-xs: 8px;
-  --md-radius-sm: 12px;
-  --md-radius-md: 18px;
-  --md-radius-lg: 26px;
+  /* --- 形状（更圆润，萌系圆角） --- */
+  --md-radius-xs: 12px;
+  --md-radius-sm: 16px;
+  --md-radius-md: 22px;
+  --md-radius-lg: 30px;
   --md-radius-full: 999px;
 
-  /* --- 排版 --- */
-  --md-font: 'Roboto','Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  /* --- 排版（文学楷书） --- */
+  --md-font: 'LXGW WenKai','Kaiti SC','STKaiti','KaiTi','Noto Serif SC','Source Han Serif SC','Songti SC','SimSun',Georgia,serif;
+  --md-font-mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
   --md-title-large: 600 22px/28px var(--md-font);
   --md-title-medium: 500 16px/24px var(--md-font);
   --md-body-large: 400 16px/24px var(--md-font);
@@ -84,16 +87,16 @@
   --md-label-large: 500 14px/20px var(--md-font);
   --md-label-medium: 500 12px/16px var(--md-font);
 
-  /* --- 强调色（图表/标签用） --- */
-  --md-green: #4ecb71;
-  --md-red: #e85d6f;
-  --md-orange: #f0a050;
-  --md-blue: #4285f4;
-  --md-cyan: #00cec9;
-  --md-yellow: #fdcb6e;
+  /* --- 强调色（图表/标签用，柔和暖色系） --- */
+  --md-green: #7cb96b;
+  --md-red: #e0706b;
+  --md-orange: #e9a15c;
+  --md-blue: #7fa8d9;
+  --md-cyan: #7fc4bf;
+  --md-yellow: #f2c75c;
 
   /* ==============================================================
-     2. 兼容旧版变量，映射到拟物令牌
+     2. 兼容旧版变量，映射到文学令牌
      ============================================================== */
   --primary: var(--md-primary);
   --primary-dark: var(--md-primary-dark);
@@ -130,64 +133,63 @@
   --orange: var(--md-orange);
 }
 
-/* --- 暗色模式：覆盖同一组令牌（深色皮革/金属质感） --- */
+/* --- 暗色模式：暖夜烛光（深可可 + 焦糖 + 玫瑰） --- */
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --md-primary: #cba8ee;
-  --md-on-primary: #341b54;
-  --md-primary-container: #5d3d82;
-  --md-on-primary-container: #e9d6ff;
-  --md-primary-dark: #ddc0f7;
+  --md-primary: #d9a97f;            /* 暖焦糖 */
+  --md-on-primary: #3b2415;
+  --md-primary-container: #6b4932;
+  --md-on-primary-container: #f5e0cd;
+  --md-primary-dark: #e8c3a0;
 
-  --md-secondary: #f2b1cd;
-  --md-on-secondary: #581e3a;
-  --md-secondary-container: #7d3a5e;
-  --md-on-secondary-container: #ffd9e8;
+  --md-secondary: #efb3c0;          /* 暖玫瑰 */
+  --md-on-secondary: #5c2334;
+  --md-secondary-container: #8a4a5c;
+  --md-on-secondary-container: #fde7ee;
 
-  --md-tertiary: #69cbd8;
-  --md-on-tertiary: #00353d;
-  --md-tertiary-container: #12525d;
-  --md-on-tertiary-container: #c6edf4;
+  --md-tertiary: #e0b75e;           /* 暖蜂蜜金 */
+  --md-on-tertiary: #453305;
+  --md-tertiary-container: #6b5420;
+  --md-on-tertiary-container: #f8ecd0;
 
   --md-error: #ffb4ab;
-  --md-on-error: #690005;
   --md-error-container: #8c1912;
   --md-on-error-container: #ffdad6;
 
-  --md-surface-dim: #151019;
-  --md-surface: #1b1422;
-  --md-on-surface: #ece3f5;
-  --md-surface-variant: #453a55;
-  --md-on-surface-variant: #cbbcdb;
-  --md-surface-container-lowest: #0e0a14;
-  --md-surface-container-low: #231a2e;
-  --md-surface-container: #2a2035;
-  --md-surface-container-high: #352a42;
-  --md-surface-container-highest: #40344e;
+  --md-surface-dim: #1c1610;
+  --md-surface: #241c14;
+  --md-on-surface: #eee2d0;
+  --md-surface-variant: #4c3d2e;
+  --md-on-surface-variant: #d2c0a8;
+  --md-surface-container-lowest: #17110c;
+  --md-surface-container-low: #2d241b;
+  --md-surface-container: #372b20;
+  --md-surface-container-high: #413429;
+  --md-surface-container-highest: #4d3e32;
 
-  --md-outline: #9d90af;
-  --md-outline-variant: #4d4460;
+  --md-outline: #b39b83;
+  --md-outline-variant: #4f4033;
 
-  --md-shadow-1: 0 1px 2px rgba(0,0,0,0.5), 0 3px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
-  --md-shadow-2: 0 2px 4px rgba(0,0,0,0.55), 0 6px 16px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.09);
-  --md-shadow-3: 0 4px 8px rgba(0,0,0,0.6), 0 14px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
-  --md-scrim: rgba(0,0,0,0.65);
+  --md-shadow-1: 0 1px 3px rgba(0,0,0,0.45), 0 4px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+  --md-shadow-2: 0 2px 6px rgba(0,0,0,0.5), 0 10px 26px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.07);
+  --md-shadow-3: 0 4px 10px rgba(0,0,0,0.55), 0 20px 46px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  --md-scrim: rgba(0,0,0,0.6);
 
-  --sk-primary-grad: linear-gradient(180deg, #d6b5f4 0%, #b78ee0 45%, #8f63bd 100%);
-  --sk-primary-grad-hover: linear-gradient(180deg, #e2c4ff 0%, #c6a0ee 45%, #9c74ca 100%);
-  --sk-secondary-grad: linear-gradient(180deg, #eeb7d4 0%, #c98aa8 45%, #a05f7f 100%);
-  --sk-tertiary-grad: linear-gradient(180deg, #7fd0dc 0%, #54a6b2 45%, #3b8491 100%);
-  --sk-surface-grad: linear-gradient(180deg, #211827 0%, #1b1422 100%);
-  --sk-card-grad: linear-gradient(180deg, #332841 0%, #2a2035 100%);
-  --sk-inset-shadow: inset 0 2px 6px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.06);
-  --sk-highlight: inset 0 1px 0 rgba(255,255,255,0.14);
+  --sk-primary-grad: linear-gradient(180deg, #e9b488 0%, #cf9162 45%, #a96a40 100%);
+  --sk-primary-grad-hover: linear-gradient(180deg, #f0c49c 0%, #dda074 45%, #b97a50 100%);
+  --sk-secondary-grad: linear-gradient(180deg, #f4bcc9 0%, #d9899a 45%, #b56a7d 100%);
+  --sk-tertiary-grad: linear-gradient(180deg, #ecc36e 0%, #cf9f3f 45%, #a97d24 100%);
+  --sk-surface-grad: linear-gradient(180deg, #2a2118 0%, #241c14 100%);
+  --sk-card-grad: linear-gradient(180deg, #3a2e23 0%, #372b20 100%);
+  --sk-inset-shadow: inset 0 2px 6px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
+  --sk-highlight: inset 0 1px 0 rgba(255,255,255,0.12);
   --sk-emboss-line: inset 0 -1px 0 rgba(0,0,0,0.35);
-  --sk-focus-ring: 0 0 0 3px rgba(203,168,238,0.3);
+  --sk-focus-ring: 0 0 0 3px rgba(217,169,127,0.3);
 }
 
 /* ---------------------------------------------------------------------------
-   3. 全局基础（拟物材质背景）
+   3. 全局基础（奶油纸感 + 烛光）
    --------------------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -198,18 +200,19 @@ body {
   font-family: var(--md-font);
   background:
     radial-gradient(1200px 600px at 15% -10%, var(--md-surface-container-high) 0%, transparent 55%),
-    radial-gradient(1000px 500px at 90% 0%, var(--md-primary-container) 0%, transparent 45%),
+    radial-gradient(1000px 500px at 90% 0%, var(--md-tertiary-container) 0%, transparent 45%),
+    repeating-radial-gradient(circle at 30% 25%, transparent 0 20px, rgba(122,74,47,0.025) 20px 21px),
     var(--sk-surface-grad);
+  background-attachment: fixed;
   color: var(--md-on-surface);
   -webkit-font-smoothing: antialiased;
-  background-attachment: fixed;
   transition: background-color .3s ease, color .3s ease;
 }
 
 a { text-decoration: none; color: var(--md-primary); }
 a:hover { color: var(--md-primary-dark); }
 
-/* 滚动条（拟物轨道） */
+/* 滚动条（萌系圆润奶茶色轨道） */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track {
   background: var(--md-surface-container-low);
@@ -222,17 +225,25 @@ a:hover { color: var(--md-primary-dark); }
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--sk-primary-grad-hover); }
 
-::selection { background: var(--md-primary-container); color: var(--md-on-primary-container); }
+::selection { background: var(--md-secondary-container); color: var(--md-on-secondary-container); }
 
-h1, h2, h3, h4, h5, h6 { margin: 0; color: var(--md-on-surface); }
+/* 文学标题：楷书 + 适度字距 */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--md-on-surface);
+  font-family: var(--md-font);
+  letter-spacing: .02em;
+}
+h1, h2 { font-weight: 700; }
+h3, h4 { font-weight: 600; }
 
 input, select, textarea, button { font-family: inherit; }
 
 /* ---------------------------------------------------------------------------
-   4. 通用拟物组件默认样式（各页可覆盖）
+   4. 通用萌系组件默认样式（各页可覆盖）
    --------------------------------------------------------------------------- */
 
-/* 立体光泽按钮 */
+/* 圆润糖果按钮 */
 .btn, button.btn {
   display: inline-flex;
   align-items: center;
@@ -243,21 +254,21 @@ input, select, textarea, button { font-family: inherit; }
   padding: 11px 26px;
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: .2px;
+  letter-spacing: .3px;
   cursor: pointer;
   color: var(--md-on-primary);
   background: var(--sk-primary-grad);
   box-shadow: var(--md-shadow-1);
-  text-shadow: 0 1px 1px rgba(0,0,0,0.15);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.12);
   transition: all .2s ease;
   text-decoration: none;
 }
 .btn:hover {
   background: var(--sk-primary-grad-hover);
   box-shadow: var(--md-shadow-2);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
-.btn:active { transform: translateY(1px) scale(.99); box-shadow: var(--md-shadow-0); }
+.btn:active { transform: translateY(1px) scale(.98); box-shadow: var(--md-shadow-0); }
 
 /* tonal 按钮（container 色，去光泽） */
 .btn-secondary, .btn-tonal {
@@ -268,7 +279,7 @@ input, select, textarea, button { font-family: inherit; }
 }
 .btn-secondary:hover, .btn-tonal:hover { background: var(--md-primary-container); filter: brightness(.97); }
 
-/* 描边按钮（拟物浮雕） */
+/* 描边按钮（暖米色描边） */
 .btn-outline {
   background: var(--sk-card-grad);
   color: var(--md-primary);
@@ -288,7 +299,7 @@ input, select, textarea, button { font-family: inherit; }
 }
 .btn-text:hover { background: var(--md-primary-container); box-shadow: none; }
 
-/* 凹陷输入框（内阴影） */
+/* 圆润输入框（内阴影，暖米色） */
 input[type="text"], input[type="password"], input[type="email"],
 input[type="number"], input[type="search"], input[type="url"], input[type="tel"],
 select, textarea {
@@ -308,7 +319,7 @@ input:focus, select:focus, textarea:focus {
 }
 input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant); }
 
-/* 立体卡片 */
+/* 萌系圆角卡片 */
 .card, .md-card {
   background: var(--sk-card-grad);
   border-radius: var(--md-radius-lg);
@@ -318,7 +329,7 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
   border: 1px solid var(--md-outline-variant);
 }
 
-/* 徽章 / 标签 */
+/* 徽章 / 标签（奶油马卡龙） */
 .badge, .tag {
   display: inline-block;
   padding: 4px 14px;
@@ -364,7 +375,7 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
   font-size: 24px;
 }
 #md-theme-toggle:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.04);
   box-shadow: var(--md-shadow-3);
 }
 #md-theme-toggle:active { transform: scale(.92); box-shadow: var(--md-shadow-0); }

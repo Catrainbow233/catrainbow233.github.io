@@ -277,3 +277,73 @@ footer { text-align: center; padding: 36px; color: var(--md-on-surface-variant);
   .model-card-head { flex-wrap: wrap; }
   .mc-actions { margin-left: auto; }
 }
+
+/* ========== 使用量视图 ========== */
+.usage-panel { margin-top: 4px; }
+.usage-card {
+  background: var(--md-surface-container);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-lg, 20px);
+  padding: 22px 24px;
+  box-shadow: var(--md-shadow-1, 0 4px 12px rgba(122,74,47,.12));
+}
+.usage-card-head { margin-bottom: 16px; }
+.usage-title { font-size: 1.08em; font-weight: 800; color: var(--md-on-surface); display: flex; align-items: center; gap: 8px; }
+.usage-sub { font-size: .78em; font-weight: 500; opacity: .6; }
+.usage-layout { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start; }
+
+/* --- 日历 --- */
+.cal-box {
+  background: var(--md-surface-container-lowest);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-md, 16px);
+  padding: 14px;
+  flex: 1 1 320px;
+  max-width: 380px;
+}
+.cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.cal-month { font-weight: 800; color: var(--md-on-surface); font-size: .98em; }
+.cal-nav {
+  border: 1px solid var(--md-outline-variant);
+  background: transparent;
+  color: var(--md-on-surface-variant);
+  width: 30px; height: 30px; border-radius: 9px;
+  cursor: pointer; font-size: .8em;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.cal-nav:hover { background: var(--md-surface-container-high); color: var(--md-primary); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.cal-dow { text-align: center; font-size: .68em; font-weight: 700; color: var(--md-on-surface-variant); opacity: .6; padding: 5px 0; }
+.cal-day {
+  text-align: center; font-size: .82em; padding: 7px 0; border-radius: 8px;
+  cursor: pointer; color: var(--md-on-surface); border: 1px solid transparent; user-select: none;
+}
+.cal-day:hover { background: color-mix(in srgb, var(--md-primary) 12%, transparent); }
+.cal-day.out { color: var(--md-on-surface-variant); opacity: .35; }
+.cal-day.today { border: 1px solid var(--md-primary); color: var(--md-primary); font-weight: 700; }
+.cal-day.range { background: color-mix(in srgb, var(--md-primary) 18%, transparent); border-radius: 0; }
+.cal-day.start { border-top-left-radius: 10px; border-bottom-left-radius: 10px; background: var(--md-primary); color: #fff; font-weight: 700; }
+.cal-day.end { border-top-right-radius: 10px; border-bottom-right-radius: 10px; background: var(--md-primary); color: #fff; font-weight: 700; }
+.cal-day.start.end { border-radius: 10px; }
+.cal-range-info { margin-top: 10px; font-size: .74em; color: var(--md-on-surface-variant); opacity: .75; text-align: center; }
+
+/* --- 汇总 --- */
+.usage-summary { flex: 1 1 200px; display: flex; flex-direction: column; gap: 10px; min-width: 200px; }
+.us-item {
+  background: var(--md-surface-container-lowest);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-md, 16px);
+  padding: 12px 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.us-label { font-size: .78em; color: var(--md-on-surface-variant); }
+.us-item b { font-size: 1.05em; color: var(--md-primary); font-weight: 800; font-variant-numeric: tabular-nums; }
+
+/* --- 图表 --- */
+.usage-chart-box { margin-top: 20px; position: relative; height: 320px; }
+
+@media (max-width: 640px) {
+  .usage-card { padding: 16px; }
+  .usage-chart-box { height: 260px; }
+  .cal-box { max-width: 100%; }
+}

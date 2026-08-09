@@ -7,7 +7,7 @@ body { background: linear-gradient(160deg, var(--md-surface-container-lowest) 0%
 function showToast(msg, type) {
     const t = document.createElement('div');
     t.textContent = msg;
-    t.style.cssText = `position:fixed;top:20px;right:20px;z-index:99999;padding:12px 24px;border-radius:30px;color:#fff;font-weight:600;font-size:0.9em;box-shadow:0 8px 24px rgba(0,0,0,0.2);animation:fadeInUp 0.3s ease-out;max-width:400px;background:${type==='success'?'#4caf50':type==='error'?'#f44336':'#5a4b81'}`;
+    t.style.cssText = `position:fixed;top:20px;right:20px;z-index:99999;padding:12px 24px;border-radius:30px;color:#fff;font-weight:600;font-size:0.9em;box-shadow:0 8px 24px rgba(0,0,0,0.2);animation:fadeInUp 0.3s ease-out;max-width:400px;background:${type==='success'?'#4caf50':type==='error'?'#f44336':'#a9704f'}`;
     document.body.appendChild(t);
     setTimeout(() => { t.style.opacity='0'; t.style.transition='opacity 0.3s'; setTimeout(() => t.remove(), 300); }, 2500);
 }
