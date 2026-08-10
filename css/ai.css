@@ -1,11 +1,3 @@
-/* ==========================================================================
-   ai.html · Material You 双主题
-   web/new/css/ai.css
-   基于 Material You 主题变量（见 css/theme.css），明暗双模式自适应
-   配色已统一由 css/theme.css 的令牌接管（--primary/--dark/--text 等）
-   ========================================================================== */
-
-/* ===== Animations（保留原动画，仅替换硬编码颜色） ===== */
 @keyframes fadeInUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes shimmer { 0% { background-position:-200px 0; } 100% { background-position:calc(200px + 100%) 0; } }
@@ -29,13 +21,11 @@
 .fade-in-fast { animation: fadeIn 0.25s ease-out forwards; opacity: 0; }
 .stagger-1{animation-delay:0.05s}.stagger-2{animation-delay:0.1s}.stagger-3{animation-delay:0.15s}.stagger-4{animation-delay:0.2s}
 
-/* ===== Reset & Base ===== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:var(--md-font)}
 body{background:linear-gradient(160deg,var(--md-surface-container-lowest) 0%,var(--md-surface-container-low) 50%,var(--md-surface-container) 100%);color:var(--md-on-surface-variant);overflow-x:hidden;min-height:100vh}
 .show{display:block!important}
 a{text-decoration:none;color:inherit}
 
-/* ===== Nav ===== */
 nav{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;background:var(--md-surface-container-low);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--md-outline-variant);position:sticky;top:0;z-index:1000}
 nav .logo{font-size:1.35em;font-weight:800;color:var(--md-on-surface);display:flex;align-items:center;gap:10px}
 nav .logo img{height:34px}
@@ -44,7 +34,6 @@ nav .links{display:flex;gap:22px;align-items:center}
 nav .links a{color:var(--md-on-surface-variant);text-decoration:none;font-size:0.92em;transition:.2s;opacity:0.78;font-weight:500}
 nav .links a:hover{color:var(--md-primary);opacity:1}
 
-/* ===== Hero（独立主区域：柔和渐变 + 月亮灯笼） ===== */
 .hero{
   max-width:1280px;
   margin:32px auto 22px;
@@ -70,7 +59,6 @@ nav .links a:hover{color:var(--md-primary);opacity:1}
 .hero p{font-size:1.1em;color:var(--md-on-surface-variant);opacity:0.78;margin:0 auto 24px;line-height:1.6;max-width:420px}
 .hero .cta{display:flex;gap:12px;justify-content:center}
 
-/* --- 装饰元素：月亮 / 星点 / 灯笼（纯 CSS） --- */
 .hero-deco{position:absolute;z-index:1;pointer-events:none}
 .hero-moon{top:26px;right:7%;width:64px;height:64px;border-radius:50%;
   background:radial-gradient(circle at 34% 32%, #fffdf4, #f7e2a6 48%, #ecc064 78%);
@@ -96,7 +84,6 @@ nav .links a:hover{color:var(--md-primary);opacity:1}
 .hl-body::after{content:'';position:absolute;bottom:-3px;left:8px;right:8px;height:5px;border-radius:4px;background:linear-gradient(180deg,#6b4224,#8a5a30)}
 .hl-tassel{width:3px;height:14px;background:linear-gradient(180deg,#e09a52,#d9899a);border-radius:0 0 3px 3px}
 
-/* ===== 心事小酒馆（聊天主区域） ===== */
 #tavern-chat{
   max-width:1280px;
   margin:22px auto 40px;
@@ -133,7 +120,7 @@ nav .links a:hover{color:var(--md-primary);opacity:1}
 .tavern-msgs::-webkit-scrollbar{width:6px}
 .tavern-msgs::-webkit-scrollbar-thumb{background:var(--md-outline-variant);border-radius:999px}
 .tavern-turnstile{margin-top:12px;display:flex;justify-content:center;min-height:56px}
-/* 输入中「...」动画 */
+
 .t-msg.typing{display:flex;gap:5px;align-items:center;padding:12px 16px}
 .t-msg.typing span{width:7px;height:7px;border-radius:50%;background:var(--md-on-surface-variant);opacity:.55;animation:typingBounce 1.2s ease-in-out infinite}
 .t-msg.typing span:nth-child(2){animation-delay:.18s}
@@ -148,13 +135,11 @@ nav .links a:hover{color:var(--md-primary);opacity:1}
 .btn-white{background:var(--md-surface);color:var(--md-on-surface);box-shadow:var(--md-shadow-1)}
 .btn-white:hover{transform:translateY(-2px);box-shadow:var(--md-shadow-3)}
 
-/* ===== Container ===== */
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 section{padding:70px 0}
 .section-title{font-size:2em;text-align:center;margin-bottom:6px;color:var(--md-on-surface);font-weight:800}
 .section-sub{text-align:center;color:var(--md-on-surface-variant);opacity:0.65;margin-bottom:48px;font-size:1.02em}
 
-/* ===== Aeon Showcase（单卡轮播） ===== */
 #aeon-showcase{position:relative;padding:70px 0}
 .sc-carousel{position:relative;max-width:900px;margin:0 auto 8px;padding:6px 58px}
 .sc-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);will-change:transform}
@@ -180,7 +165,6 @@ section{padding:70px 0}
 .showcase-card-big .sc-price-unit{font-size:0.5em;opacity:0.6;font-weight:500}
 .showcase-card-big .sc-actions{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap}
 
-/* 特性亮点（横排） */
 .showcase-orbs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:900px;margin:0 auto 40px}
 .showcase-orb{position:relative;z-index:5;background:var(--md-surface-container);border-radius:var(--md-radius-md);padding:18px 20px;box-shadow:var(--md-shadow-1);border:1.5px solid var(--md-outline-variant);transition:var(--transition);text-align:center;cursor:default}
 .showcase-orb:hover{transform:translateY(-4px);box-shadow:var(--md-shadow-3);border-color:var(--md-primary)}
@@ -192,11 +176,9 @@ section{padding:70px 0}
 .orb-3{animation:orbFloat3 6s ease-in-out infinite}
 .orb-4{animation:orbFloat4 5.8s ease-in-out infinite}
 
-/* SVG Lines */
 .showcase-svg{position:absolute;inset:0;pointer-events:none;z-index:1;width:100%;height:100%}
 .showcase-svg line,.showcase-svg path{stroke:rgba(169,112,79,0.3);stroke-width:1.5;stroke-dasharray:6 3}
 
-/* Deep Thinking Slider */
 .thinking-slider-wrap{position:relative;margin-top:10px}
 .thinking-labels{display:flex;justify-content:space-between;font-size:0.65em;font-weight:700;color:var(--md-on-surface);margin-bottom:4px;opacity:0.7}
 .thinking-track{position:relative;height:6px;background:var(--md-outline-variant);border-radius:3px;overflow:visible}
@@ -208,11 +190,9 @@ section{padding:70px 0}
 .sparkle-dot{position:absolute;width:4px;height:4px;background:var(--md-secondary);border-radius:50%;opacity:0}
 .sparkle-dot.active{animation:sparkle 0.6s ease-out}
 
-/* How-to collapse */
 .howto-collapse{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1),margin 0.5s,opacity 0.4s;opacity:0;margin-top:0}
 .howto-collapse.open{max-height:400px;opacity:1;margin-top:24px}
 
-/* ===== Quick Links ===== */
 .quick-links{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto;padding:0 0 40px}
 .ql-card{background:var(--md-surface-container);border-radius:var(--md-radius-md);padding:32px 28px;text-align:center;box-shadow:var(--md-shadow-1);border:2px solid transparent;transition:var(--transition);position:relative;overflow:hidden}
 .ql-card:hover{transform:translateY(-4px);box-shadow:var(--md-shadow-3)}
@@ -227,7 +207,6 @@ section{padding:70px 0}
 .ql-card p{color:var(--md-on-surface-variant);opacity:0.65;font-size:0.9em;line-height:1.5;margin-bottom:20px}
 @media(max-width:640px){.quick-links{grid-template-columns:1fr}}
 
-/* ===== Features ===== */
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 .feat-card{background:var(--md-surface-container);border-radius:var(--md-radius-md);padding:28px 24px;box-shadow:var(--md-shadow-1);transition:var(--transition);border:2px solid transparent;position:relative;overflow:hidden}
 .feat-card:hover{border-color:var(--md-primary);transform:translateY(-4px);box-shadow:var(--md-shadow-3)}
@@ -235,7 +214,6 @@ section{padding:70px 0}
 .feat-card h3{font-size:1.1em;margin-bottom:8px;color:var(--md-on-surface);font-weight:700}
 .feat-card p{color:var(--md-on-surface-variant);opacity:0.75;font-size:0.88em;line-height:1.6}
 
-/* ===== Agent Mockup（手机 UI 保持深色机内设计） ===== */
 #aeon-agent{background:linear-gradient(180deg,transparent,rgba(169,112,79,0.06),transparent)}
 .agent-wrap{display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap}
 .phone-frame{width:320px;height:620px;background:#2c2135;border-radius:36px;padding:12px;box-shadow:0 20px 60px rgba(0,0,0,0.3),0 0 0 3px #40354c,0 0 0 6px #2c2135;position:relative;flex-shrink:0}
@@ -275,7 +253,6 @@ section{padding:70px 0}
 .btn-download:hover{transform:translateY(-3px);box-shadow:var(--md-shadow-3)}
 .btn-download i{font-size:1.1em}
 
-/* ===== Token Plan ===== */
 .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .price-card{background:var(--md-surface-container);border-radius:var(--md-radius-md);padding:28px 20px;box-shadow:var(--md-shadow-1);border:2px solid transparent;text-align:center;transition:var(--transition)}
 .price-card:hover{border-color:var(--md-primary);transform:translateY(-4px)}
@@ -287,7 +264,6 @@ section{padding:70px 0}
 .price-card li{padding:4px 0;color:var(--md-on-surface-variant);font-size:0.82em;opacity:0.75}
 .price-card li i{color:var(--md-tertiary);margin-right:6px;font-size:0.8em}
 
-/* ===== Marketplace ===== */
 .mkt-wrap{display:flex;gap:24px;align-items:flex-start}
 .mkt-sidebar{width:200px;flex-shrink:0;background:var(--md-surface-container);border-radius:var(--md-radius-md);padding:14px;box-shadow:var(--md-shadow-1);position:sticky;top:100px}
 .mkt-sidebar .mkt-cat{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--md-radius-sm);cursor:pointer;font-size:0.88em;font-weight:600;color:var(--md-on-surface-variant);transition:.2s;margin-bottom:3px}
@@ -327,7 +303,6 @@ section{padding:70px 0}
 .mkt-loading{text-align:center;padding:40px;color:var(--md-on-surface-variant);opacity:0.5;grid-column:1/-1}
 .mkt-loading i{font-size:1.5em;animation:pulse 1.2s ease-in-out infinite}
 
-/* Cart */
 .mkt-cart{background:var(--md-surface-container);border-radius:var(--md-radius-md);padding:24px;box-shadow:var(--md-shadow-1);position:sticky;top:100px;height:fit-content;margin-top:24px}
 .mkt-cart h3{font-size:1.05em;color:var(--md-on-surface);margin-bottom:14px}
 .mkt-cart-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--md-outline-variant);font-size:0.82em}
@@ -337,10 +312,8 @@ section{padding:70px 0}
 .mkt-checkout:hover{transform:translateY(-2px);box-shadow:var(--md-shadow-2)}
 .mkt-empty{text-align:center;color:var(--md-on-surface-variant);padding:16px;font-size:0.82em}
 
-/* ===== Footer ===== */
 footer{text-align:center;padding:36px;color:var(--md-on-surface-variant);font-size:0.88em;opacity:0.6;border-top:1px solid var(--md-outline-variant)}
 
-/* ===== Modals ===== */
 .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--md-scrim);z-index:9999;justify-content:center;align-items:center}
 .modal-overlay.active{display:flex}
 .modal-box{background:var(--md-surface-container);border-radius:20px;padding:30px;width:90%;max-width:420px;box-shadow:var(--md-shadow-3);position:relative}
@@ -356,7 +329,6 @@ footer{text-align:center;padding:36px;color:var(--md-on-surface-variant);font-si
 .email-hint.school{color:var(--md-green);font-weight:600}
 .btn-block{width:100%}
 
-/* ===== Responsive ===== */
 @media (max-width: 900px) {
     .showcase-orbs{grid-template-columns:repeat(2,1fr)}
     .agent-wrap{flex-direction:column;gap:32px}
@@ -364,10 +336,10 @@ footer{text-align:center;padding:36px;color:var(--md-on-surface-variant);font-si
 }
 @media (max-width: 768px) {
     nav{padding:12px 16px}
-    /* 导航横向滚动，避免溢出换行错乱 */
+
     nav .links{gap:12px;font-size:0.78em;overflow-x:auto;white-space:nowrap;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
     nav .links::-webkit-scrollbar{display:none}
-    /* Hero 主区域：两图并排置顶，文字在下方 */
+
     .hero{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"left right" "center center";gap:8px 24px;padding:44px 22px 34px;margin:14px 12px;border-radius:26px}
     .hero-left{grid-area:left;justify-self:center;align-self:start}
     .hero-right{grid-area:right;justify-self:center;align-self:start}
@@ -375,13 +347,13 @@ footer{text-align:center;padding:36px;color:var(--md-on-surface-variant);font-si
     .hero-logo{max-width:78px}.hero-mascot{max-height:150px}
     .hero h1{font-size:1.8em}
     .hero p{font-size:1em}
-    /* 装饰缩小 */
+
     .hero-moon{width:46px;height:46px;top:16px;right:5%}
     .moon-crater.c1{width:9px;height:9px;top:12px;left:11px}
     .moon-crater.c2{width:6px;height:6px;top:27px;left:25px}
     .moon-crater.c3{width:4px;height:4px;top:8px;left:29px}
     .hero-lantern{transform:scale(.7);transform-origin:top center}
-    /* 轮播 */
+
     .sc-carousel{padding:6px 46px}
     .sc-arrow{width:36px;height:36px;font-size:.85em}
     .pricing-grid{grid-template-columns:1fr 1fr}
@@ -391,12 +363,12 @@ footer{text-align:center;padding:36px;color:var(--md-on-surface-variant);font-si
     .showcase-card-big{padding:28px 20px}
     .showcase-card-big .sc-pricing{gap:20px}
     .showcase-card-big .sc-price-value{font-size:1.4em}
-    /* 弹窗在手机上留边 */
+
     .modal-box{width:92%!important;max-width:92%!important;padding:22px!important}
     .container{padding:0 16px}
     .section-title{font-size:1.6em}
     section{padding:48px 0}
-    /* 心事小酒馆 */
+
     #tavern-chat{padding:36px 20px 30px;margin:14px 12px;border-radius:26px}
     .tavern-moon{width:30px;height:30px;top:14px;right:4%}
     .tavern-msgs{height:260px}
@@ -415,15 +387,8 @@ footer{text-align:center;padding:36px;color:var(--md-on-surface-variant);font-si
     .phone-frame{width:260px;height:500px}
 }
 
-/* ===== 暗色微调 ===== */
 [data-theme="dark"] .phone-frame,[data-theme="dark"] .btn-download{box-shadow:0 20px 60px rgba(0,0,0,0.55),0 0 0 3px #40354c,0 0 0 6px #2c2135}
 
-/* ==========================================================================
-   Skeuomorphism 拟物增强层 · ai.html
-   保持原布局结构，追加拟物材质/高光/立体效果
-   ========================================================================== */
-
-/* --- body 基础背景（叠在 theme 之上，保证页面级拟物底色） --- */
 body {
   background:
     radial-gradient(1200px 600px at 20% -10%, var(--md-surface-container-high) 0%, transparent 55%),
@@ -432,11 +397,9 @@ body {
   background-attachment: fixed;
 }
 
-/* 内容层高于画布（nav 单独保持 sticky + 高 z-index，避免遮挡其下拉菜单） */
 body > section, body > div, body > footer { position: relative; z-index: 1; }
 body > nav { position: sticky; z-index: 1000; }
 
-/* --- 导航栏（拟物半透明玻璃条） --- */
 nav {
   background: var(--md-surface-container-low);
   backdrop-filter: blur(18px) saturate(1.3);
@@ -447,7 +410,6 @@ nav {
 nav .logo { text-shadow: 0 1px 1px rgba(255,255,255,0.6); }
 nav .links a { transition: all .2s ease; }
 
-/* --- Hero 两侧拟物底座 --- */
 .hero-logo-plate, .hero-mascot-frame {
   position: relative;
   border-radius: var(--md-radius-lg);
@@ -471,7 +433,6 @@ nav .links a { transition: all .2s ease; }
   background: radial-gradient(ellipse at 30% 20%, rgba(169,112,79,0.25), transparent 60%);
 }
 
-/* --- 拟物 3D 按钮（厚底立体 + 按下下沉） --- */
 .sk-btn-3d {
   position: relative;
   border-radius: var(--md-radius-md);
@@ -499,7 +460,6 @@ nav .links a { transition: all .2s ease; }
   box-shadow: 0 1px 0 var(--md-primary-dark), var(--sk-inset-shadow);
 }
 
-/* --- 徽章光泽 --- */
 .sk-badge {
   background: var(--sk-secondary-grad);
   color: var(--md-on-secondary);
@@ -507,7 +467,6 @@ nav .links a { transition: all .2s ease; }
   text-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
 
-/* --- 中心大卡片（拟物玻璃 + 高光） --- */
 .showcase-card-big {
   background: var(--sk-card-grad);
   border: 1px solid var(--md-outline-variant);
@@ -523,7 +482,6 @@ nav .links a { transition: all .2s ease; }
   box-shadow: var(--sk-highlight);
 }
 
-/* --- Orb 卡片（拟物胶囊） --- */
 .showcase-orb {
   background: var(--sk-card-grad);
   border: 1px solid var(--md-outline-variant);
@@ -531,7 +489,6 @@ nav .links a { transition: all .2s ease; }
 }
 .showcase-orb:hover { box-shadow: var(--md-shadow-2); }
 
-/* --- 思考滑块（拟物轨道） --- */
 .thinking-track {
   background: var(--md-surface-container-lowest);
   box-shadow: var(--sk-inset-shadow);
@@ -542,7 +499,6 @@ nav .links a { transition: all .2s ease; }
   box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* --- Quick Links 卡片 --- */
 .ql-card {
   background: var(--sk-card-grad);
   border: 1px solid var(--md-outline-variant);
@@ -556,7 +512,6 @@ nav .links a { transition: all .2s ease; }
 }
 .ql-report .ql-icon { background: var(--sk-tertiary-grad); }
 
-/* --- 价格卡（拟物牌匾） --- */
 .price-card {
   background: var(--sk-card-grad);
   border: 1px solid var(--md-outline-variant);
@@ -569,7 +524,6 @@ nav .links a { transition: all .2s ease; }
 }
 .price-card:hover { box-shadow: var(--md-shadow-2); }
 
-/* --- 市场卡片/购物车 --- */
 .mkt-sidebar, .mkt-card, .mkt-cart {
   background: var(--sk-card-grad);
   border: 1px solid var(--md-outline-variant);
@@ -583,7 +537,6 @@ nav .links a { transition: all .2s ease; }
 .mkt-checkout:hover { transform: translateY(-1px); }
 .mkt-checkout:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--md-primary-dark); }
 
-/* --- 模态框（拟物玻璃） --- */
 .modal-box {
   background: var(--sk-card-grad);
   border: 1px solid var(--md-outline-variant);
@@ -591,12 +544,10 @@ nav .links a { transition: all .2s ease; }
 }
 .form-input { box-shadow: var(--sk-inset-shadow); }
 
-/* --- Agent 下载按钮 3D --- */
 .btn-download {
   box-shadow: 0 4px 0 #221a2a, 0 8px 18px rgba(0,0,0,0.3), var(--sk-highlight);
 }
 .btn-download:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #221a2a, 0 12px 26px rgba(0,0,0,0.35); }
 .btn-download:active { transform: translateY(2px); box-shadow: 0 1px 0 #221a2a; }
 
-/* --- 拟物滚动条在暗色下的轨道微调 --- */
 [data-theme="dark"] ::-webkit-scrollbar-thumb { border-color: var(--md-surface-container-low); }

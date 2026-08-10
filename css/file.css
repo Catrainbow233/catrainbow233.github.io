@@ -1,11 +1,3 @@
-/* ==========================================================================
-   文件中心 · web/new/css/file.css
-   基于 Material You 主题变量（见 css/theme.css），明暗双模式自适应
-   ========================================================================== */
-
-/* 配色已统一由 css/theme.css 的令牌接管（--primary-color/--secondary-color/
-   --accent-color/--dark-color/--light-color/--text-color 等） */
-
 * {
     margin: 0;
     padding: 0;
@@ -20,13 +12,11 @@ body {
     overflow-x: hidden;
 }
 
-/* 布局 */
 .container {
     display: flex;
     min-height: 100vh;
 }
 
-/* 侧边栏 */
 .sidebar {
     width: 280px;
     background: var(--md-surface-container-low);
@@ -142,7 +132,6 @@ body {
     color: var(--dark-color);
 }
 
-/* 主内容区域 */
 .main-content {
     flex-grow: 1;
     padding: 30px;
@@ -177,7 +166,6 @@ body {
     color: var(--md-on-secondary);
 }
 
-/* 广场界面 */
 .plaza-view {
     display: flex;
     flex-direction: column;
@@ -233,7 +221,6 @@ body {
     background: var(--accent-color);
 }
 
-/* 文件列表界面 */
 .file-list-view {
     display: none;
     flex-direction: column;
@@ -408,7 +395,6 @@ body {
     background: var(--light-color);
 }
 
-/* 上传界面 */
 .upload-view {
     display: none;
     flex-direction: column;
@@ -581,7 +567,6 @@ input:checked + .toggle-slider:before {
     background: var(--md-primary-dark);
 }
 
-/* 弹窗 */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -702,7 +687,6 @@ input:checked + .toggle-slider:before {
     gap: 10px;
 }
 
-/* 确认对话框 */
 .confirm-dialog {
     position: fixed;
     top: 0;
@@ -750,7 +734,6 @@ input:checked + .toggle-slider:before {
     gap: 10px;
 }
 
-/* 消息提示 */
 .snackbar-container {
     position: fixed;
     top: 20px;
@@ -807,7 +790,6 @@ input:checked + .toggle-slider:before {
     }
 }
 
-/* 响应式设计 */
 @media (max-width: 992px) {
     .container {
         flex-direction: column;
@@ -853,7 +835,6 @@ input:checked + .toggle-slider:before {
     }
 }
 
-/* 登录状态菜单项 */
 .auth-menu-item {
     display: none;
 }
@@ -870,7 +851,6 @@ input:checked + .toggle-slider:before {
     display: none;
 }
 
-/* 加载动画 */
 .loader {
     display: inline-block;
     width: 20px;
@@ -885,7 +865,6 @@ input:checked + .toggle-slider:before {
     to { transform: rotate(360deg); }
 }
 
-/* ---- 暗色微调 ---- */
 [data-theme="dark"] body {
     background: linear-gradient(160deg, var(--md-surface-container-lowest), var(--md-surface-container));
 }
@@ -894,12 +873,6 @@ input:checked + .toggle-slider:before {
     text-shadow: none;
 }
 
-/* ============================================================
-   Skeuomorphism 拟物增强层
-   依据 .obf/SKEU_GUIDE.md：仅追加、不删改原有规则，明暗双主题自动适配
-   ============================================================ */
-
-/* 页面背景：材质光晕 + 表面渐变（替换原硬编码 linear-gradient） */
 body {
     background:
         radial-gradient(1200px 600px at 20% -10%, var(--md-surface-container-high) 0%, transparent 55%),
@@ -916,26 +889,22 @@ body {
     background-attachment: fixed;
 }
 
-/* 侧边栏：磨砂玻璃材质 + 顶部高光 */
 .sidebar {
     background: var(--md-surface-container-low);
     backdrop-filter: blur(18px) saturate(1.3);
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 侧边栏菜单项：选中/悬停呈按压浮雕 */
 .sidebar-menu a:hover,
 .sidebar-menu a.active {
     background: var(--sk-primary-grad);
     box-shadow: var(--sk-highlight), var(--sk-emboss-line);
 }
 
-/* 侧边栏折叠按钮：立体圆钮 */
 .sidebar-toggle {
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 顶部导航：凹陷分段控件（外柔光 + 内凹） */
 .top-nav-menu {
     background: var(--sk-surface-grad);
     box-shadow: var(--md-shadow-1), var(--sk-inset-shadow);
@@ -950,7 +919,6 @@ body {
     box-shadow: var(--sk-highlight), var(--sk-emboss-line);
 }
 
-/* 广场标题：立体浮雕字 */
 .plaza-title {
     text-shadow: 0 2px 0 var(--md-surface-container-highest), 0 4px 10px rgba(80, 50, 120, 0.22);
 }
@@ -963,7 +931,6 @@ body {
     text-shadow: 0 1px 0 var(--md-surface-container-highest);
 }
 
-/* 主操作按钮：主色立体渐变 + 底部厚边 + 高光 */
 .action-button {
     background: var(--sk-primary-grad);
     box-shadow: 0 3px 0 var(--md-primary-dark), 0 8px 16px rgba(60, 30, 100, 0.22), var(--sk-highlight);
@@ -985,7 +952,6 @@ body {
     filter: brightness(1.08);
 }
 
-/* 返回按钮：强调色立体渐变 */
 .back-button {
     background: var(--sk-tertiary-grad);
     box-shadow: 0 3px 0 var(--md-tertiary), var(--md-shadow-1), var(--sk-highlight);
@@ -996,7 +962,6 @@ body {
     filter: brightness(1.06);
 }
 
-/* 文件卡片：卡片渐变 + 立体阴影 + 高光 */
 .file-card {
     background: var(--sk-card-grad);
     border: 1px solid var(--md-outline-variant);
@@ -1020,7 +985,6 @@ body {
     background: var(--md-surface-container-low);
 }
 
-/* 文件徽章 / 操作按钮 */
 .file-private {
     background: var(--sk-secondary-grad);
     box-shadow: var(--sk-highlight), var(--sk-emboss-line);
@@ -1045,7 +1009,6 @@ body {
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 
-/* 分页按钮：浮雕描边 / 激活主色 */
 .pagination-button {
     background: var(--sk-card-grad);
     box-shadow: 0 3px 0 var(--md-outline-variant), var(--md-shadow-1), var(--sk-highlight);
@@ -1060,7 +1023,6 @@ body {
     background: var(--sk-surface-grad);
 }
 
-/* 上传区：凹陷拖放托盘 */
 .upload-area {
     background: var(--sk-surface-grad);
     box-shadow: var(--sk-inset-shadow), var(--sk-highlight);
@@ -1075,14 +1037,12 @@ body {
     filter: drop-shadow(0 2px 3px rgba(80, 50, 120, 0.28));
 }
 
-/* 文件信息面板：立体卡片 */
 .file-info-panel {
     background: var(--sk-card-grad);
     border: 1px solid var(--md-outline-variant);
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 私有开关：凹陷轨道 + 立体滑块 */
 .toggle-slider {
     box-shadow: var(--sk-inset-shadow);
 }
@@ -1096,7 +1056,6 @@ input:checked + .toggle-slider {
     box-shadow: 0 1px 2px rgba(80, 50, 120, 0.35), var(--sk-highlight);
 }
 
-/* 弹窗 / 确认对话框：立体卡片 */
 .modal {
     background: var(--sk-card-grad);
     border: 1px solid var(--md-outline-variant);
@@ -1113,7 +1072,6 @@ input:checked + .toggle-slider {
     box-shadow: var(--md-shadow-2), var(--sk-highlight);
 }
 
-/* 弹窗 / 上传区按钮 */
 .btn-primary {
     background: var(--sk-primary-grad);
     box-shadow: 0 3px 0 var(--md-primary-dark), var(--md-shadow-1), var(--sk-highlight);
@@ -1153,7 +1111,6 @@ input:checked + .toggle-slider {
     background: var(--sk-surface-grad);
 }
 
-/* 消息提示：玻璃气泡 */
 .snackbar {
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }

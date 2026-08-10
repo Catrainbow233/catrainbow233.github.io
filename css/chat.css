@@ -1,7 +1,3 @@
-/* chat · Material You
-   配色由 css/theme.css 的令牌统一接管（--md-* 系列，明暗双模式自动切换）
-   页面自身 :root 颜色变量已删除（theme.css 兼容段已映射 --primary/--secondary/--dark/--light/--text/--bg-chat/--shadow/--transition） */
-
 @keyframes shimmer { 0% { background-position: -200px 0; } 100% { background-position: calc(200px + 100%) 0; } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -35,7 +31,6 @@ body {
     color: var(--md-on-surface-variant);
 }
 
-/* 头部 */
 .chat-header {
     background: var(--md-surface-container-low);
     padding: 0.8rem 1.5rem;
@@ -45,8 +40,7 @@ body {
     box-shadow: var(--md-shadow-1);
     border-bottom: 1px solid var(--md-outline-variant);
     flex-shrink: 0;
-    /* 修复：backdrop-filter 使 header 形成独立层叠上下文，
-       导致紧随其后的工具栏覆盖下拉菜单；提升 header 的 z-index 让个人卡片位于工具栏之上 */
+
     position: relative;
     z-index: 190;
 }
@@ -79,7 +73,6 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* 账户下拉菜单 */
 .user-dropdown {
     position: relative;
     display: inline-block;
@@ -209,7 +202,6 @@ body {
     color: var(--md-on-error);
 }
 
-/* 个人卡片：额度窗口（5小时 / 24小时） */
 .win-row {
     display: flex;
     justify-content: space-between;
@@ -249,7 +241,6 @@ body {
     color: var(--md-on-surface-variant);
 }
 
-/* 个人卡片：功能按钮（API 文档 / 控制台） */
 .menu-action {
     background: none;
     border: 1px solid var(--md-outline-variant);
@@ -273,7 +264,6 @@ body {
     border-color: var(--primary);
 }
 
-/* 资源面板按钮 & 记忆面板按钮 */
 .panel-toggle-btn {
     background: none;
     border: none;
@@ -289,7 +279,6 @@ body {
     background: var(--light);
 }
 
-/* 顶部工具栏切换按钮 */
 .toolbar-header-toggle {
     background: none;
     border: none;
@@ -306,7 +295,6 @@ body {
     background: var(--light);
 }
 
-/* 侧边面板 (资源库 & 记忆管理) */
 .side-panel {
     position: fixed;
     right: 0;
@@ -377,7 +365,6 @@ body {
     padding: 1rem;
 }
 
-/* 记忆管理特定样式 */
 .backup-list-item {
     display: flex;
     align-items: center;
@@ -459,7 +446,6 @@ body {
     cursor: grabbing;
 }
 
-/* 对话侧边栏 */
 .conv-sidebar {
     position: fixed; left: 0; top: 0; width: 260px; height: 100vh;
     background: var(--md-surface-container-low); z-index: 200; box-shadow: var(--md-shadow-1);
@@ -505,7 +491,6 @@ body {
 .msg-actions button:hover { background: var(--light); }
 .msg-actions button.danger:hover { color: var(--md-error); }
 
-/* 工具栏区域 */
 .toolbar-area {
     background: var(--md-surface-container-low);
     border-bottom: 1px solid var(--md-outline-variant);
@@ -513,7 +498,6 @@ body {
     flex-shrink: 0;
 }
 
-/* 主聊天区域 */
 .chat-main {
     flex: 1;
     overflow-y: auto;
@@ -529,7 +513,6 @@ body {
     gap: 1.2rem;
 }
 
-/* 消息气泡 */
 .message {
     max-width: 85%;
     animation: fadeIn 0.2s ease;
@@ -618,7 +601,6 @@ body {
     color: var(--md-on-primary);
 }
 
-/* 代码块复制按钮 */
 .code-copy-btn {
     position: absolute;
     top: 8px;
@@ -642,7 +624,6 @@ body {
     color: white;
 }
 
-/* 消息操作按钮组 */
 .message-actions {
     position: absolute;
     bottom: -28px;
@@ -692,7 +673,6 @@ body {
     color: var(--md-error);
 }
 
-/* 图片区域 */
 .ai-images {
     display: flex;
     flex-wrap: wrap;
@@ -735,7 +715,6 @@ body {
     opacity: 1;
 }
 
-/* 语音区域 */
 .ai-voices {
     margin-top: 0.6rem;
 }
@@ -746,7 +725,6 @@ body {
     background: var(--md-surface-container-low);
 }
 
-/* Agent文件区域 */
 .ai-files {
     margin-top: 0.8rem;
     display: flex;
@@ -785,7 +763,6 @@ body {
     color: var(--md-on-primary);
 }
 
-/* 思考折叠 */
 .thinking-fold {
     margin-top: 0.8rem;
     background: var(--md-surface-container-low);
@@ -821,7 +798,6 @@ body {
     overflow-y: auto;
 }
 
-/* 底部输入区 */
 .chat-footer {
     background: var(--md-surface-container-low);
     border-top: 2px solid var(--md-outline-variant);
@@ -835,7 +811,6 @@ body {
     margin: 0 auto;
 }
 
-/* 附件预览区 */
 .attachments-area {
     display: flex;
     flex-wrap: wrap;
@@ -894,7 +869,6 @@ body {
     font-size: 0.7rem;
 }
 
-/* 控制栏 */
 .control-bar {
     display: flex;
     flex-wrap: wrap;
@@ -1032,7 +1006,6 @@ input:checked+.toggle-slider:before {
     font-size: 0.9rem;
 }
 
-/* 输入模式切换 */
 .input-mode-switch {
     display: flex;
     gap: 0.5rem;
@@ -1055,7 +1028,6 @@ input:checked+.toggle-slider:before {
     color: var(--md-on-primary);
 }
 
-/* 录音按钮 */
 .voice-record-btn {
     background: var(--primary);
     color: var(--md-on-primary);
@@ -1088,7 +1060,6 @@ input:checked+.toggle-slider:before {
     }
 }
 
-/* 输入行 */
 .input-row {
     display: flex;
     gap: 1rem;
@@ -1134,7 +1105,6 @@ textarea:focus {
     transform: scale(1.02);
 }
 
-/* 建议补全框 */
 .suggestions-row {
     display: flex;
     align-items: flex-start;
@@ -1201,7 +1171,6 @@ textarea:focus {
     margin-top: 0.5rem;
 }
 
-/* 状态加载消息 */
 .message.ai.loading .message-content {
     background: var(--md-surface-container-low);
     display: flex;
@@ -1219,7 +1188,6 @@ textarea:focus {
     animation: pulse 1.2s infinite;
 }
 
-/* 移动端优化 */
 @media (max-width: 600px) {
     .chat-main {
         flex: 1 1 auto;
@@ -1388,7 +1356,6 @@ textarea:focus {
     }
 }
 
-/* 编辑对话框 */
 .edit-modal {
     position: fixed;
     top: 50%;
@@ -1439,7 +1406,6 @@ textarea:focus {
     justify-content: flex-end;
 }
 
-/* 摄像头预览 */
 .camera-preview {
     position: fixed;
     bottom: 100px;
@@ -1478,7 +1444,7 @@ textarea:focus {
     font-size: 1.5rem;
     cursor: pointer;
 }
-/* ========== 语音/视频通话弹窗 ========== */
+
 .call-overlay { display:none; position:fixed; top:0;left:0;width:100%;height:100%;background:var(--md-scrim);z-index:1000;justify-content:center;align-items:center; }
 .call-modal { background:var(--md-surface-container); border-radius:var(--md-radius-lg); padding:24px; width:90%; max-width:420px; box-shadow:var(--md-shadow-3); }
 .call-modal h4 { margin:0 0 16px;font-size:1.1em;display:flex;align-items:center;gap:8px; }
@@ -1507,11 +1473,9 @@ textarea:focus {
 .waveform-bar.active span:nth-child(7) { animation-delay:0s; }
 @keyframes wave { 0%{height:4px;} 100%{height:32px;} }
 
-/* ===== 加载动画（原 body 内联 <style> 合并至此） ===== */
 @keyframes loaderSpin { to { transform:rotate(360deg); } }
 @keyframes loaderPulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.08);opacity:0.8} }
 
-/* ===== 暗色模式微调 ===== */
 [data-theme="dark"] body {
   background: linear-gradient(160deg, var(--md-surface-container-lowest), var(--md-surface-container));
 }
@@ -1521,12 +1485,6 @@ textarea:focus {
 [data-theme="dark"] .conv-item .conv-actions button:hover { background: rgba(255,255,255,0.12); }
 [data-theme="dark"] .message-content pre { background: #201811; }
 
-/* ===== Skeuomorphism 增强层 =====
-   拟物材质/高光/立体阴影叠加。只追加，不删改原有规则。
-   全部使用 var(--md-*) / var(--sk-*) 令牌，自动适配明暗双主题。
-   保留原 hover/active 语义（悬停上移、按下下沉），合并阴影而非覆盖。 */
-
-/* 页面材质背景：在表面底色上叠加顶部/右角环境光晕 */
 body {
   background:
     radial-gradient(1200px 600px at 20% -10%, var(--md-surface-container-high) 0%, transparent 55%),
@@ -1535,7 +1493,6 @@ body {
   background-attachment: fixed;
 }
 
-/* 导航栏 / 工具栏 / 底栏：磨砂 + 顶部高光 */
 .chat-header,
 .toolbar-area,
 .chat-footer {
@@ -1544,7 +1501,6 @@ body {
   box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 侧边栏（会话列表 / 资源面板 / 记忆面板）：材质渐变 + 高光 */
 .conv-sidebar,
 .side-panel {
   background: var(--sk-surface-grad);
@@ -1552,7 +1508,6 @@ body {
   box-shadow: var(--md-shadow-2), var(--sk-highlight);
 }
 
-/* 会话列表项：浮雕胶囊 */
 .conv-item {
   box-shadow: var(--sk-highlight), var(--sk-emboss-line);
 }
@@ -1564,7 +1519,6 @@ body {
   box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 会话侧边栏切换按钮（固定定位，勿改 transform 以免破坏垂直居中） */
 .conv-sidebar-toggle {
   background: var(--sk-primary-grad);
   box-shadow: 0 3px 0 var(--md-primary-dark), 0 6px 14px rgba(60,30,100,0.22), var(--sk-highlight);
@@ -1577,7 +1531,6 @@ body {
   box-shadow: 0 1px 0 var(--md-primary-dark), 0 2px 6px rgba(60,30,100,0.2), var(--sk-highlight);
 }
 
-/* 账户菜单：立体胶囊按钮 + 卡片面板 */
 .user-dropdown-btn {
   background: var(--sk-surface-grad);
   box-shadow: var(--md-shadow-1), var(--sk-highlight);
@@ -1592,7 +1545,6 @@ body {
   box-shadow: var(--sk-inset-shadow);
 }
 
-/* 额度/配额进度条：凹陷轨道 + 立体填充 */
 .progress-bar,
 .quota-bar {
   box-shadow: var(--sk-inset-shadow);
@@ -1603,7 +1555,6 @@ body {
   box-shadow: var(--sk-highlight);
 }
 
-/* 面板头 / 标签栏：表面渐变 + 高光 */
 .panel-header,
 .panel-tabs {
   background: var(--sk-surface-grad);
@@ -1620,7 +1571,6 @@ body {
   box-shadow: var(--sk-inset-shadow);
 }
 
-/* 聊天气泡：用户=主色渐变，AI=卡片渐变 */
 .message-content {
   box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
@@ -1636,7 +1586,6 @@ body {
   background: var(--md-surface-container-low);
 }
 
-/* 消息操作工具条 / 思考折叠 / 代码复制按钮 */
 .message-actions,
 .msg-actions {
   box-shadow: var(--md-shadow-2), var(--sk-highlight);
@@ -1649,7 +1598,6 @@ body {
   box-shadow: var(--sk-highlight), var(--sk-emboss-line);
 }
 
-/* 图片附件 / 编辑按钮 */
 .ai-image,
 .image-preview {
   box-shadow: var(--md-shadow-1), var(--sk-highlight);
@@ -1665,7 +1613,6 @@ body {
   box-shadow: 0 0 0 var(--md-primary-dark), 0 2px 6px rgba(60,30,100,0.2), var(--sk-highlight);
 }
 
-/* 文件下载 / 标签徽章 */
 .file-download {
   box-shadow: 0 3px 0 var(--md-outline-variant), 0 5px 12px rgba(60,30,100,0.15), var(--sk-highlight);
 }
@@ -1680,7 +1627,6 @@ body {
   box-shadow: var(--sk-highlight), var(--sk-emboss-line);
 }
 
-/* 输入框凹陷（聊天输入框 / 模型选择 / 声线选择） */
 #chatInput,
 .input-row textarea,
 .model-select,
@@ -1693,7 +1639,6 @@ body {
   box-shadow: var(--sk-inset-shadow), var(--sk-focus-ring);
 }
 
-/* 开关：凹陷滑轨 + 立体滑块 */
 .toggle-slider {
   box-shadow: var(--sk-inset-shadow);
 }
@@ -1704,7 +1649,6 @@ input:checked+.toggle-slider {
   background: var(--sk-primary-grad);
 }
 
-/* 主要立体按钮（主色填充）：悬停上移、按下下沉 */
 .send-btn,
 .voice-record-btn,
 .mode-btn.active,
@@ -1738,7 +1682,6 @@ input:checked+.toggle-slider {
   background: var(--md-error);
 }
 
-/* 次要 / 描边按钮（立体浮雕） */
 .mode-btn,
 .graph-controls button {
   box-shadow: 0 3px 0 var(--md-outline-variant), 0 5px 12px rgba(60,30,100,0.15);
@@ -1754,7 +1697,6 @@ input:checked+.toggle-slider {
   box-shadow: 0 1px 0 var(--md-outline-variant), 0 2px 6px rgba(60,30,100,0.12);
 }
 
-/* 上传（次色）/ 清空（危险）/ 取消 按钮 */
 .upload-btn {
   background: var(--sk-secondary-grad);
   box-shadow: 0 3px 0 rgba(0,0,0,0.22), 0 5px 12px rgba(60,30,100,0.15), var(--sk-highlight);
@@ -1780,7 +1722,6 @@ input:checked+.toggle-slider {
   box-shadow: 0 3px 0 rgba(0,0,0,0.2), 0 4px 10px rgba(60,30,100,0.12), var(--sk-highlight);
 }
 
-/* 弹窗 / 模态框：卡片渐变 + 立体投影 */
 .edit-modal,
 .call-modal {
   background: var(--sk-card-grad);
@@ -1791,7 +1732,6 @@ input:checked+.toggle-slider {
   box-shadow: var(--sk-inset-shadow);
 }
 
-/* 建议补全条：凹陷容器 + 浮雕标签 */
 .suggestions-row {
   box-shadow: var(--sk-inset-shadow);
 }
@@ -1803,14 +1743,12 @@ input:checked+.toggle-slider {
   box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 幽灵图标按钮（返回/面板/工具栏切换）：顶部高光 + 底部浮雕 */
 .back-home,
 .panel-toggle-btn,
 .toolbar-header-toggle {
   box-shadow: var(--sk-highlight), var(--sk-emboss-line);
 }
 
-/* 状态 / 波形细节 */
 .status-dot,
 .typing-dot {
   box-shadow: 0 0 6px var(--md-primary-container);

@@ -1,9 +1,3 @@
-/* ==========================================================================
-   主页 · Catrainbow 的小屋 · web/new/css/index.css
-   可爱像素风 three.js 互动游戏主页（视觉小说式对话框）
-   基于 Material You 主题变量（见 css/theme.css），明暗双模式自适应
-   ========================================================================== */
-
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes floatBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
@@ -12,7 +6,6 @@
 
 * { margin:0; padding:0; box-sizing:border-box; font-family: var(--md-font); }
 
-/* 主页为全屏游戏场景，隐藏全局主题切换按钮（在 theme.js 注入，主页无用） */
 #md-theme-toggle { display: none !important; }
 body {
   background: #2c2135;
@@ -20,11 +13,9 @@ body {
   overflow: hidden; height: 100vh;
 }
 
-/* ===== three.js 场景容器 ===== */
 #scene-container { position: fixed; inset: 0; z-index: 0; }
 #scene-container canvas { display: block; }
 
-/* ===== 顶部导航 ===== */
 .top-nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
@@ -52,7 +43,6 @@ body {
 .nav-auth .btn-user img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
 .nav-auth .auth-btn:hover { transform: translateY(-2px); }
 
-/* ===== 加载动画（进度条 + 转圈，Material You 淡紫风） ===== */
 #loading-screen {
   position: fixed; inset: 0; z-index: 300;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -87,7 +77,6 @@ body {
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes gradMove { from { background-position: 0% 0; } to { background-position: -200% 0; } }
 
-/* ===== 开场打字机欢迎文字 ===== */
 #welcome-text {
   position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 120;
   font-size: clamp(1.8em, 4.5vw, 3em); font-weight: 900; color: #fff;
@@ -97,7 +86,6 @@ body {
 #welcome-text.show { opacity: 1; }
 .wt-caret { display: inline-block; width: 10px; height: 1.1em; background: #ffd9a0; margin-left: 4px; vertical-align: text-bottom; animation: caretBlink .8s infinite; }
 
-/* ===== 操作提示 ===== */
 #game-hint {
   position: fixed; bottom: 118px; left: 50%; transform: translateX(-50%); z-index: 90;
   color: rgba(255,255,255,.65); font-size: .8em; background: rgba(0,0,0,.25);
@@ -105,7 +93,6 @@ body {
   animation: fadeIn 1s ease 1s both; white-space: nowrap;
 }
 
-/* ===== 与小猫聊天面板 ===== */
 #chat-panel {
   position: fixed; left: 18px; bottom: 18px; z-index: 120;
   width: min(360px, calc(100vw - 36px));
@@ -162,7 +149,6 @@ body {
 }
 #chatSend:disabled { opacity: .5; cursor: not-allowed; }
 
-/* ===== 帖子面板 ===== */
 #posts-panel {
   position: fixed; top: 64px; right: 16px; bottom: 16px; z-index: 130;
   width: min(340px, calc(100vw - 32px));
@@ -190,7 +176,6 @@ body {
 .posts-loading { text-align: center; color: rgba(255,255,255,.5); padding: 40px 0; }
 .posts-loading i { color: #ffd9a0; }
 
-/* ===== 通用弹窗（登录/注册/邮箱/人机验证） ===== */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 400; background: rgba(10,10,25,.6);
   backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px;
@@ -234,7 +219,6 @@ body {
 .modal-footer p { text-align: center; font-size: .85em; color: var(--md-on-surface-variant); margin-top: 12px; }
 .modal-footer p a { color: var(--md-primary); font-weight: 700; text-decoration: none; }
 
-/* 人机验证 */
 .captcha-hint { text-align: center; color: var(--md-on-surface-variant); font-size: .9em; margin-bottom: 16px; }
 .captcha-colors { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .captcha-color-btn {
@@ -243,7 +227,6 @@ body {
 }
 .captcha-color-btn:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(0,0,0,.3); }
 
-/* ===== Snackbar ===== */
 .snackbar-container { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 500; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; }
 .snackbar {
   display: flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 999px;
@@ -255,7 +238,6 @@ body {
 .snackbar.warning { background: linear-gradient(135deg,#f57c00,#ffb74d); }
 .snackbar.info { background: linear-gradient(135deg,#a9704f,#c99a3e); }
 
-/* ===== 响应式 ===== */
 @media (max-width: 640px) {
   .nav-links a { padding: 7px 12px; font-size: .78em; }
   .dialog-text { font-size: .92em; }

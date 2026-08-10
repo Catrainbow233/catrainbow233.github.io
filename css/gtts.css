@@ -1,5 +1,3 @@
-/* gtts · Material You */
-
 * { margin:0; padding:0; box-sizing:border-box; font-family: var(--md-font); }
 body { background: linear-gradient(160deg, var(--md-surface-container-lowest) 0%, var(--md-surface-container) 100%); color: var(--text-color); min-height: 100vh; display: flex; flex-direction: column; }
 .show { display: block !important; }
@@ -29,7 +27,6 @@ nav .links a:hover { color: var(--primary-color); opacity: 1; }
 .card { background: var(--md-surface-container); border-radius: var(--md-radius-lg); padding: 28px; box-shadow: var(--shadow); margin-bottom: 20px; }
 .card-header { font-size: 1.1em; font-weight: 700; color: var(--dark-color); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
 
-/* Dialogue item */
 .dialogue-item { background: var(--light-color); border-radius: var(--md-radius-md); padding: 16px; margin-bottom: 12px; border: 2px solid transparent; transition: var(--transition); }
 .dialogue-item:focus-within { border-color: var(--primary-color); box-shadow: 0 0 0 3px var(--md-primary-container); }
 .dialogue-main { display: flex; align-items: center; gap: 10px; }
@@ -48,7 +45,6 @@ nav .links a:hover { color: var(--primary-color); opacity: 1; }
 .btn-icon.del { background: var(--md-error-container); color: var(--md-red); }
 .btn-icon.del:hover { background: var(--md-red); color: var(--md-on-error); }
 
-/* Emotion panel */
 .emotion-panel { display: none; margin-top: 12px; padding: 14px 16px; background: var(--md-surface-container); border-radius: var(--md-radius-md); border: 1px solid var(--md-outline-variant); }
 .emotion-panel.show { display: block; }
 .emotion-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
@@ -81,7 +77,6 @@ nav .links a:hover { color: var(--primary-color); opacity: 1; }
 .btn-outline:hover { background: var(--md-surface-container-high); }
 .btn-lg { padding: 14px 40px; font-size: 1.05em; border-radius: var(--md-radius-md); }
 
-/* Progress */
 .progress-card { text-align: center; padding: 20px; }
 .progress-card .status-icon { font-size: 2.5em; margin-bottom: 10px; }
 .progress-card .status-icon.spin { animation: spin 2s linear infinite; }
@@ -96,7 +91,6 @@ nav .links a:hover { color: var(--primary-color); opacity: 1; }
 .error-card { text-align: center; }
 .error-card .error-icon { font-size: 3em; color: var(--md-red); margin-bottom: 10px; }
 
-/* History */
 .history-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--light-color); border-radius: var(--md-radius-md); margin-bottom: 8px; transition: .2s; }
 .history-item:hover { background: var(--md-surface-container-high); }
 .history-item .hi-status { font-size: 0.85em; font-weight: 600; }
@@ -115,11 +109,8 @@ nav .links a:hover { color: var(--primary-color); opacity: 1; }
     .dialogue-main input { flex: 1 1 200px; }
 }
 
-/* 暗色微调 */
 [data-theme="dark"] select option { background: var(--md-surface-container); color: var(--md-on-surface); }
 
-/* ===== Skeuomorphism 增强层 ===== */
-/* 页面背景：径向光晕叠层 + 拟物表面渐变（覆盖原线性渐变） */
 body {
     background:
         radial-gradient(1200px 600px at 20% -10%, var(--md-surface-container-high) 0%, transparent 55%),
@@ -128,20 +119,17 @@ body {
     background-attachment: fixed;
 }
 
-/* 导航栏：磨砂玻璃 + 立体底影 + 顶部高光 */
 nav {
     backdrop-filter: blur(18px) saturate(1.3);
     -webkit-backdrop-filter: blur(18px) saturate(1.3);
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 卡片：纸感渐变 + 立体高光 */
 .card {
     background: var(--sk-card-grad);
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 对话条目：抬升卡片 */
 .dialogue-item {
     background: var(--sk-card-grad);
     box-shadow: var(--sk-highlight), var(--sk-emboss-line);
@@ -155,11 +143,9 @@ nav {
     box-shadow: 0 2px 0 var(--md-primary-dark), var(--sk-highlight);
 }
 
-/* 图标按钮 */
 .btn-icon.settings, .btn-icon.del { box-shadow: var(--sk-highlight), var(--sk-emboss-line); }
 .btn-icon.settings.active { box-shadow: var(--sk-highlight), var(--sk-emboss-line); }
 
-/* 情感面板 */
 .emotion-panel {
     background: var(--sk-card-grad);
     box-shadow: var(--sk-highlight), var(--sk-emboss-line);
@@ -170,17 +156,14 @@ nav {
     background: var(--md-surface-container-lowest);
 }
 
-/* AI 辅助按钮 / 结果 */
 .btn-ai { box-shadow: 0 2px 0 var(--md-outline-variant), var(--sk-highlight); }
 .ai-result { box-shadow: var(--sk-highlight), var(--sk-emboss-line); }
 
-/* 添加对话：虚线抬升按钮 */
 .add-line-btn {
     background: var(--sk-card-grad);
     box-shadow: var(--sk-highlight), var(--sk-emboss-line);
 }
 
-/* 主按钮 3D 渐变 */
 .btn-primary {
     background: var(--sk-primary-grad);
     box-shadow: 0 3px 0 var(--md-primary-dark), 0 6px 14px rgba(60,30,100,0.22), var(--sk-highlight);
@@ -199,14 +182,12 @@ nav {
 .btn-outline:hover { transform: translateY(-2px); box-shadow: 0 4px 0 var(--md-outline-variant), 0 7px 16px rgba(60,30,100,0.18); }
 .btn-outline:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--md-outline-variant); }
 
-/* 结果卡片 */
 .progress-card, .download-card, .error-card {
     background: var(--sk-card-grad);
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
     border: 1px solid var(--md-outline-variant);
 }
 
-/* 进度条：凹陷轨道 + 立体填充 */
 .progress-bar-wrap {
     background: var(--md-surface-container-highest);
     box-shadow: var(--sk-inset-shadow);
@@ -216,7 +197,6 @@ nav {
     box-shadow: var(--sk-highlight);
 }
 
-/* 历史条目 */
 .history-item {
     background: var(--sk-card-grad);
     box-shadow: var(--sk-highlight), var(--sk-emboss-line);

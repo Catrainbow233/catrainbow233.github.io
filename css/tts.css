@@ -1,5 +1,3 @@
-/* tts · Material You */
-
 * { margin:0; padding:0; box-sizing:border-box; font-family: var(--md-font); }
 body { background: linear-gradient(160deg, var(--md-surface-container-lowest) 0%, var(--md-surface-container) 100%); color: var(--text-color); min-height: 100vh; display: flex; flex-direction: column; }
 .show { display: block !important; }
@@ -140,12 +138,9 @@ textarea {
     .form-row label { min-width: auto; }
 }
 
-/* 暗色微调 */
 [data-theme="dark"] .toast { color: var(--md-surface); }
 [data-theme="dark"] select option { background: var(--md-surface-container); color: var(--md-on-surface); }
 
-/* ===== Skeuomorphism 增强层 ===== */
-/* 页面背景：径向光晕叠层 + 拟物表面渐变（覆盖原线性渐变） */
 body {
     background:
         radial-gradient(1200px 600px at 20% -10%, var(--md-surface-container-high) 0%, transparent 55%),
@@ -154,7 +149,6 @@ body {
     background-attachment: fixed;
 }
 
-/* 导航栏：磨砂玻璃 + 立体底影 + 顶部高光 */
 nav {
     backdrop-filter: blur(18px) saturate(1.3);
     -webkit-backdrop-filter: blur(18px) saturate(1.3);
@@ -171,13 +165,11 @@ nav {
 }
 .user-dropdown-content input { box-shadow: var(--sk-inset-shadow); }
 
-/* 卡片：纸感渐变 + 立体高光 */
 .card {
     background: var(--sk-card-grad);
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 凹陷输入框 */
 .form-row select, .form-row input[type="text"], textarea {
     box-shadow: var(--sk-inset-shadow);
     background: var(--md-surface-container-lowest);
@@ -186,13 +178,11 @@ nav {
     box-shadow: var(--sk-inset-shadow), var(--sk-focus-ring);
 }
 
-/* 上传区：凹陷拖拽槽 */
 .upload-area {
     background: var(--md-surface-container-lowest);
     box-shadow: var(--sk-inset-shadow);
 }
 
-/* 主按钮 3D 渐变 */
 .btn-primary {
     background: var(--sk-primary-grad);
     box-shadow: 0 3px 0 var(--md-primary-dark), 0 6px 14px rgba(60,30,100,0.22), var(--sk-highlight);
@@ -225,7 +215,6 @@ nav {
 .btn-outline:hover { transform: translateY(-2px); box-shadow: 0 4px 0 var(--md-outline-variant), 0 7px 16px rgba(60,30,100,0.18); }
 .btn-outline:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--md-outline-variant); }
 
-/* 进度条：凹陷轨道 + 立体填充 */
 .progress-bar-wrap {
     background: var(--md-surface-container-highest);
     box-shadow: var(--sk-inset-shadow);
@@ -235,12 +224,10 @@ nav {
     box-shadow: var(--sk-highlight);
 }
 
-/* 日志区：凹陷终端 */
 .log-area {
     background: var(--md-surface-container-lowest);
     box-shadow: var(--sk-inset-shadow);
     border-radius: var(--md-radius-sm);
 }
 
-/* Toast 高光 */
 .toast { box-shadow: var(--md-shadow-3), var(--sk-highlight); }

@@ -1,44 +1,32 @@
 @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css');
-/* ==========================================================================
-   奶油文学萌系主题系统 · 明/暗双模式
-   web/new/css/theme.css
-   灵感：云酒馆「纸墨烛光」——奶油纸底 · 墨棕文字 · 焦糖/玫瑰金点缀 · 楷书文学字体
-   保留全部 --md-* / --sk-* / 兼容变量名结构，视觉重写为文学复古 + 萌系圆润
-   ========================================================================== */
 
-/* ---------------------------------------------------------------------------
-   1. 文学调色板（奶油 + 焦糖 + 玫瑰粉 + 蜂蜜金）
-   亮色 :root / 暗色 [data-theme="dark"]
-   --------------------------------------------------------------------------- */
 :root {
   color-scheme: light;
 
-  /* --- 语义色（暖棕系，软糯萌感） --- */
-  --md-primary: #a9704f;            /* 焦糖奶茶棕 */
+  --md-primary: #a9704f;
   --md-on-primary: #fffdf8;
-  --md-primary-container: #f5e7d8;  /* 浅奶茶 */
+  --md-primary-container: #f5e7d8;
   --md-on-primary-container: #4a2f1c;
-  --md-primary-dark: #8a5738;       /* 深可可 */
+  --md-primary-dark: #8a5738;
 
-  --md-secondary: #d9899a;          /* 柔和玫瑰粉（萌） */
+  --md-secondary: #d9899a;
   --md-on-secondary: #ffffff;
   --md-secondary-container: #fde7ee;
   --md-on-secondary-container: #5c2334;
 
-  --md-tertiary: #c99a3e;           /* 蜂蜜金 */
+  --md-tertiary: #c99a3e;
   --md-on-tertiary: #fffdf6;
   --md-tertiary-container: #f8ecd0;
   --md-on-tertiary-container: #463207;
 
-  --md-error: #d1584f;              /* 柔和暖红 */
+  --md-error: #d1584f;
   --md-on-error: #ffffff;
   --md-error-container: #fbe0dd;
   --md-on-error-container: #4c0f0c;
 
-  /* --- 表面层级（奶油纸感，从亮到微深） --- */
   --md-surface-dim: #e8dcc9;
   --md-surface: #fdf9f1;
-  --md-on-surface: #3a2c1f;         /* 墨棕正文 */
+  --md-on-surface: #3a2c1f;
   --md-surface-variant: #efe2d0;
   --md-on-surface-variant: #6f5d4a;
   --md-surface-container-lowest: #fffdf8;
@@ -47,18 +35,15 @@
   --md-surface-container-high: #ecdfc9;
   --md-surface-container-highest: #e4d4ba;
 
-  /* --- 轮廓 / 描边（暖米色细线） --- */
   --md-outline: #b39b83;
   --md-outline-variant: #e0d0ba;
 
-  /* --- 立体阴影：暖调柔光，软糯 --- */
   --md-shadow-0: 0 0 0 0 rgba(0,0,0,0);
   --md-shadow-1: 0 1px 3px rgba(122,74,47,0.10), 0 4px 14px rgba(122,74,47,0.08), inset 0 1px 0 rgba(255,255,255,0.75);
   --md-shadow-2: 0 2px 6px rgba(122,74,47,0.12), 0 10px 26px rgba(122,74,47,0.10), inset 0 1px 0 rgba(255,255,255,0.8);
   --md-shadow-3: 0 4px 10px rgba(122,74,47,0.14), 0 20px 46px rgba(122,74,47,0.12), inset 0 1px 0 rgba(255,255,255,0.85);
   --md-scrim: rgba(52,32,18,0.5);
 
-  /* --- 萌系渐变（柔光材质填充） --- */
   --sk-primary-grad: linear-gradient(180deg, #c38a5f 0%, #a9704f 45%, #8a5738 100%);
   --sk-primary-grad-hover: linear-gradient(180deg, #d29a70 0%, #b57b55 45%, #96644a 100%);
   --sk-secondary-grad: linear-gradient(180deg, #eeaab8 0%, #d9899a 45%, #bf6c7f 100%);
@@ -70,14 +55,12 @@
   --sk-emboss-line: inset 0 -1px 0 rgba(122,74,47,0.12);
   --sk-focus-ring: 0 0 0 3px rgba(169,112,79,0.22);
 
-  /* --- 形状（更圆润，萌系圆角） --- */
   --md-radius-xs: 12px;
   --md-radius-sm: 16px;
   --md-radius-md: 22px;
   --md-radius-lg: 30px;
   --md-radius-full: 999px;
 
-  /* --- 排版（文学楷书） --- */
   --md-font: 'LXGW WenKai','Kaiti SC','STKaiti','KaiTi','Noto Serif SC','Source Han Serif SC','Songti SC','SimSun',Georgia,serif;
   --md-font-mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
   --md-title-large: 600 22px/28px var(--md-font);
@@ -87,7 +70,6 @@
   --md-label-large: 500 14px/20px var(--md-font);
   --md-label-medium: 500 12px/16px var(--md-font);
 
-  /* --- 强调色（图表/标签用，柔和暖色系） --- */
   --md-green: #7cb96b;
   --md-red: #e0706b;
   --md-orange: #e9a15c;
@@ -95,9 +77,6 @@
   --md-cyan: #7fc4bf;
   --md-yellow: #f2c75c;
 
-  /* ==============================================================
-     2. 兼容旧版变量，映射到文学令牌
-     ============================================================== */
   --primary: var(--md-primary);
   --primary-dark: var(--md-primary-dark);
   --secondary: var(--md-secondary);
@@ -133,22 +112,21 @@
   --orange: var(--md-orange);
 }
 
-/* --- 暗色模式：深紫酒馆夜（aubergine + 鎏金 + 奶油文字，对标云酒馆） --- */
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --md-primary: #d8a868;            /* 暖琥珀金（点亮深紫夜） */
+  --md-primary: #d8a868;
   --md-on-primary: #2a1708;
   --md-primary-container: #4a3e31;
   --md-on-primary-container: #f5dfc0;
   --md-primary-dark: #e8c394;
 
-  --md-secondary: #eeb0c0;          /* 暖玫瑰 */
+  --md-secondary: #eeb0c0;
   --md-on-secondary: #4e1f30;
   --md-secondary-container: #5f3850;
   --md-on-secondary-container: #fde3eb;
 
-  --md-tertiary: #e2b85c;           /* 蜂蜜金 */
+  --md-tertiary: #e2b85c;
   --md-on-tertiary: #38280a;
   --md-tertiary-container: #50442b;
   --md-on-tertiary-container: #f9e9c8;
@@ -158,7 +136,6 @@
   --md-error-container: #7a1c14;
   --md-on-error-container: #ffdad6;
 
-  /* 表面：深紫（aubergine）酒馆夜，非棕色，文字奶油暖色 */
   --md-surface-dim: #241b2c;
   --md-surface: #2c2135;
   --md-on-surface: #fdf3e3;
@@ -190,9 +167,6 @@
   --sk-focus-ring: 0 0 0 3px rgba(216,168,104,0.3);
 }
 
-/* ---------------------------------------------------------------------------
-   3. 全局基础（奶油纸感 + 烛光）
-   --------------------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -214,7 +188,6 @@ body {
 a { text-decoration: none; color: var(--md-primary); }
 a:hover { color: var(--md-primary-dark); }
 
-/* 滚动条（萌系圆润奶茶色轨道） */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track {
   background: var(--md-surface-container-low);
@@ -229,7 +202,6 @@ a:hover { color: var(--md-primary-dark); }
 
 ::selection { background: var(--md-secondary-container); color: var(--md-on-secondary-container); }
 
-/* 文学标题：楷书 + 适度字距 */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   color: var(--md-on-surface);
@@ -241,11 +213,6 @@ h3, h4 { font-weight: 600; }
 
 input, select, textarea, button { font-family: inherit; }
 
-/* ---------------------------------------------------------------------------
-   4. 通用萌系组件默认样式（各页可覆盖）
-   --------------------------------------------------------------------------- */
-
-/* 圆润糖果按钮 */
 .btn, button.btn {
   display: inline-flex;
   align-items: center;
@@ -272,7 +239,6 @@ input, select, textarea, button { font-family: inherit; }
 }
 .btn:active { transform: translateY(1px) scale(.98); box-shadow: var(--md-shadow-0); }
 
-/* tonal 按钮（container 色，去光泽） */
 .btn-secondary, .btn-tonal {
   background: var(--md-primary-container);
   color: var(--md-on-primary-container);
@@ -281,7 +247,6 @@ input, select, textarea, button { font-family: inherit; }
 }
 .btn-secondary:hover, .btn-tonal:hover { background: var(--md-primary-container); filter: brightness(.97); }
 
-/* 描边按钮（暖米色描边） */
 .btn-outline {
   background: var(--sk-card-grad);
   color: var(--md-primary);
@@ -291,7 +256,6 @@ input, select, textarea, button { font-family: inherit; }
 }
 .btn-outline:hover { border-color: var(--md-primary); box-shadow: var(--md-shadow-1); background: var(--sk-surface-grad); }
 
-/* 文字按钮 */
 .btn-text {
   background: transparent;
   color: var(--md-primary);
@@ -301,7 +265,6 @@ input, select, textarea, button { font-family: inherit; }
 }
 .btn-text:hover { background: var(--md-primary-container); box-shadow: none; }
 
-/* 圆润输入框（内阴影，暖米色） */
 input[type="text"], input[type="password"], input[type="email"],
 input[type="number"], input[type="search"], input[type="url"], input[type="tel"],
 select, textarea {
@@ -321,7 +284,6 @@ input:focus, select:focus, textarea:focus {
 }
 input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant); }
 
-/* 萌系圆角卡片 */
 .card, .md-card {
   background: var(--sk-card-grad);
   border-radius: var(--md-radius-lg);
@@ -331,7 +293,6 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
   border: 1px solid var(--md-outline-variant);
 }
 
-/* 徽章 / 标签（奶油马卡龙） */
 .badge, .tag {
   display: inline-block;
   padding: 4px 14px;
@@ -343,7 +304,6 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
   box-shadow: var(--sk-highlight), var(--sk-emboss-line);
 }
 
-/* 模态框遮罩 */
 .overlay, .modal-overlay {
   position: fixed;
   inset: 0;
@@ -354,9 +314,6 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
   justify-content: center;
 }
 
-/* ---------------------------------------------------------------------------
-   5. 主题切换悬浮按钮（scripts/theme.js 注入，id="md-theme-toggle"）
-   --------------------------------------------------------------------------- */
 #md-theme-toggle {
   position: fixed;
   right: 20px;
@@ -383,22 +340,18 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
 #md-theme-toggle:active { transform: scale(.92); box-shadow: var(--md-shadow-0); }
 #md-theme-toggle svg { width: 26px; height: 26px; fill: currentColor; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2)); }
 
-/* 图标过渡 */
 #md-theme-toggle { animation: md-toggle-in .35s cubic-bezier(.4,0,.2,1); }
 @keyframes md-toggle-in {
   from { opacity: 0; transform: scale(.5) rotate(-90deg); }
   to   { opacity: 1; transform: scale(1) rotate(0); }
 }
 
-/* 暗色下调整一些原生控件 */
 [data-theme="dark"] img { filter: brightness(.95); }
 
-/* 尊重系统降低动画偏好 */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
 
-/* ===== 模型可用性竖线表（newapi 风格）===== */
 .mc-meter {
   display: inline-flex;
   align-items: flex-end;
@@ -410,7 +363,7 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
 .mm-green { background: #2e7d32; }
 .mm-red { background: #e53935; opacity: .88; }
 .mm-empty { background: var(--md-outline-variant); opacity: .4; }
-/* 整体随状态变色：可用性高→绿色系，中→黄色系，低→红色系 */
+
 .mc-meter.st-yellow .mm-green { background: #e6a23c; }
 .mc-meter.st-yellow .mm-red { background: #f4c97a; }
 .mc-meter.st-red .mm-green { background: #e53935; }
@@ -422,11 +375,9 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
 .mc-meter.st-red, .mc-meter-pct.st-red, .mc-meter-lat.st-red { color: #d32f2f; }
 .mc-meter.st-none, .mc-meter-pct.st-none, .mc-meter-lat.st-none { color: var(--md-on-surface-variant); opacity: .7; }
 
-/* 表格中可用性列 */
 .t-avail { white-space: nowrap; }
 .t-avail .mc-meter { align-items: center; }
 
-/* ===== 模型负载指数（0~100 百分比）===== */
 .mc-load {
   display: inline-flex;
   align-items: center;
@@ -445,6 +396,6 @@ input::placeholder, textarea::placeholder { color: var(--md-on-surface-variant);
 .mc-load.ld-yellow { color: #b76e00; background: rgba(230, 162, 60, .15); }
 .mc-load.ld-red { color: #d32f2f; background: rgba(211, 47, 47, .12); }
 .mc-load.ld-none { color: var(--md-on-surface-variant); background: var(--md-surface-container-high); opacity: .7; }
-/* 表格中负载列 */
+
 .t-load { white-space: nowrap; }
 .t-load .mc-load { margin-left: 0; }

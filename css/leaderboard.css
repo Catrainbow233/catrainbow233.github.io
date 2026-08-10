@@ -1,12 +1,3 @@
-/* ==========================================================================
-   基准测试页面 · web/new/css/leaderboard.css
-   基于 Material You 主题变量（见 css/theme.css），明暗双模式自适应
-   ========================================================================== */
-
-/* 页面自身 :root 颜色变量已删除 —— --primary/--primary-dark/--secondary/--accent/
-   --dark/--light/--text/--white/--shadow/--shadow-lg/--radius/--radius-sm/
-   --radius-lg/--transition/--green/--red/--orange 全部由 css/theme.css 映射接管 */
-
 @keyframes fadeInUp { from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);} }
 @keyframes fadeIn { from{opacity:0;}to{opacity:1;} }
 @keyframes spin { to{transform:rotate(360deg);} }
@@ -15,7 +6,6 @@
 body{background:linear-gradient(160deg, var(--md-surface-container-lowest) 0%, var(--md-surface-container-low) 50%, var(--md-surface-container) 100%);color:var(--text);min-height:100vh}
 a{text-decoration:none;color:inherit}
 
-/* Nav */
 nav{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;background:var(--md-surface-container-low);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--md-outline-variant);position:sticky;top:0;z-index:1000}
 nav .logo{font-size:1.35em;font-weight:800;color:var(--dark);display:flex;align-items:center;gap:10px}
 nav .logo span{color:var(--primary)}
@@ -27,7 +17,6 @@ nav .user-menu{display:flex;align-items:center;gap:10px}
 nav .user-menu .user-name{font-weight:600;color:var(--dark);font-size:0.9em}
 nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;padding:2px 8px;border-radius:var(--md-radius-sm);font-weight:700}
 
-/* Buttons */
 .btn{padding:9px 18px;border-radius:var(--radius-sm);font-size:0.87em;font-weight:600;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:6px;transition:var(--transition)}
 .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:var(--md-shadow-1)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--md-shadow-2)}
@@ -39,16 +28,13 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
 .btn-success{border:2px solid var(--green);color:var(--green);background:transparent}
 .btn-success:hover{background:color-mix(in srgb, var(--md-green) 12%, transparent)}
 
-/* Container */
 .container{max-width:1300px;margin:0 auto;padding:0 24px}
 
-/* Hero */
 .hero{text-align:center;padding:48px 0 28px}
 .hero h1{font-size:2.2em;font-weight:800;color:var(--dark);margin-bottom:6px}
 .hero h1 span{background:linear-gradient(135deg,var(--dark),var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero p{color:var(--text);opacity:0.65;font-size:1.02em;max-width:560px;margin:0 auto}
 
-/* ===== Filter Bar ===== */
 .filter-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 18px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--md-outline-variant);margin-bottom:6px}
 .filter-sep{width:1px;height:22px;background:var(--md-outline-variant);margin:0 3px}
 .filter-actions{display:flex;align-items:center;gap:7px;margin-left:auto}
@@ -61,13 +47,11 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
 .rank-panel .form-check input[type=checkbox]{width:16px;height:16px;accent-color:var(--primary);cursor:pointer}
 .update-time{font-size:0.76em;color:var(--text);opacity:0.45;white-space:nowrap}
 
-/* Aggregate Tabs (always visible) */
 .agg-tabs{display:flex;gap:3px}
 .agg-tab{padding:5px 13px;border-radius:18px;font-size:0.8em;cursor:pointer;white-space:nowrap;border:1.5px solid var(--md-outline-variant);background:var(--white);color:var(--text);transition:var(--transition);font-weight:600;display:flex;align-items:center;gap:5px}
 .agg-tab:hover{border-color:var(--primary);color:var(--dark)}
 .agg-tab.active{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border-color:transparent;font-weight:700;box-shadow:var(--md-shadow-1)}
 
-/* Filter Trigger Buttons */
 .filter-trigger{padding:5px 13px;border-radius:18px;font-size:0.8em;cursor:pointer;border:1.5px solid var(--md-outline-variant);background:var(--white);color:var(--text);transition:var(--transition);font-weight:600;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .filter-trigger:hover{border-color:var(--primary);color:var(--dark)}
 .filter-trigger.open{background:var(--md-primary-container);border-color:var(--primary);color:var(--dark)}
@@ -75,27 +59,23 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
 .filter-trigger.open .chevron{transform:rotate(180deg);opacity:1}
 .filter-trigger .badge{background:var(--primary);color:#fff;font-size:0.7em;padding:1px 7px;border-radius:var(--md-radius-sm);font-weight:700;min-width:18px;text-align:center}
 
-/* Collapsible Filter Panels */
 .filter-panel{display:none;background:var(--white);border-radius:var(--radius);padding:12px 16px;margin-bottom:6px;box-shadow:var(--shadow);border:1px solid var(--md-outline-variant)}
 .filter-panel.open{display:block;animation:fadeInUp 0.2s ease-out}
 .filter-panel-header{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
 .filter-search{flex:1;min-width:140px;padding:6px 12px;border:1.5px solid var(--md-outline-variant);border-radius:var(--md-radius-sm);font-size:0.8em;outline:none;background:var(--light);color:var(--text);transition:var(--transition)}
 .filter-search:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--md-primary-container)}
 
-/* Model Chips (inside panel) */
 .model-chips{display:flex;flex-wrap:wrap;gap:5px;max-height:220px;overflow-y:auto;padding:2px 0}
 .model-chip{display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:14px;font-size:0.76em;cursor:pointer;border:1.5px solid var(--md-outline-variant);background:var(--white);color:var(--text);transition:var(--transition);user-select:none;font-weight:500}
 .model-chip:hover{border-color:var(--primary)}
 .model-chip.hidden{opacity:0.25;text-decoration:line-through;background:var(--md-surface-container-high)}
 .model-chip img{width:16px;height:16px;border-radius:4px;object-fit:contain}
 
-/* Dataset Tabs (inside panel) */
 .dataset-tabs{display:flex;flex-wrap:wrap;gap:6px;max-height:200px;overflow-y:auto;padding:2px 0}
 .ds-tab{padding:5px 12px;border-radius:var(--md-radius-md);font-size:0.78em;cursor:pointer;white-space:nowrap;border:1.5px solid var(--md-outline-variant);background:var(--white);color:var(--text);transition:var(--transition);font-weight:500}
 .ds-tab:hover{border-color:var(--primary);color:var(--dark)}
 .ds-tab.active{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border-color:transparent;font-weight:700;box-shadow:var(--md-shadow-1)}
 
-/* Chart Card */
 .chart-card{background:var(--white);border-radius:var(--radius-lg);padding:28px 24px 20px;box-shadow:var(--shadow);border:1px solid var(--md-outline-variant);margin-bottom:24px}
 .chart-card h2{font-size:1.3em;font-weight:800;color:var(--dark);margin-bottom:4px}
 .chart-card .chart-subtitle{font-size:0.8em;color:var(--text);opacity:0.5;margin-bottom:20px}
@@ -104,7 +84,6 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
 .chart-wrap canvas{cursor:pointer;display:block;transition:opacity 0.3s ease}
 .chart-wrap canvas.fading{opacity:0.15}
 
-/* Mini leaderboard cards */
 .mini-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
 .mini-card{background:var(--white);border-radius:var(--radius);padding:16px 18px 10px;box-shadow:var(--shadow);border:1px solid var(--md-outline-variant);transition:transform 0.35s ease,box-shadow 0.35s ease}
 .mini-card:hover{transform:translateY(-2px);box-shadow:var(--md-shadow-2)}
@@ -114,7 +93,6 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
 .mini-card canvas.fading{opacity:0}
 @media(max-width:768px){.mini-cards{grid-template-columns:1fr}}
 
-/* Admin Panel */
 .admin-panel{background:var(--white);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow);border:2px solid var(--md-outline-variant);margin-bottom:24px;display:none}
 .admin-panel.visible{display:block;animation:fadeInUp 0.3s ease-out}
 .admin-panel h2{font-size:1.2em;font-weight:800;color:var(--dark);margin-bottom:16px;display:flex;align-items:center;gap:8px}
@@ -124,7 +102,6 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
 .task-table td{padding:10px 12px;border-bottom:1px solid var(--md-outline-variant)}
 .task-table .actions{display:flex;gap:6px;flex-wrap:wrap}
 
-/* Status Badges */
 .status-badge{display:inline-block;padding:3px 10px;border-radius:var(--md-radius-sm);font-size:0.75em;font-weight:700}
 .status-RUNNING,.status-IN_PROGRESS{background:color-mix(in srgb, var(--md-tertiary) 15%, transparent);color:var(--md-tertiary)}
 .status-COMPLETED{background:color-mix(in srgb, var(--md-green) 15%, transparent);color:var(--green)}
@@ -132,13 +109,11 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
 .status-STOPPED{background:color-mix(in srgb, var(--md-error) 15%, transparent);color:var(--red)}
 .status-PENDING{background:color-mix(in srgb, var(--md-primary) 8%, transparent);color:var(--md-on-surface-variant)}
 
-/* Empty / Loading */
 .empty-state{text-align:center;padding:60px 20px;color:var(--text);opacity:0.5}
 .empty-state i{font-size:3em;margin-bottom:14px;display:block;opacity:0.25}
 .empty-state h3{font-size:1.15em;color:var(--dark);margin-bottom:6px;opacity:0.7}
 .spinner{width:36px;height:36px;border:3px solid var(--md-outline-variant);border-top-color:var(--primary);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 12px}
 
-/* Modal */
 .modal-overlay{display:none;position:fixed;inset:0;background:var(--md-scrim);z-index:200;justify-content:center;align-items:flex-start;padding:40px 16px;overflow-y:auto;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .modal-overlay.active{display:flex}
 .modal{background:var(--white);border-radius:var(--radius-lg);width:92%;max-width:820px;box-shadow:var(--shadow-lg);animation:fadeInUp 0.3s ease-out;margin:auto}
@@ -150,7 +125,6 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
 .modal-body{padding:24px;max-height:65vh;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
 .modal-body::-webkit-scrollbar{display:none}
 
-/* Form */
 .form-group{margin-bottom:16px}
 .form-group label{display:block;font-size:0.82em;font-weight:600;color:var(--dark);margin-bottom:5px}
 .form-group input,.form-group select,.form-group textarea{width:100%;padding:9px 14px;border:1.5px solid var(--md-outline-variant);border-radius:var(--md-radius-sm);font-size:0.9em;outline:none;transition:var(--transition);background:var(--light);color:var(--text)}
@@ -164,7 +138,6 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
 .dataset-checks .ds-check:hover{border-color:var(--primary)}
 .dataset-checks .ds-check.checked{background:var(--md-primary-container);border-color:var(--primary);font-weight:600}
 
-/* Detail Modal */
 .mdl-icon{width:42px;height:42px;border-radius:var(--md-radius-sm);object-fit:contain;background:var(--light)}
 .modal-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px}
 .metric-card{background:var(--light);border-radius:var(--radius-sm);padding:16px;text-align:center}
@@ -177,7 +150,6 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
 .bar-bg{width:100%;height:7px;background:color-mix(in srgb, var(--md-primary) 12%, transparent);border-radius:4px;overflow:hidden}
 .bar-fill{height:100%;border-radius:4px;transition:width 0.5s}
 
-/* Toast */
 .toast{position:fixed;bottom:24px;right:24px;z-index:300;padding:12px 20px;border-radius:var(--md-radius-sm);font-size:0.88em;font-weight:600;opacity:0;transform:translateY(10px);transition:all 0.3s;pointer-events:none;background:var(--white);box-shadow:var(--shadow-lg)}
 .toast.show{opacity:1;transform:translateY(0)}
 .toast.success{color:var(--green);border:1.5px solid color-mix(in srgb, var(--md-green) 30%, transparent)}
@@ -219,8 +191,6 @@ nav .user-menu .admin-badge{font-size:0.7em;background:linear-gradient(135deg,va
     .ds-table{font-size:0.68em}
 }
 
-/* ===== Skeuomorphism 增强层 ===== */
-/* 页面背景：径向光晕叠层 + 拟物表面渐变（覆盖原线性渐变） */
 body {
     background:
         radial-gradient(1200px 600px at 20% -10%, var(--md-surface-container-high) 0%, transparent 55%),
@@ -229,7 +199,6 @@ body {
     background-attachment: fixed;
 }
 
-/* 导航栏：磨砂玻璃 + 立体底影 + 顶部高光 */
 nav {
     backdrop-filter: blur(18px) saturate(1.3);
     -webkit-backdrop-filter: blur(18px) saturate(1.3);
@@ -238,7 +207,6 @@ nav {
 nav .links a.active { box-shadow: inset 0 -2px 0 var(--md-primary); }
 nav .user-menu .admin-badge { box-shadow: var(--sk-highlight), var(--sk-emboss-line); }
 
-/* 主按钮：主色立体渐变 + 3D 底厚 */
 .btn-primary {
     background: var(--sk-primary-grad);
     box-shadow: 0 3px 0 var(--md-primary-dark), 0 6px 14px rgba(60,30,100,0.22), var(--sk-highlight);
@@ -254,7 +222,6 @@ nav .user-menu .admin-badge { box-shadow: var(--sk-highlight), var(--sk-emboss-l
     box-shadow: 0 1px 0 var(--md-primary-dark), 0 3px 8px rgba(60,30,100,0.2);
 }
 
-/* 描边按钮：浮雕底厚 */
 .btn-outline {
     box-shadow: 0 3px 0 var(--md-outline-variant), 0 5px 12px rgba(60,30,100,0.15);
 }
@@ -269,7 +236,6 @@ nav .user-menu .admin-badge { box-shadow: var(--sk-highlight), var(--sk-emboss-l
 .btn-danger, .btn-success { box-shadow: 0 2px 0 var(--md-outline-variant), 0 4px 10px rgba(60,30,100,0.12); }
 .btn-danger:hover, .btn-success:hover { transform: translateY(-2px); }
 
-/* 面板 / 图表容器 / 卡片：纸感渐变 + 立体高光 */
 .filter-bar, .filter-panel, .chart-card, .mini-card, .admin-panel {
     background: var(--sk-card-grad);
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
@@ -277,7 +243,6 @@ nav .user-menu .admin-badge { box-shadow: var(--sk-highlight), var(--sk-emboss-l
 .chart-card { box-shadow: var(--md-shadow-2), var(--sk-highlight); }
 .admin-panel { box-shadow: var(--md-shadow-2), var(--sk-highlight); }
 
-/* 凹陷输入框 */
 .filter-actions select, .rank-panel select, .rank-panel input[type=date], .filter-search,
 .form-group input, .form-group select, .form-group textarea {
     box-shadow: var(--sk-inset-shadow);
@@ -288,7 +253,6 @@ nav .user-menu .admin-badge { box-shadow: var(--sk-highlight), var(--sk-emboss-l
     box-shadow: var(--sk-inset-shadow), var(--sk-focus-ring);
 }
 
-/* 筛选 Tab / 触发按钮 */
 .agg-tab, .ds-tab, .filter-trigger { box-shadow: var(--sk-highlight), var(--sk-emboss-line); }
 .agg-tab.active, .ds-tab.active, .filter-trigger.open {
     background: var(--sk-primary-grad);
@@ -296,20 +260,16 @@ nav .user-menu .admin-badge { box-shadow: var(--sk-highlight), var(--sk-emboss-l
 }
 .filter-trigger .badge { box-shadow: var(--sk-highlight), var(--sk-emboss-line); }
 
-/* 模型 / 测评集 chips */
 .model-chip, .ds-check { box-shadow: var(--sk-highlight), var(--sk-emboss-line); }
 .model-chip.hidden { box-shadow: none; }
 
-/* 排行表格 header：表面渐变 + 顶部高光 */
 .task-table th, .ds-table th {
     background: var(--sk-surface-grad);
     box-shadow: var(--sk-highlight);
 }
 
-/* 状态徽章 */
 .status-badge { box-shadow: var(--sk-highlight), var(--sk-emboss-line); }
 
-/* 指标卡片 / 进度条 */
 .metric-card {
     background: var(--sk-card-grad);
     box-shadow: var(--sk-highlight), var(--sk-emboss-line);
@@ -320,7 +280,6 @@ nav .user-menu .admin-badge { box-shadow: var(--sk-highlight), var(--sk-emboss-l
 }
 .bar-fill { box-shadow: var(--sk-highlight); }
 
-/* 模态框 */
 .modal {
     background: var(--sk-card-grad);
     border: 1px solid var(--md-outline-variant);
@@ -330,10 +289,8 @@ nav .user-menu .admin-badge { box-shadow: var(--sk-highlight), var(--sk-emboss-l
 .modal-close { transition: var(--transition); }
 .modal-close:hover { box-shadow: var(--sk-focus-ring); }
 
-/* 加载状态 */
 .spinner { box-shadow: var(--md-shadow-1); }
 
-/* Toast */
 .toast {
     background: var(--sk-card-grad);
     box-shadow: var(--md-shadow-3), var(--sk-highlight);

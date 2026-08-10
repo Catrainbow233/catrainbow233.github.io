@@ -1,5 +1,3 @@
-/* lobby · Material You */
-
 @keyframes fadeInUp {from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn {from{opacity:0}to{opacity:1}}
 @keyframes shimmer {0%{background-position:-200px 0}100%{background-position:calc(200px + 100%) 0}}
@@ -17,10 +15,8 @@ body {
     overflow-x: hidden;
 }
 
-/* 布局 */
 .container { display: flex; min-height: 100vh; }
 
-/* 侧边栏 (同 index) */
 .sidebar {
     width: 280px;
     background: var(--md-surface-container-low);
@@ -63,10 +59,8 @@ body {
     text-align: center; font-size: 12px; color: var(--dark-color);
 }
 
-/* 主内容区 */
 .main-content { flex-grow: 1; padding: 30px; transition: var(--transition); }
 
-/* 广场卡片容器 */
 .plaza-view {
     background: var(--md-surface-container); border-radius: var(--md-radius-lg); padding: 30px;
     box-shadow: var(--shadow); margin-bottom: 30px; min-height: 400px;
@@ -99,7 +93,6 @@ body {
 }
 .search-button:hover { background: var(--md-primary-dark); }
 
-/* 卡片网格 */
 .card-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px; margin-top: 20px;
@@ -123,7 +116,6 @@ body {
 }
 .delete-button:hover { background: var(--md-error); transform: scale(1.1); }
 
-/* 帖子详情视图 */
 .post-detail-container { padding: 20px; }
 .post-header { margin-bottom: 20px; }
 .post-title { font-size: 28px; color: var(--dark-color); margin-bottom: 8px; }
@@ -148,7 +140,7 @@ body {
     background: var(--md-surface-container-low); padding: 25px; border-radius: var(--md-radius-md);
     line-height: 1.8; font-size: 16px; overflow-x: auto;
 }
-/* Markdown 样式 */
+
 .post-content pre, .comment-content pre {
     background: #2d2d2d; padding: 12px; border-radius: var(--md-radius-sm);
     overflow-x: auto; margin: 10px 0;
@@ -168,7 +160,6 @@ body {
 .post-content table { border-collapse: collapse; width: 100%; margin: 0.5em 0; }
 .post-content th, .post-content td { border: 1px solid var(--md-outline-variant); padding: 6px; text-align: left; }
 
-/* 评论区 */
 .comments-section { margin-top: 30px; }
 .comments-title { font-size: 20px; margin-bottom: 20px; color: var(--dark-color); }
 .comment-item {
@@ -195,7 +186,6 @@ body {
 }
 .comment-time { font-size: 12px; color: var(--md-on-surface-variant); }
 
-/* 评论表单 */
 .comment-form {
     margin-top: 30px; background: var(--md-surface-container); border-radius: var(--md-radius-lg);
     padding: 20px; box-shadow: var(--shadow);
@@ -228,7 +218,6 @@ body {
 }
 .comment-submit:hover { background: var(--md-primary-dark); }
 
-/* 发布帖子界面 */
 .post-form { padding: 20px; }
 .form-group { margin-bottom: 20px; }
 .form-label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--dark-color); }
@@ -248,7 +237,6 @@ body {
 .btn-secondary { background: var(--secondary-color); color: var(--md-on-secondary); }
 .btn-secondary:hover { background: #ff7eb5; }
 
-/* 发布按钮 (悬浮) */
 .fab {
     position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
     border-radius: 50%; background: var(--primary-color); color: var(--md-on-primary);
@@ -258,7 +246,6 @@ body {
 }
 .fab:hover { transform: scale(1.1); background: var(--md-primary-dark); }
 
-/* 分页 */
 .pagination {
     display: flex; justify-content: center; margin-top: 30px; gap: 10px;
 }
@@ -269,7 +256,6 @@ body {
 .page-button:hover { background: var(--light-color); }
 .page-button.active { background: var(--primary-color); color: var(--md-on-primary); border-color: var(--primary-color); }
 
-/* 消息提示 */
 .snackbar-container {
     position: fixed; top: 20px; right: 20px; z-index: 2000;
 }
@@ -286,7 +272,6 @@ body {
 @keyframes slideIn { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
 
-/* 确认对话框 */
 .confirm-dialog {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     background: var(--md-scrim); display: flex; align-items: center;
@@ -302,7 +287,6 @@ body {
 .confirm-message { margin-bottom: 20px; line-height: 1.5; }
 .confirm-actions { display: flex; justify-content: flex-end; gap: 10px; }
 
-/* 登录状态菜单项 */
 .auth-menu-item { display: none; }
 .unauth-menu-item { display: block; }
 .logged-in .auth-menu-item { display: block; }
@@ -336,18 +320,11 @@ body {
     .main-content { padding: 16px; }
 }
 
-/* 暗色微调 */
 [data-theme="dark"] .snackbar { background: var(--md-surface-container-highest); color: var(--md-on-surface); }
 [data-theme="dark"] .snackbar.success { background: var(--md-green); }
 [data-theme="dark"] .snackbar.error { background: var(--md-error); }
 [data-theme="dark"] .snackbar.warning { background: var(--md-orange); }
 
-/* ============================================================
-   Skeuomorphism 拟物增强层
-   依据 .obf/SKEU_GUIDE.md：仅追加、不删改原有规则，明暗双主题自动适配
-   ============================================================ */
-
-/* 页面背景：材质光晕 + 表面渐变（替换原硬编码 linear-gradient） */
 body {
     background:
         radial-gradient(1200px 600px at 20% -10%, var(--md-surface-container-high) 0%, transparent 55%),
@@ -364,26 +341,22 @@ body {
     background-attachment: fixed;
 }
 
-/* 侧边栏：磨砂玻璃材质 + 顶部高光 */
 .sidebar {
     background: var(--md-surface-container-low);
     backdrop-filter: blur(18px) saturate(1.3);
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 侧边栏菜单项：选中/悬停呈按压浮雕 */
 .sidebar-menu a:hover,
 .sidebar-menu a.active {
     background: var(--sk-primary-grad);
     box-shadow: var(--sk-highlight), var(--sk-emboss-line);
 }
 
-/* 侧边栏折叠按钮：立体圆钮 */
 .sidebar-toggle {
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 主内容容器：大卡片 */
 .plaza-view {
     background: var(--sk-card-grad);
     border: 1px solid var(--md-outline-variant);
@@ -399,7 +372,6 @@ body {
     box-shadow: var(--sk-highlight), var(--sk-emboss-line);
 }
 
-/* 返回 / 搜索按钮 */
 .back-button {
     background: var(--sk-primary-grad);
     box-shadow: 0 3px 0 var(--md-primary-dark), var(--md-shadow-1), var(--sk-highlight);
@@ -420,7 +392,6 @@ body {
     background: var(--sk-primary-grad-hover);
 }
 
-/* 帖子卡片：卡片渐变 + 立体阴影 + 高光 */
 .card {
     background: var(--sk-card-grad);
     border: 1px solid var(--md-outline-variant);
@@ -435,12 +406,10 @@ body {
     box-shadow: var(--sk-emboss-line);
 }
 
-/* 卡片删除按钮 */
 .delete-button {
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 悬浮发布按钮 */
 .fab {
     background: var(--sk-primary-grad);
     box-shadow: var(--md-shadow-2), var(--sk-highlight);
@@ -450,7 +419,6 @@ body {
     background: var(--sk-primary-grad-hover);
 }
 
-/* 帖子详情：凹陷阅读区 */
 .post-content {
     background: var(--sk-surface-grad);
     box-shadow: var(--sk-inset-shadow);
@@ -460,7 +428,6 @@ body {
     border-bottom: 1px solid var(--md-outline-variant);
 }
 
-/* 点赞区：凹陷操作台 + 立体点赞按钮 */
 .like-section {
     background: var(--sk-card-grad);
     box-shadow: var(--sk-inset-shadow);
@@ -478,7 +445,6 @@ body {
     filter: brightness(1.08);
 }
 
-/* 评论区 */
 .comment-item {
     background: var(--sk-card-grad);
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
@@ -517,7 +483,6 @@ body {
     background: var(--sk-primary-grad-hover);
 }
 
-/* 弹窗 / 表单按钮 */
 .btn-primary {
     background: var(--sk-primary-grad);
     box-shadow: 0 3px 0 var(--md-primary-dark), var(--md-shadow-1), var(--sk-highlight);
@@ -539,7 +504,6 @@ body {
     filter: brightness(1.06);
 }
 
-/* 分页：浮雕描边 / 激活主色 */
 .page-button {
     background: var(--sk-card-grad);
     box-shadow: 0 3px 0 var(--md-outline-variant), var(--md-shadow-1), var(--sk-highlight);
@@ -555,14 +519,12 @@ body {
     box-shadow: 0 3px 0 var(--md-primary-dark), var(--md-shadow-1), var(--sk-highlight);
 }
 
-/* 确认对话框：立体卡片 */
 .confirm-content {
     background: var(--sk-card-grad);
     border: 1px solid var(--md-outline-variant);
     box-shadow: var(--md-shadow-2), var(--sk-highlight);
 }
 
-/* 消息提示：玻璃气泡 */
 .snackbar {
     box-shadow: var(--md-shadow-1), var(--sk-highlight);
 }
