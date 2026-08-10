@@ -133,59 +133,61 @@
   --orange: var(--md-orange);
 }
 
-/* --- 暗色模式：暖夜烛光（深可可 + 焦糖 + 玫瑰） --- */
+/* --- 暗色模式：深紫酒馆夜（aubergine + 鎏金 + 奶油文字，对标云酒馆） --- */
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --md-primary: #d9a97f;            /* 暖焦糖 */
-  --md-on-primary: #3b2415;
-  --md-primary-container: #6b4932;
-  --md-on-primary-container: #f5e0cd;
-  --md-primary-dark: #e8c3a0;
+  --md-primary: #d8a868;            /* 暖琥珀金（点亮深紫夜） */
+  --md-on-primary: #2a1708;
+  --md-primary-container: #4a3e31;
+  --md-on-primary-container: #f5dfc0;
+  --md-primary-dark: #e8c394;
 
-  --md-secondary: #efb3c0;          /* 暖玫瑰 */
-  --md-on-secondary: #5c2334;
-  --md-secondary-container: #8a4a5c;
-  --md-on-secondary-container: #fde7ee;
+  --md-secondary: #eeb0c0;          /* 暖玫瑰 */
+  --md-on-secondary: #4e1f30;
+  --md-secondary-container: #5f3850;
+  --md-on-secondary-container: #fde3eb;
 
-  --md-tertiary: #e0b75e;           /* 暖蜂蜜金 */
-  --md-on-tertiary: #453305;
-  --md-tertiary-container: #6b5420;
-  --md-on-tertiary-container: #f8ecd0;
+  --md-tertiary: #e2b85c;           /* 蜂蜜金 */
+  --md-on-tertiary: #38280a;
+  --md-tertiary-container: #50442b;
+  --md-on-tertiary-container: #f9e9c8;
 
   --md-error: #ffb4ab;
-  --md-error-container: #8c1912;
+  --md-on-error: #4c0000;
+  --md-error-container: #7a1c14;
   --md-on-error-container: #ffdad6;
 
-  --md-surface-dim: #1c1610;
-  --md-surface: #241c14;
-  --md-on-surface: #eee2d0;
-  --md-surface-variant: #4c3d2e;
-  --md-on-surface-variant: #d2c0a8;
-  --md-surface-container-lowest: #17110c;
-  --md-surface-container-low: #2d241b;
-  --md-surface-container: #372b20;
-  --md-surface-container-high: #413429;
-  --md-surface-container-highest: #4d3e32;
+  /* 表面：深紫（aubergine）酒馆夜，非棕色，文字奶油暖色 */
+  --md-surface-dim: #241b2c;
+  --md-surface: #2c2135;
+  --md-on-surface: #fdf3e3;
+  --md-surface-variant: #453a50;
+  --md-on-surface-variant: #c9b6bd;
+  --md-surface-container-lowest: #221a2a;
+  --md-surface-container-low: #332a3e;
+  --md-surface-container: #382e43;
+  --md-surface-container-high: #40354c;
+  --md-surface-container-highest: #483c55;
 
-  --md-outline: #b39b83;
-  --md-outline-variant: #4f4033;
+  --md-outline: #8a7a94;
+  --md-outline-variant: #4d4258;
 
-  --md-shadow-1: 0 1px 3px rgba(0,0,0,0.45), 0 4px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
-  --md-shadow-2: 0 2px 6px rgba(0,0,0,0.5), 0 10px 26px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.07);
-  --md-shadow-3: 0 4px 10px rgba(0,0,0,0.55), 0 20px 46px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
-  --md-scrim: rgba(0,0,0,0.6);
+  --md-shadow-1: 0 1px 3px rgba(0,0,0,0.45), 0 4px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+  --md-shadow-2: 0 2px 6px rgba(0,0,0,0.5), 0 10px 26px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.06);
+  --md-shadow-3: 0 4px 10px rgba(0,0,0,0.55), 0 20px 46px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07);
+  --md-scrim: rgba(12,8,20,0.62);
 
-  --sk-primary-grad: linear-gradient(180deg, #e9b488 0%, #cf9162 45%, #a96a40 100%);
-  --sk-primary-grad-hover: linear-gradient(180deg, #f0c49c 0%, #dda074 45%, #b97a50 100%);
-  --sk-secondary-grad: linear-gradient(180deg, #f4bcc9 0%, #d9899a 45%, #b56a7d 100%);
-  --sk-tertiary-grad: linear-gradient(180deg, #ecc36e 0%, #cf9f3f 45%, #a97d24 100%);
-  --sk-surface-grad: linear-gradient(180deg, #2a2118 0%, #241c14 100%);
-  --sk-card-grad: linear-gradient(180deg, #3a2e23 0%, #372b20 100%);
-  --sk-inset-shadow: inset 0 2px 6px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
-  --sk-highlight: inset 0 1px 0 rgba(255,255,255,0.12);
+  --sk-primary-grad: linear-gradient(180deg, #edbe86 0%, #d8a868 45%, #b9833f 100%);
+  --sk-primary-grad-hover: linear-gradient(180deg, #f5c995 0%, #e0b075 45%, #c58a49 100%);
+  --sk-secondary-grad: linear-gradient(180deg, #f2aec1 0%, #d9899a 45%, #b5657d 100%);
+  --sk-tertiary-grad: linear-gradient(180deg, #eec66d 0%, #d4a348 45%, #a97d24 100%);
+  --sk-surface-grad: linear-gradient(180deg, #332a3e 0%, #2c2135 100%);
+  --sk-card-grad: linear-gradient(180deg, #3b3148 0%, #382e43 100%);
+  --sk-inset-shadow: inset 0 2px 6px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.04);
+  --sk-highlight: inset 0 1px 0 rgba(255,255,255,0.1);
   --sk-emboss-line: inset 0 -1px 0 rgba(0,0,0,0.35);
-  --sk-focus-ring: 0 0 0 3px rgba(217,169,127,0.3);
+  --sk-focus-ring: 0 0 0 3px rgba(216,168,104,0.3);
 }
 
 /* ---------------------------------------------------------------------------

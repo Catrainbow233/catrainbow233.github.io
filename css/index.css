@@ -15,7 +15,7 @@
 /* 主页为全屏游戏场景，隐藏全局主题切换按钮（在 theme.js 注入，主页无用） */
 #md-theme-toggle { display: none !important; }
 body {
-  background: #241c14;
+  background: #2c2135;
   color: var(--md-on-surface);
   overflow: hidden; height: 100vh;
 }
@@ -132,7 +132,7 @@ body {
   background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.18);
   outline: none; max-width: 130px;
 }
-#chatModel option { background: #241c14; color: #fff; }
+#chatModel option { background: #2c2135; color: #fff; }
 #chatMin {
   border: none; background: rgba(255,255,255,.1); color: #fff;
   width: 28px; height: 28px; border-radius: 8px; cursor: pointer; font-size: .8em;

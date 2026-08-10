@@ -1519,7 +1519,7 @@ textarea:focus {
   background: rgba(255,255,255,0.12);
 }
 [data-theme="dark"] .conv-item .conv-actions button:hover { background: rgba(255,255,255,0.12); }
-[data-theme="dark"] .message-content pre { background: #12121c; }
+[data-theme="dark"] .message-content pre { background: #201811; }
 
 /* ===== Skeuomorphism 增强层 =====
    拟物材质/高光/立体阴影叠加。只追加，不删改原有规则。

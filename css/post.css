@@ -340,7 +340,7 @@ body {
 }
 /* 暗色下代码块略微加深，保证代码文字对比度 */
 [data-theme="dark"] .post-content pre,
-[data-theme="dark"] .comment-content pre { background: #1e1e1e; }
+[data-theme="dark"] .comment-content pre { background: #201811; }
 
 /* ==========================================================================
    Skeuomorphism 增强层 · post
