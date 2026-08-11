@@ -273,6 +273,27 @@ body {
 .cs-reply-head span { margin-left: auto; font-weight: 500; font-size: .74em; color: var(--md-on-surface-variant); opacity: .75; }
 .cs-reply-body { font-size: .85em; line-height: 1.7; color: var(--md-on-surface); white-space: pre-wrap; word-break: break-word; }
 
+.invite-code-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.invite-code { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 1.35em; font-weight: 800; letter-spacing: 3px; color: var(--md-primary); background: color-mix(in srgb, var(--md-primary) 10%, var(--md-surface-container-high)); border: 1px dashed color-mix(in srgb, var(--md-primary) 45%, transparent); border-radius: 12px; padding: 10px 18px; user-select: all; }
+.invite-link { font-size: .76em; color: var(--md-on-surface-variant); opacity: .8; word-break: break-all; margin-top: 4px; }
+
+.reward-item { display: flex; align-items: center; gap: 14px; border: 1px solid var(--md-outline-variant); border-radius: var(--md-radius-lg); background: var(--md-surface-container); padding: 16px; margin-bottom: 10px; box-shadow: var(--md-shadow-1); transition: .18s; }
+.reward-item.achieved { border-color: color-mix(in srgb, var(--md-primary) 45%, var(--md-outline-variant)); background: color-mix(in srgb, var(--md-primary) 5%, var(--md-surface-container)); }
+.reward-item:hover { border-color: var(--md-primary); }
+.reward-ico { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2em; color: var(--md-primary); background: color-mix(in srgb, var(--md-primary) 12%, var(--md-surface-container-high)); flex-shrink: 0; }
+.reward-info { flex: 1; min-width: 0; }
+.reward-name { font-weight: 700; color: var(--md-on-surface); font-size: .92em; }
+.reward-meta { font-size: .76em; color: var(--md-on-surface-variant); opacity: .8; margin: 4px 0 10px; }
+.reward-progress { display: flex; align-items: center; gap: 10px; max-width: 260px; }
+.reward-progress .progress-bar { flex: 1; }
+.reward-pct { font-size: .74em; font-weight: 600; color: var(--md-on-surface-variant); white-space: nowrap; }
+.reward-action { flex-shrink: 0; }
+
+.pending-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 4px; border-bottom: 1px dashed var(--md-outline-variant); }
+.pending-item:last-child { border-bottom: none; }
+.pending-info { display: flex; align-items: center; gap: 8px; font-size: .86em; font-weight: 600; color: var(--md-on-surface); }
+.pending-info i { color: var(--md-primary); }
+
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .plan-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
