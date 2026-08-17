@@ -101,6 +101,27 @@ nav .links a.active { color: var(--md-primary); opacity: 1; font-weight: 600; }
 .sidebar-note i { color: var(--md-primary); margin-top: 2px; flex-shrink: 0; }
 .sidebar-note a { color: var(--md-primary); }
 
+.price-filter {
+  background: var(--md-surface-container);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--md-radius-md);
+  padding: 14px 16px;
+}
+.pf-head { display: flex; align-items: center; justify-content: space-between; font-weight: 700; color: var(--md-on-surface); font-size: .88em; margin-bottom: 12px; }
+.pf-head .pf-unit { font-size: .7em; font-weight: 600; color: var(--md-on-surface-variant); background: var(--md-surface-container-high); border: 1px solid var(--md-outline-variant); padding: 2px 8px; border-radius: var(--md-radius-full); }
+.pf-group { margin-bottom: 12px; }
+.pf-group:last-of-type { margin-bottom: 6px; }
+.pf-row { display: flex; justify-content: space-between; align-items: center; font-size: .8em; color: var(--md-on-surface-variant); margin-bottom: 6px; }
+.pf-row b { color: var(--md-primary); font-weight: 700; }
+.pf-range { width: 100%; accent-color: var(--md-primary); cursor: pointer; }
+.pf-reset {
+  display: block; width: 100%; margin-top: 8px; padding: 7px 12px;
+  border: 1px solid var(--md-outline-variant); border-radius: var(--md-radius-full);
+  background: transparent; color: var(--md-on-surface-variant); font-size: .78em;
+  cursor: pointer; transition: .2s; font-weight: 600; font-family: inherit;
+}
+.pf-reset:hover { border-color: var(--md-primary); color: var(--md-primary); }
+
 .pricing-toolbar {
   display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
   background: var(--md-surface-container); border: 1px solid var(--md-outline-variant);
@@ -163,6 +184,8 @@ nav .links a.active { color: var(--md-primary); opacity: 1; font-weight: 600; }
 .mc-price { display: flex; gap: 14px; margin-top: 5px; flex-wrap: wrap; }
 .mc-price-item { font-size: .8em; color: var(--md-on-surface-variant); }
 .mc-price-item b { font-family: monospace; color: var(--md-on-surface); margin-left: 2px; }
+.mc-price-item.mc-price-free { color: var(--md-primary); font-weight: 700; }
+.mc-price-item.mc-price-free i { margin-right: 3px; }
 .mc-actions { display: flex; gap: 6px; flex-shrink: 0; }
 .mc-btn {
   display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--md-outline-variant);
