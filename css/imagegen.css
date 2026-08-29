@@ -40,6 +40,8 @@ textarea:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px var(-
 .size-chip .rect { width: 18px; height: 18px; border: 2px solid var(--primary-color); border-radius: 4px; opacity: 0.75; flex-shrink: 0; }
 .size-chip .rect.landscape { width: 24px; height: 16px; }
 .size-chip .rect.portrait { width: 16px; height: 24px; }
+.size-chip .rect.wide { width: 26px; height: 15px; }
+.size-chip .rect.tall { width: 15px; height: 26px; }
 .size-chip:hover { border-color: var(--primary-color); }
 .size-chip.active { background: var(--md-primary-container); border-color: var(--primary-color); color: var(--md-on-primary-container); }
 
