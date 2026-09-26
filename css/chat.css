@@ -2412,3 +2412,15 @@ body {
     .htmlpv-bar { padding: 5px 6px; }
     .htmlpv-seg button { padding: 3px 10px; font-size: 0.7em; }
 }
+
+@media (max-width: 640px) {
+    #thinkSettingsPanel {
+        left: 0 !important;
+        right: auto !important;
+        min-width: 0 !important;
+        width: min(300px, calc(100vw - 24px)) !important;
+        padding: 14px !important;
+        z-index: 800 !important;
+    }
+    #thinkSettingsPanel .think-lvl-btn { min-width: 0 !important; }
+}
