@@ -554,3 +554,74 @@ nav .links a { transition: all .2s ease; }
 .btn-download:active { transform: translateY(2px); box-shadow: 0 1px 0 #221a2a; }
 
 [data-theme="dark"] ::-webkit-scrollbar-thumb { border-color: var(--md-surface-container-low); }
+
+.hero2 {
+    max-width: 1200px; margin: 0 auto; padding: 48px 32px 28px;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;
+}
+.hero2-title {
+    font-size: clamp(2.6rem, 5.2vw, 4.2rem); line-height: 1.12; font-weight: 800;
+    color: var(--md-on-surface); margin: 0 0 16px; letter-spacing: .01em;
+}
+.hero2-sub { color: var(--md-on-surface-variant); font-size: 1.02em; margin: 0 0 26px; opacity: .85; }
+.hero2-card {
+    background: var(--sk-card-grad); border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-radius-lg); box-shadow: var(--md-shadow-2);
+    padding: 22px; max-width: 420px; display: grid; gap: 10px;
+}
+.hero2-cta {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 20px; border-radius: var(--md-radius-full);
+    background: var(--sk-primary-grad); color: var(--md-on-primary);
+    font-weight: 700; font-size: 0.95em; text-decoration: none;
+    box-shadow: var(--md-shadow-1); transition: .2s; border: 1px solid transparent;
+}
+.hero2-cta:hover { background: var(--sk-primary-grad-hover); transform: translateY(-1px); color: var(--md-on-primary); box-shadow: var(--md-shadow-2); }
+.hero2-cta.ghost { background: var(--md-surface-container-lowest); color: var(--md-on-surface); border: 1px solid var(--md-outline-variant); box-shadow: none; }
+.hero2-cta.ghost:hover { border-color: var(--md-primary); color: var(--md-primary); background: var(--md-surface-container-lowest); }
+.hero2-note { font-size: 0.74em; color: var(--md-on-surface-variant); opacity: .8; margin: 4px 0 0; line-height: 1.7; text-align: center; }
+.hero2-right { display: flex; justify-content: center; }
+.hero2-mascot {
+    max-width: 100%; max-height: 480px; object-fit: contain;
+    border-radius: var(--md-radius-lg); box-shadow: var(--md-shadow-3);
+}
+@media (max-width: 900px) {
+    .hero2 { grid-template-columns: 1fr; padding: 32px 20px 20px; }
+    .hero2-right { order: -1; }
+    .hero2-mascot { max-height: 300px; }
+    .hero2-card { max-width: none; }
+}
+
+.plan-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px; align-items: stretch;
+}
+.plan-card {
+    position: relative; background: var(--sk-card-grad);
+    border: 1px solid var(--md-outline-variant); border-radius: var(--md-radius-lg);
+    box-shadow: var(--md-shadow-1); padding: 26px 24px; display: flex; flex-direction: column;
+    transition: .25s;
+}
+.plan-card:hover { transform: translateY(-3px); box-shadow: var(--md-shadow-2); }
+.plan-card.popular { border-color: var(--md-primary); box-shadow: var(--sk-focus-ring), var(--md-shadow-2); }
+.plan-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--sk-primary-grad); color: var(--md-on-primary);
+    font-size: 0.72em; font-weight: 700; padding: 4px 14px; border-radius: 999px;
+    box-shadow: var(--md-shadow-1); white-space: nowrap;
+}
+.plan-icon { font-size: 1.5em; color: var(--md-primary); margin-bottom: 12px; }
+.plan-name { font-size: 1.6em; font-weight: 800; color: var(--md-on-surface); line-height: 1.2; }
+.plan-tag { font-size: 0.85em; color: var(--md-on-surface-variant); margin: 2px 0 14px; }
+.plan-price { font-size: 1.9em; font-weight: 800; color: var(--md-on-surface); }
+.plan-price span { font-size: 0.42em; font-weight: 600; color: var(--md-on-surface-variant); opacity: .75; margin-left: 4px; }
+.plan-price-note { font-size: 0.74em; color: var(--md-on-surface-variant); opacity: .8; margin: 4px 0 14px; }
+.plan-cta {
+    display: block; text-align: center; padding: 11px 0; border-radius: var(--md-radius-full);
+    background: var(--md-on-surface); color: var(--md-surface);
+    font-weight: 700; font-size: 0.92em; text-decoration: none; transition: .2s;
+}
+.plan-cta:hover { opacity: .88; transform: translateY(-1px); color: var(--md-surface); }
+.plan-feats { border-top: 1px solid var(--md-outline-variant); margin-top: 16px; padding-top: 14px; display: grid; gap: 9px; }
+.plan-feats div { font-size: 0.82em; color: var(--md-on-surface-variant); display: flex; gap: 8px; align-items: baseline; }
+.plan-feats i { color: var(--md-primary); font-size: 0.85em; }
