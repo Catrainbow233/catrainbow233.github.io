@@ -141,7 +141,7 @@ section{padding:70px 0}
 .section-sub{text-align:center;color:var(--md-on-surface-variant);opacity:0.65;margin-bottom:48px;font-size:1.02em}
 
 #aeon-showcase{position:relative;padding:70px 0}
-.sc-carousel{position:relative;max-width:900px;margin:0 auto 8px;padding:6px 58px}
+.sc-carousel{position:relative;max-width:900px;margin:0 auto 8px;padding:6px 58px;overflow:hidden}
 .sc-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);will-change:transform}
 .sc-slide{flex:0 0 100%;min-width:100%;display:flex;justify-content:center}
 .sc-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:44px;height:44px;border-radius:50%;border:1px solid var(--md-outline-variant);background:var(--md-surface);color:var(--md-primary);box-shadow:var(--md-shadow-1);cursor:pointer;font-size:.95em;transition:.2s;display:flex;align-items:center;justify-content:center}
@@ -625,3 +625,17 @@ nav .links a { transition: all .2s ease; }
 .plan-feats { border-top: 1px solid var(--md-outline-variant); margin-top: 16px; padding-top: 14px; display: grid; gap: 9px; }
 .plan-feats div { font-size: 0.82em; color: var(--md-on-surface-variant); display: flex; gap: 8px; align-items: baseline; }
 .plan-feats i { color: var(--md-primary); font-size: 0.85em; }
+
+#login-modal .modal-box, #register-modal .modal-box, #forgot-modal .modal-box, #bind-email-modal .modal-box {
+    background: var(--md-surface-container-low);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-radius-md);
+    box-shadow: var(--md-shadow-3);
+}
+#login-btn:disabled, #register-btn:disabled {
+    opacity: .55; cursor: not-allowed; transform: none !important;
+}
+.modal-box .form-input { background: var(--md-surface-container-lowest); }
+@media (max-width: 480px) {
+    .modal-box { padding: 22px 18px; border-radius: var(--md-radius-sm); }
+}
