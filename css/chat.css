@@ -2561,6 +2561,8 @@ body {
 #chatInput, .input-row textarea { max-height: 240px; line-height: 1.5; }
 
 #convSheetOverlay { align-items: flex-end; animation: overlayFade .2s ease; }
+
+#shareSheetOverlay { align-items: flex-end; animation: overlayFade .2s ease; }
 @keyframes overlayFade { from { opacity: 0; } to { opacity: 1; } }
 .conv-sheet { animation: sheetUpFromBottom .28s cubic-bezier(.22,.9,.36,1); }
 @keyframes sheetUpFromBottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
@@ -2574,4 +2576,77 @@ body {
 
 #chatInput {
     border-radius: 0;
+}
+
+.share-tip {
+    font-size: 0.82em;
+    line-height: 1.75;
+    color: var(--md-on-surface-variant);
+    padding: 2px 10px 12px;
+}
+
+.share-tip b {
+    color: var(--md-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.share-durations {
+    display: flex;
+    gap: 8px;
+    padding: 0 8px 12px;
+}
+
+.share-dur {
+    flex: 1;
+    padding: 11px 6px;
+    border-radius: 12px;
+    border: 1px solid var(--md-outline-variant);
+    background: var(--md-surface-container);
+    color: var(--md-on-surface);
+    font-family: inherit;
+    font-size: 0.86em;
+    cursor: pointer;
+    transition: background .16s, border-color .16s, color .16s;
+}
+
+.share-dur:hover {
+    background: var(--md-surface-container-high);
+}
+
+.share-dur.active {
+    background: var(--md-primary-container);
+    border-color: var(--md-primary);
+    color: var(--md-on-primary-container);
+    font-weight: 600;
+}
+
+.share-link-row {
+    display: flex;
+    gap: 8px;
+    padding: 0 8px 8px;
+}
+
+.share-link-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--md-outline-variant);
+    background: var(--md-surface-container-low);
+    color: var(--md-on-surface);
+    font-size: 0.82em;
+    font-family: inherit;
+    outline: none;
+}
+
+.share-link-row button {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: none;
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    font-family: inherit;
+    font-size: 0.82em;
+    cursor: pointer;
+    white-space: nowrap;
 }

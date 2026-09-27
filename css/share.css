@@ -1,0 +1,126 @@
+.share-body {
+    background: var(--md-surface);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.share-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--md-outline-variant);
+    background: var(--md-surface-container-lowest);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.share-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    color: var(--md-on-surface);
+    font-weight: 700;
+}
+
+.share-brand img {
+    height: 26px;
+}
+
+.share-tag {
+    font-size: 0.78em;
+    padding: 3px 11px;
+    border-radius: 999px;
+    background: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+}
+
+.share-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px 20px 0;
+    color: var(--md-on-surface-variant);
+    font-size: 0.84em;
+}
+
+.share-meta-item i {
+    color: var(--md-primary);
+    margin-right: 5px;
+}
+
+.share-main {
+    flex: 1;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 20px 40px;
+}
+
+.share-title {
+    font-size: 1.25em;
+    color: var(--md-on-surface);
+    margin: 14px 4px 6px;
+}
+
+.share-main .messages-container {
+    padding: 12px 0;
+}
+
+.share-state {
+    text-align: center;
+    color: var(--md-on-surface-variant);
+    padding: 60px 20px;
+    line-height: 1.9;
+}
+
+.share-state i {
+    display: block;
+    font-size: 2.2em;
+    margin-bottom: 16px;
+    color: var(--md-outline);
+}
+
+.share-footer {
+    border-top: 1px solid var(--md-outline-variant);
+    background: var(--md-surface-container-lowest);
+    padding: 14px 20px;
+}
+
+.share-footer-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--md-on-surface-variant);
+    font-size: 0.84em;
+}
+
+.share-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.share-main .msg-actions,
+.share-main .message-actions {
+    display: none !important;
+}
+
+[data-theme="dark"] .share-brand img {
+    display: none;
+}
