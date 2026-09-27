@@ -1,3 +1,10 @@
+html,
+body.share-body {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+}
+
 .share-body {
     background: var(--md-surface);
     min-height: 100vh;

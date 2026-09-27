@@ -632,9 +632,46 @@ body {
     background: #1e1e2f;
     padding: 0.9rem;
     border-radius: var(--md-radius-md);
-    overflow-x: auto;
+
+    max-height: min(58vh, 440px);
+    overflow: auto;
+    overscroll-behavior: contain;
     margin: 0.6rem 0;
     position: relative;
+}
+
+.thinking-content pre {
+    max-height: min(58vh, 440px);
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.message-content pre::-webkit-scrollbar,
+.thinking-content pre::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+.message-content pre::-webkit-scrollbar-track,
+.thinking-content pre::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.message-content pre::-webkit-scrollbar-thumb,
+.thinking-content pre::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 5px;
+}
+
+.message-content pre::-webkit-scrollbar-thumb:hover,
+.thinking-content pre::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.36);
+}
+
+.message-content pre,
+.thinking-content pre {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.28) transparent;
 }
 
 .message-content code {
