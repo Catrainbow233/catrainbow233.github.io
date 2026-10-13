@@ -2683,10 +2683,31 @@ body {
 .agent-artifact { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin-top: 12px; padding: 10px 12px; border: 1px solid var(--md-outline-variant, #ddd); border-radius: 10px; }
 .agent-artifact small { color: var(--md-on-surface-variant, #777); font-size: .72em; }
 .agent-activity { margin: 8px 0; }
-.agent-activity summary { cursor: pointer; overflow-wrap: anywhere; }
+.agent-activity summary { cursor: pointer; overflow-wrap: anywhere; padding: 6px 8px; border-radius: 8px; line-height: 1.6; }
+.agent-activity summary:hover { background: var(--md-surface-container-high, #e9e6df); }
 .agent-activity[data-status="completed"] summary { color: var(--md-primary, #169e67); }
 .agent-activity[data-status="failed"] summary, .agent-error { color: #d65a50; }
-.agent-activity pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 220px; overflow: auto; font-family: inherit; opacity: .8; }
+.message-content .agent-activity pre {
+    background: var(--md-surface-container-low, #f8f7f3);
+    color: var(--md-on-surface, #24231f);
+    -webkit-text-fill-color: currentColor;
+    border: 1px solid var(--md-outline-variant, #d8d5cd);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin: 8px 0 12px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    max-height: min(45vh, 300px);
+    overflow: auto;
+    font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+    font-size: .85em;
+    line-height: 1.75;
+    tab-size: 2;
+    opacity: 1;
+    scrollbar-color: var(--md-outline, #99958b) transparent;
+}
+.message-content .agent-activity pre::selection { background: var(--md-primary-container, #f5dcca); color: var(--md-on-primary-container, #382014); }
+.message-content .agent-activity pre::-webkit-scrollbar-thumb { background: var(--md-outline, #99958b); }
 .agent-resume { margin-top: 10px; border: 1px solid var(--md-outline, #999); border-radius: 16px; background: transparent; color: inherit; padding: 7px 14px; cursor: pointer; }
 .agent-resume[hidden] { display: none; }
 .send-btn.is-stopping { background: #b84444; }
