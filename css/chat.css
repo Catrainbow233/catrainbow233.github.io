@@ -2678,8 +2678,8 @@ body {
 
 .agent-run { margin-top: 14px; border-left: 2px solid var(--md-outline-variant, #b8b8b8); padding-left: 14px; font-size: .9em; }
 .agent-run-heading { color: var(--md-on-surface-variant, #777); margin-bottom: 8px; }
-.agent-usage { margin-top: 10px; font-size: .76em; color: var(--md-on-surface-variant, #777); overflow-wrap: anywhere; line-height: 1.6; }
-.agent-usage[hidden] { display: none; }
+.message-actions .msg-cache { margin-left: 4px; font-size: .78rem; color: var(--md-on-surface-variant, #777); opacity: .7; white-space: nowrap; }
+.msg-cache[hidden] { display: none; }
 .agent-artifact { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin-top: 12px; padding: 10px 12px; border: 1px solid var(--md-outline-variant, #ddd); border-radius: 10px; }
 .agent-artifact small { color: var(--md-on-surface-variant, #777); font-size: .72em; }
 .agent-activity { margin: 8px 0; }
