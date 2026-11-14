@@ -8,9 +8,9 @@
 }
 .admin-tab {
   padding: 10px 18px;
-  border-radius: var(--md-radius-full);
+  border-radius: var(--md-radius-xs);
   border: 1px solid var(--md-outline-variant);
-  background: var(--md-surface-container);
+  background: var(--md-surface-container-lowest);
   color: var(--md-on-surface-variant);
   font-size: .9em;
   font-weight: 600;
@@ -169,7 +169,7 @@
   margin-top: 6px;
 }
 .ms-card {
-  background: var(--md-surface-container);
+  background: var(--md-surface-container-lowest);
   border: 1px solid var(--md-outline-variant);
   border-radius: var(--md-radius-lg);
   padding: 14px 16px;
@@ -222,16 +222,16 @@
   font-weight: 700;
   padding: 3px 12px;
   border-radius: 20px;
-  background: color-mix(in srgb, #2ecc71 16%, transparent);
-  color: #1e9e4d;
+  background: color-mix(in srgb, var(--md-green) 14%, transparent);
+  color: var(--md-green);
 }
 .ban-status.ban-active-perm {
-  background: color-mix(in srgb, #f44336 16%, transparent);
-  color: #d63a30;
+  background: color-mix(in srgb, var(--md-error) 12%, transparent);
+  color: var(--md-error);
 }
 .ban-status.ban-active-temp {
-  background: color-mix(in srgb, #fdcb6e 24%, transparent);
-  color: #dba010;
+  background: color-mix(in srgb, var(--md-yellow) 18%, transparent);
+  color: var(--md-yellow);
 }
 .ban-grid {
   display: flex;
@@ -249,9 +249,9 @@
   border: none;
   color: #fff;
 }
-.btn-ban-perm { background: var(--md-error, #e85d6f); }
-.btn-ban-perm:hover { filter: brightness(1.06); }
-.btn-ban-temp { background: #dba010; }
-.btn-ban-temp:hover { filter: brightness(1.06); }
-.btn-ban-unban { background: #2ecc71; }
-.btn-ban-unban:hover { filter: brightness(1.06); }
+.btn-ban-perm { background: var(--md-error); }
+.btn-ban-perm:hover { opacity: .92; }
+.btn-ban-temp { background: #a67c1a; }
+.btn-ban-temp:hover { opacity: .92; }
+.btn-ban-unban { background: var(--md-green); }
+.btn-ban-unban:hover { opacity: .92; }
