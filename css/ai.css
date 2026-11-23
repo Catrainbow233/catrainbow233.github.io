@@ -339,6 +339,7 @@ footer{text-align:center;padding:36px;color:var(--md-on-surface-variant);font-si
 
     nav .logo{font-size:1.1em}
     nav .links{gap:4px 14px;font-size:0.82em;flex-wrap:wrap;white-space:normal;overflow:visible;width:100%;justify-content:center}
+    nav .links a{white-space:nowrap}
 
     .hero{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"left right" "center center";gap:8px 24px;padding:44px 22px 34px;margin:14px 12px;border-radius:26px}
     .hero-left{grid-area:left;justify-self:center;align-self:start}

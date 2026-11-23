@@ -952,6 +952,10 @@ body {
     color: var(--md-error);
 }
 
+.file-tag-parsing { opacity: 0.85; }
+.file-tag-error { border-color: var(--md-error) !important; color: var(--md-error); }
+.file-tag-note { opacity: 0.7; font-size: 0.74rem; }
+
 .image-preview {
     position: relative;
     width: 70px;
